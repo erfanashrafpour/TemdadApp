@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "@environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {ResponseModel} from "@app/_core/model/ResponseModel";
 
 
 
@@ -26,7 +27,7 @@ export class AuthService {
         "ClientOsVersion":"string",
         "AppVersionCode":"string"}
 
-      return  this.httpClient.post(LOGIN_API,model)
+      return  this.httpClient.post<ResponseModel<any>>(LOGIN_API,model)
 
 
   }

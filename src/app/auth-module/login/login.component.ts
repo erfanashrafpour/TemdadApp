@@ -43,6 +43,13 @@ export class LoginComponent implements OnInit {
 
     this.authService.Login(value.username , value.password).subscribe(res=>{
 
+
+      if (res.statusCode==200)
+      {
+        localStorage.setItem(environment.TOKEN_KEY,res.data.Token)
+      }
+
+
     });
 /*
     this.authService.isAuthenticated().then(res=>{
@@ -66,3 +73,6 @@ export class LoginComponent implements OnInit {
     )
   }
 }
+
+
+
