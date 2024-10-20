@@ -1,0 +1,91 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  box-sizing: border-box;
+  font-family: Dirooz;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-up {
+  width: 350px;
+  margin: 20px 0;
+  border: 1px solid #d5d5d8;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+}
+.sign-up > * {
+  width: 85%;
+}
+.logo {
+  text-align: center;
+}
+.logo img {
+  width: 140px;
+}
+.sign-up > input {
+  color: #000;
+  border-radius: 8px;
+  height: 45px;
+  border: 1px solid #d5d5d8;
+  padding: 0 16px;
+  background: #f5f5f5;
+  font-size: 14px;
+}
+.sign-up > input:focus {
+  background: #d5d5d8;
+  outline: none;
+}
+.sign-up > input::placeholder {
+  color: #6F6F6F;
+}
+#remember {
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.remember {
+  display: flex;
+  align-items: center;
+}
+.remember label {
+  color: #343434;
+}
+.submit-btn {
+  height: 45px;
+  border-radius: 8px;
+  color: #FFF;
+  background: #4b0082;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+.submit-btn:hover {
+  opacity: 0.8;
+}
+.question {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.question a {
+  color: #4b0082;
+  font-weight: 600;
+}
+@media screen and (max-width: 370px) {
+  .sign-up {
+    margin: 20px 10px;
+  }
+}
