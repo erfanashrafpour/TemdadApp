@@ -10,7 +10,7 @@ export class LessonListComponent implements OnInit{
 
     lessonList = [];
 
-  
+
   constructor(private lessonService:LessonService) {
   }
 
