@@ -5,6 +5,7 @@
     <div class="header__filter filter">
                     <span class="filter__items items">
                         <input
+                          (change)="changePlanActive($event)"
                           type="checkbox"
                           id="plane"
                           class="items__checkbox"
@@ -15,6 +16,8 @@
                     </span>
       <span class="filter__items items">
                         <input
+                          (change)="changeRandom($event)"
+
                           type="checkbox"
                           id="testing"
                           class="items__checkbox"
@@ -27,26 +30,28 @@
   </div>
 
   <div class="container__card-container card-container">
-    <div class="card-container__card card">
-      <div class="title-card title-card--green">
+    <div  *ngFor="let lesson of lessonList;let i = index" class="card-container__card card">
+      <div class="title-card title-card--{{getColorTop(i)}}" >
         <h2 class="title-card__h2">
-          متون فقه<br />(تحریر امام خمینی)
+
+          {{lesson.Name}}
+
         </h2>
       </div>
       <div class="card__content content-card">
                         <span class="content-card__text"
-                        ><span class="text-number">۷</span>
-                            <span class="text-unit">بسته</span></span
+                        ><span class="text-number"></span>
+                            <span class="text-unit"></span></span
                         >
         <span class="content-card__text"
-        ><span class="text-number">۵۱۳</span>
+        ><span class="text-number">{{lesson.TestCount}}</span>
                             <span class="text-unit">تست</span></span
         >
       </div>
     </div>
-
+<!--
     <div class="card-container__card card">
-      <div class="title-card title-card--blue">
+      <div class="title-card title-card&#45;&#45;blue">
         <h2 class="title-card__h2">آیین دادرسی کیفری</h2>
       </div>
       <div class="card__content content-card">
@@ -62,7 +67,7 @@
     </div>
 
     <div class="card-container__card card">
-      <div class="title-card title-card--purple">
+      <div class="title-card title-card&#45;&#45;purple">
         <h2 class="title-card__h2">آیین دادرسی مدنی</h2>
       </div>
       <div class="card__content content-card">
@@ -78,7 +83,7 @@
     </div>
 
     <div class="card-container__card card">
-      <div class="title-card title-card--green">
+      <div class="title-card title-card&#45;&#45;green">
         <h2 class="title-card__h2">
           متون فقه<br />(تحریر امام خمینی)
         </h2>
@@ -93,6 +98,6 @@
                             <span class="text-unit">تست</span></span
         >
       </div>
-    </div>
+    </div>-->
   </div>
 </div>

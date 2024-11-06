@@ -46,7 +46,16 @@ export class LoginComponent implements OnInit {
 
       if (res.statusCode==200)
       {
+
+        const model = {
+          userName:value.username,
+          password:value.password
+        };
+
+        localStorage.setItem(environment.USER_PASS,JSON.stringify(model))
         localStorage.setItem(environment.TOKEN_KEY,res.data.Token)
+
+
       }
 
 
