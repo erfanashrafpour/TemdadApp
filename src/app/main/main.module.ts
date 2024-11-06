@@ -9,7 +9,8 @@ const routes: Routes = [
   {path:'',
     component:MainComponent,
     children:[
-
+      {path:'',redirectTo:'lesson',pathMatch:"full"}
+      ,
       {path:'lesson',
         loadChildren: () => import('../Lesson/lesson.module').then(m => m.LessonModule)
       }
