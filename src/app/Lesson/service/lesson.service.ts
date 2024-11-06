@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "@environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {ResponseModel} from "@app/_core/model/ResponseModel";
 
 
 
@@ -20,7 +21,7 @@ export class LessonService {
   GetLesson()
   {
 
-    return this.httpClient.get(GET_LESSON_API)
+    return this.httpClient.get<ResponseModel<any>>(GET_LESSON_API)
 
   }
 

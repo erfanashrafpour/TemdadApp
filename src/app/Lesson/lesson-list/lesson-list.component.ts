@@ -8,6 +8,9 @@ import {LessonService} from "@app/Lesson/service/lesson.service";
 })
 export class LessonListComponent implements OnInit{
 
+    lessonList = [];
+
+  
   constructor(private lessonService:LessonService) {
   }
 
@@ -19,7 +22,14 @@ export class LessonListComponent implements OnInit{
   getLessonList()
   {
 
-      this.lessonService.GetLesson().subscribe(res=>{})
+      this.lessonService.GetLesson().subscribe(res=>{
+
+            if (res.statusCode==200)
+            {
+              this.lessonList = res.data;
+
+            }
+      });
 
 
   }
