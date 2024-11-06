@@ -30,7 +30,7 @@
   </div>
 
   <div class="container__card-container card-container">
-    <div  *ngFor="let lesson of lessonList;let i = index" class="card-container__card card">
+    <div  *ngFor="let lesson of lessonList;let i = index" class="card-container__card card" (click)="clickOnLesson(lesson)">
       <div class="title-card title-card--{{getColorTop(i)}}" >
         <h2 class="title-card__h2">
 

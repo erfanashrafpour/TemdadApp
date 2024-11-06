@@ -6,14 +6,14 @@ import { LessonCategoryListComponent } from './lesson-category-list/lesson-categ
 
 
 const routes: Routes = [
-  {
+/*  {
     path:'',
     redirectTo:'list',
     pathMatch:'full'
 
-  },
-  {path:'list',
-    component:LessonListComponent
+  },*/
+  {path:'list/:lessonId',
+    component:LessonCategoryListComponent
   }
 ];
 

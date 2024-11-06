@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LessonService} from "@app/Lesson/service/lesson.service";
 import {LessonCategoryService} from "@app/lesson-category/service/lesson-category.service";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-lesson-list',
@@ -11,7 +12,7 @@ export class LessonListComponent implements OnInit{
    lessonList = [];
     private isRandom = false;
     private isPlanActive = false;
-  constructor(private lessonService:LessonService,private lc:LessonCategoryService) {
+  constructor(private lessonService:LessonService,private lc:LessonCategoryService,private rote:Router) {
   }
 
 
@@ -102,5 +103,7 @@ export class LessonListComponent implements OnInit{
   }
 
 
-
+  clickOnLesson(lesson: any) {
+        this.rote.navigateByUrl('main/lessonCategory/list/'+lesson.Id)
+  }
 }
