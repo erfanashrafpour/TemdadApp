@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: dirooz;
+  font-family: iranRegular;
   src: url('/assets/font/Webfonts/Woff/IRANYekanX-Regular.woff');
+}
+@font-face {
+  font-family: iranBlack;
+  src: url('/assets/font/Webfonts/Woff/IRANYekanX-Black.woff');
+}
+
+@font-face {
+  font-family: yekanNum;
+  src: url('/assets/font/Webfonts/YekanBakhFaNum-VF.ttf');
 }

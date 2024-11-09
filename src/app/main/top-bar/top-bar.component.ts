@@ -22,6 +22,7 @@ export class TopBarComponent implements OnInit{
         const  userModel = JSON.parse(userJson);
 
 
+
         this.authService.Login(userModel.userName,userModel.password)
           .subscribe(res=>{
 

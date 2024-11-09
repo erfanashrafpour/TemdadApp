@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "@app/auth-module/service/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 export class MainComponent {
 
   constructor() {
+
+
+
 
   }
 

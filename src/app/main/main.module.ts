@@ -11,12 +11,18 @@ const routes: Routes = [
     children:[
       {path:'',redirectTo:'lesson',pathMatch:"full"}
       ,
-      {path:'lesson',
+      {
+        path:'lesson',
         loadChildren: () => import('../Lesson/lesson.module').then(m => m.LessonModule)
       },
-
-      {path:'lessonCategory',
+      {
+        path:'lessonCategory',
         loadChildren: () => import('../lesson-category/lesson-category.module').then(m => m.LessonCategoryModule)
+      }
+      ,
+      {
+        path:'question',
+        loadChildren: () => import('../question/question.module').then(m => m.QuestionModule)
       }
     ]
   }

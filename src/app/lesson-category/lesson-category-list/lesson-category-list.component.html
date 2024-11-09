@@ -1,13 +1,13 @@
 
 <div class="container">
   <div class="navigation">
-    <a href="#" class="backLink">
+    <a (click)="goToLessonList()" class="backLink">
       <img
         src="../../../assets/icon/back.svg"
         alt="back-icon"
         class="backLink__icon"
       />
-      حقوق مدنی
+      {{lessonName}}
     </a>
     <div class="filter">
       <button class="filter__button">
@@ -41,13 +41,13 @@
   "HasVoice": false-->
   <div class="rulesContainer">
     <!-- item 1 -->
-    <div *ngFor="let lessonCategory of lessonCategoryList;let i = index">
+    <div *ngFor="let lessonCategory of lessonCategoryList;let i = index" (click)="goToTestingPage(lessonCategory)">
       <div class="rulesBoxHeader">
-        <p class="rulesBoxHeader__title">{{lessonCategory.Name}}</p>
+        <p class="rulesBoxHeader__title" style="font-family: yekanNum">{{lessonCategory.Name}}</p>
         <div class="rulesBoxHeader__leftBox">
-          <p class="rulesBoxHeader__count">
+          <p class="rulesBoxHeader__count" style="font-family: Dirooz">
             تست‌های آماده:
-            <span class="rulesBoxHeader__number">{{lessonCategory.TestCount}}</span>
+            <span class="rulesBoxHeader__number" style="font-family: yekanNum">{{lessonCategory.TestCount}}</span>
           </p>
           <button class="rulesBoxHeader__saveBtn">
             <img
@@ -55,16 +55,18 @@
               class="rulesBoxHeader__saveBtn__icon"
               alt="bookmark"
             />
-            <span class="rulesBoxHeader__saveBtn__number">۵</span>
+            <span class="rulesBoxHeader__saveBtn__number" style="font-family: yekanNum">  {{lessonCategory.BookmarkCount}}</span>
           </button>
         </div>
       </div>
       <div class="rulesBoxContent">
         <div class="rulesBoxContent__list">
-          <span>{{lessonCategory.Description}}</span>
+          <span style="font-family: Dirooz">{{lessonCategory.Description}}</span>
 
         </div>
+<!--
         <p class="rulesBoxContent__desc">مواد ۱۱ تا ۲۸ قانون مدنی</p>
+-->
       </div>
     </div>
 

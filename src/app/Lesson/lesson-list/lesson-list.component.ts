@@ -104,6 +104,6 @@ export class LessonListComponent implements OnInit{
 
 
   clickOnLesson(lesson: any) {
-        this.rote.navigateByUrl('main/lessonCategory/list/'+lesson.Id)
+        this.rote.navigateByUrl('main/lessonCategory/list/'+lesson.Id+'/'+lesson.Name)
   }
 }

@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch:'full'
 
   },*/
-  {path:'list/:lessonId',
+  {path:'list/:lessonId/:lessonName',
     component:LessonCategoryListComponent
   }
 ];

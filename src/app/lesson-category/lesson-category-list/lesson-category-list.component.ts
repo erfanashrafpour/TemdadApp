@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LessonCategoryService} from "@app/lesson-category/service/lesson-category.service";
-import {ActivatedRoute, Route} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-lesson-category-list',
@@ -11,14 +11,16 @@ export class LessonCategoryListComponent implements OnInit{
 
   lessonCategoryList =[];
   lessonId = undefined;
+   lessonName;
 
-  constructor(private lessonCategoryService:LessonCategoryService , private route:ActivatedRoute) {
+  constructor(private lessonCategoryService:LessonCategoryService , private activeRoute:ActivatedRoute , private route:Router) {
   }
 
 
   ngOnInit() {
-  this.route.params.subscribe(params => {
+  this.activeRoute.params.subscribe(params => {
       this.lessonId = params['lessonId'];
+      this.lessonName = params['lessonName'];
     this.getLessonCategoryList()
 
   });
@@ -36,5 +38,13 @@ export class LessonCategoryListComponent implements OnInit{
       }
     });
 
+  }
+
+  goToLessonList() {
+    this.route.navigateByUrl('main/lesson')
+  }
+
+  goToTestingPage(lessonCategory) {
+    this.route.navigateByUrl('main/question/questionPage/'+lessonCategory.Id)
   }
 }
