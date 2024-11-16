@@ -13,7 +13,8 @@ import {InterceptorService} from "@app/_core/service/interceptor.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   //m
   providers: [

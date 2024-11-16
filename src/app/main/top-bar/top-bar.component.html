@@ -3,7 +3,7 @@
 
 <div class="header">
   <div class="toolbar">
-    <button class="toolbar__menu-btn menu-button" (click)="showRightSideBar=true">
+    <button class="toolbar__menu-btn menu-button" (click)="openRightSideBar($event)">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -164,7 +164,7 @@
       </ul>
     </nav>
 
-    <button class="toolbar__more">
+    <button class="toolbar__more" (click)="openLeftSideBar($event)">
       <img
         src="Images/more-vertical-svgrepo-com.svg"
         alt="more icon"

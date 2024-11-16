@@ -44,6 +44,13 @@ export class TopBarComponent implements OnInit{
   }
 
 
+  openRightSideBar($event: MouseEvent) {
+    this.showRightSideBar = true;
+    $event.stopPropagation();
+  }
 
-
+  openLeftSideBar($event: MouseEvent) {
+    this.showLeftSideBar = true;
+    $event.stopPropagation();
+  }
 }

@@ -1,5 +1,5 @@
-<div class="backdrop " [class.backdrop__moreSidebar--active]="showSideBar">
-  <div class="sidebar moreSidebar">
+<div class="backdrop " [class.backdrop__moreSidebar--active]="showSideBar" (clickOutside)="changeShowSideBar()">
+  <div class="sidebar moreSidebar" (clickOutside)="changeShowSideBar()">
     <p class="moreSidebar__heading">محمد‌مهدی مصطفایی</p>
 
     <ul class="sidebarList">

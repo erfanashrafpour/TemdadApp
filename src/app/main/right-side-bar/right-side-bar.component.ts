@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-right-side-bar',
@@ -7,6 +7,11 @@ import {Component, Input} from '@angular/core';
 })
 export class RightSideBarComponent {
   @Input()showSideBar =false;
+  @Output() showSideBarChange = new EventEmitter<any>();
 
+  changeShowSideBar() {
 
+    this.showSideBar = false
+    this.showSideBarChange.emit(this.showSideBar);
+  }
 }
