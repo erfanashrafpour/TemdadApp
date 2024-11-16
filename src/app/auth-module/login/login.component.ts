@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem(environment.USER_PASS,JSON.stringify(model))
         localStorage.setItem(environment.TOKEN_KEY,res.data.Token)
+        this.route.navigate(['/'], { replaceUrl: true })
 
 
       }
