@@ -15,15 +15,16 @@ export class QuestionService {
   constructor(private httpClient:HttpClient) { }
 
 
-  GetTestByLessonId(lessonId , pageNuber)
+  GetTestByLessonId(lessonId , pageNumber)
   {
 
 
     const param = {
       LessonID:lessonId,
-      PageNumber:pageNuber
-  }
-  return this.httpClient.get(GET_QUESTION_BY_LESSON_ID,{params:param})
+      PageNumber:pageNumber
+                  };
+
+    return this.httpClient.get(GET_QUESTION_BY_LESSON_ID,{params:param})
 
   }
 
