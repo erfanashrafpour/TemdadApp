@@ -1,0 +1,131 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+body {
+  min-height: 100vh;
+  font-family: 'dirooz';
+}
+
+/* backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transition: all 0.4s;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+.backdrop--active {
+  opacity: 1;
+  pointer-events: all;
+}
+.backdrop--active .sidebar {
+  transform: translate(0);
+}
+
+/* right sidebar */
+.sidebar {
+  background: rgb(48 102 190);
+  position: fixed;
+  transform: translateX(100%);
+  top: 0;
+  right: 0;
+  width: 315px;
+  font-size: 20px;
+  height: 100vh;
+  transition: all 0.4s;
+}
+.sidebar__logo {
+  margin: 16px 32px;
+  display: block;
+}
+.sidebar__logo__img {
+  width: 140px;
+}
+.sidebarList {
+}
+.sidebarList__li {
+  transition: all 0.3s;
+  height: 70px;
+  padding: 0 32px;
+}
+.sidebarList__li:hover {
+  background: hsl(216.11deg 51.6% 57.06%);
+  cursor: pointer;
+}
+.sidebarList__link {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
+.sidebarList__link--border {
+  border-bottom: 0.5px solid white;
+}
+.sidebarList__icon {
+}
+.sidebarList__text {
+}
+
+/* more sidebar */
+.moreSidebar {
+  right: unset;
+  left: 0;
+  padding-top: 20px;
+  transform: translateX(-100%) !important;
+}
+.backdrop__moreSidebar--active {
+  opacity: 1;
+  pointer-events: all;
+}
+.backdrop__moreSidebar--active .moreSidebar {
+  transform: translateX(0) !important;
+}
+.moreSidebar__heading {
+  color: white;
+  padding: 0 32px;
+  font-size: 23px;
+  margin-bottom: 16px;
+}
+.sidebarList__icon {
+  width: 30px;
+}
+.sidebarList__icon--messages,
+.sidebarList__icon--shop {
+  position: relative;
+  height: 30px;
+}
+.sidebarList__icon--messages::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: red;
+  position: absolute;
+  border-radius: 50px;
+}
+.sidebarList__icon--shop {
+  position: relative;
+}
+.shop__badge {
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  border-radius: 50px;
+  top: 20px;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

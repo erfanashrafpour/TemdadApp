@@ -190,3 +190,52 @@ body {
   background: rgb(21 219 109);
   color: white;
 }
+
+/* media queries */
+@media screen and (max-width: 680px) {
+  .test__topSection {
+    font-size: 15px;
+  }
+  .tools__icon {
+    width: 25px;
+  }
+  .tools__icon--stopwatch {
+    width: 35px;
+  }
+  .test__tools {
+    font-size: 16px;
+  }
+  .container {
+    width: 100%;
+    padding: 48px 32px;
+  }
+  .test__heading {
+    font-size: 17px;
+    text-align: right;
+  }
+  .test__option {
+    font-size: 14px;
+  }
+  .test__form {
+    gap: 10px;
+  }
+  .option__alphabet {
+    width: 60px;
+  }
+  .test__option {
+    height: 65px;
+  }
+  .commonStyle__formButton {
+    font-size: 12px;
+    height: 45px;
+  }
+  .button__chevron {
+    font-size: 30px;
+  }
+  .form__submit {
+    gap: 10px;
+  }
+  .form__buttons {
+    gap: 10px;
+  }
+}

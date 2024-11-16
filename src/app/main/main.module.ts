@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MainComponent } from './main/main.component';
+import { RightSideBarComponent } from './right-side-bar/right-side-bar.component';
+import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
 
 const routes: Routes = [
 
@@ -31,7 +33,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     TopBarComponent,
-    MainComponent
+    MainComponent,
+    RightSideBarComponent,
+    LeftSideBarComponent
   ],
   imports: [
     CommonModule,

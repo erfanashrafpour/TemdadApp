@@ -5,43 +5,43 @@
     <span class="navigation__separate">&#xbb;</span>
     <span class="navigation__item">{{questionItem.ProductTitle}}</span>
   </div>
-  <p class="test__counter">تست <span>{{findIndexList()+1}}</span> از <span>{{questionList.length}}</span></p>
+  <p class="test__counter">تست <span>{{findIndexList()}}</span> از <span>{{questionList.length}}</span></p>
 </div>
 
 <!-- end__test -->
-<div class="container end__test">
+<div class="container">
   <div class="test__tools">
     <div class="tools__rightBox">
       <button>
         <img
-          src="assets/icon/save.svg"
+          src="../../../assets/icon/save.svg"
           alt="save"
           class="tools__icon tools__saveIcon"
         />
       </button>
       <button>
         <img
-          src="assets/icon/Rules.png"
+          src="../../../assets/icon/Rules.png"
           alt="rules"
           class="tools__icon"
         />
       </button>
     </div>
     <div class="tools__stopwatch">
-      <span>۱:۶۸</span>
+      <span>{{timer}}</span>
       <img
-        src="assets/icon/stopwatch.svg"
+        src="../../../assets/icon/stopwatch.svg"
         alt="stopwatch"
         class="tools__icon--stopwatch"
       />
     </div>
   </div>
 
-  <div class="test__container">
+  <div class="test__container end__test">
     <h2 class="test__heading">{{questionItem.Question}}</h2>
 
-    <div class="test__form">
-      <label for="optionA" class="test__label">
+    <form class="test__form">
+      <label for="optionA" class="test__label" (click)="clickChoice(questionItem.ChoiceA)">
         <input
           type="radio"
           class="test__checkbox"
@@ -55,7 +55,7 @@
           </p>
         </div>
       </label>
-      <label for="optionB" class="test__label">
+      <label for="optionB" class="test__label" (click)="clickChoice(questionItem.ChoiceB)">
         <input
           type="radio"
           class="test__checkbox"
@@ -71,7 +71,7 @@
           </p>
         </div>
       </label>
-      <label for="optionC" class="test__label">
+      <label for="optionC" class="test__label" (click)="clickChoice(questionItem.ChoiceC)">
         <input
           type="radio"
           class="test__checkbox"
@@ -85,7 +85,7 @@
           </p>
         </div>
       </label>
-      <label for="optionD" class="test__label">
+      <label for="optionD" class="test__label" (click)="clickChoice(questionItem.ChoiceD)">
         <input
           type="radio"
           class="test__checkbox"
@@ -105,14 +105,16 @@
         >
           قوانین مرتبط
         </button>
-        <button class="resolve__button commonStyle__formButton end__buttons">
+        <button
+          class="resolve__button commonStyle__formButton end__buttons"
+        >
           پاسخ تشریحی
         </button>
-        <button (click)="nextQuestion()" class="form__submit commonStyle__formButton">
+        <button class="form__submit commonStyle__formButton">
           سوال بعدی <span class="button__chevron">&#8250;</span>
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 </ng-container>

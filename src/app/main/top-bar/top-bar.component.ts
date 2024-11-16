@@ -10,6 +10,8 @@ import {environment} from "@environments/environment";
 export class TopBarComponent implements OnInit{
 
   fullUserName ='';
+  showRightSideBar = false;
+  showLeftSideBar = false;
 
   constructor(private authService:AuthService) {
   }
@@ -18,16 +20,20 @@ export class TopBarComponent implements OnInit{
   ngOnInit(): void {
 
     let userJson = localStorage.getItem(environment.USER_PASS);
+
       if (userJson.length>0) {
         const  userModel = JSON.parse(userJson);
 
 
 
-        this.authService.Login(userModel.userName,userModel.password)
+
+        this.authService.Login(userModel.Mobile,userModel.Password)
           .subscribe(res=>{
 
           if (res.statusCode==200)
           {
+            localStorage.setItem(environment.USER_PASS,JSON.stringify(res.data));
+
             console.log(res.data)
             this.fullUserName = res.data.FirstName +" "+res.data.LastName;
           }

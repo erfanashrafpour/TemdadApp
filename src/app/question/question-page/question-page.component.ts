@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {QuestionService} from "@app/question/service/question.service";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "@environments/environment";
 
 @Component({
   selector: 'app-question-page',
@@ -10,10 +11,12 @@ import {ActivatedRoute} from "@angular/router";
 export class QuestionPageComponent implements OnInit{
 
 
+  finishQuestion:boolean = false;
   lessonCategoryId;
-
+timer;
   questionList =[];
-  questionItem:any
+  questionItem:any;
+  private interval;
   constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute) {
   }
 
@@ -40,6 +43,14 @@ export class QuestionPageComponent implements OnInit{
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
 
+
+            console.log(this.questionItem)
+
+            this.startTimer()
+
+
+
+
         }
 
     })
@@ -61,6 +72,58 @@ export class QuestionPageComponent implements OnInit{
       this.questionItem = this.questionList[this.findIndexList()+1];
     }
 
+    this.setQuestion();
+
+  }
+
+
+  setQuestion()
+  {
+    this.changeRandomQuestion();
+    this.startTimer();
+
+
+
+  }
+
+  changeRandomQuestion()
+  {
+
+
+    let keysToShuffle = ['ChoiceA','ChoiceB','ChoiceC','ChoiceD'];
+    this.questionItem.correctAnswer = this.questionItem.ChoiceA;
+
+    let values = keysToShuffle.map(key=>this.questionItem[key]);
+
+    for (let i = values.length-1 ;i>0;i--)
+    {
+      let j = Math.floor(Math.random()*(i+1));
+      [values[i],values[j]] =[values[j],values[i]];
+    }
+    keysToShuffle.forEach((key,index)=>{
+      this.questionItem[key] = values[index];
+    })
+  }
+
+
+  startTimer() {
+
+    const userResponce = JSON.parse(localStorage.getItem(environment.USER_PASS));
+    this.timer =  20;//userResponce.Timer;
+    this.interval = setInterval(() => {
+      if(this.timer > 0) {
+        this.timer--;
+      } else {
+        clearInterval(this.timer)
+
+       // this.startTimer()
+      }
+    },1000)
+  }
+
+  clickChoice(Choice: any) {
+
+    this.questionItem
 
   }
 }

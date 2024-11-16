@@ -1,7 +1,9 @@
+<app-right-side-bar [(showSideBar)]="showRightSideBar"></app-right-side-bar>
+<app-left-side-bar [(showSideBar)]="showLeftSideBar"></app-left-side-bar>
 
 <div class="header">
   <div class="toolbar">
-    <button class="toolbar__menu-btn menu-button">
+    <button class="toolbar__menu-btn menu-button" (click)="showRightSideBar=true">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

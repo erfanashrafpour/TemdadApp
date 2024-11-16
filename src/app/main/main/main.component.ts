@@ -7,6 +7,7 @@ import {AuthService} from "@app/auth-module/service/auth.service";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  showRightSideBar = false;
 
   constructor() {
 
