@@ -1,1 +1,118 @@
-<p>question-page works!</p>
+<ng-container *ngIf="questionItem">
+<div class="test__topSection">
+  <div class="test__navigation">
+    <span class="navigation__item">{{questionItem.CategotyTitle}}</span>
+    <span class="navigation__separate">&#xbb;</span>
+    <span class="navigation__item">{{questionItem.ProductTitle}}</span>
+  </div>
+  <p class="test__counter">تست <span>{{findIndexList()+1}}</span> از <span>{{questionList.length}}</span></p>
+</div>
+
+<!-- end__test -->
+<div class="container end__test">
+  <div class="test__tools">
+    <div class="tools__rightBox">
+      <button>
+        <img
+          src="assets/icon/save.svg"
+          alt="save"
+          class="tools__icon tools__saveIcon"
+        />
+      </button>
+      <button>
+        <img
+          src="assets/icon/Rules.png"
+          alt="rules"
+          class="tools__icon"
+        />
+      </button>
+    </div>
+    <div class="tools__stopwatch">
+      <span>۱:۶۸</span>
+      <img
+        src="assets/icon/stopwatch.svg"
+        alt="stopwatch"
+        class="tools__icon--stopwatch"
+      />
+    </div>
+  </div>
+
+  <div class="test__container">
+    <h2 class="test__heading">{{questionItem.Question}}</h2>
+
+    <div class="test__form">
+      <label for="optionA" class="test__label">
+        <input
+          type="radio"
+          class="test__checkbox"
+          name="test"
+          id="optionA"
+        />
+        <div class="test__option">
+          <div class="option__alphabet">الف</div>
+          <p class="option__text">
+            {{questionItem.ChoiceA}}
+          </p>
+        </div>
+      </label>
+      <label for="optionB" class="test__label">
+        <input
+          type="radio"
+          class="test__checkbox"
+          name="test"
+          id="optionB"
+        />
+        <div class="test__option checkedOption__false">
+          <div class="option__alphabet checked-alphabet__false">
+            ب
+          </div>
+          <p class="option__text">
+            {{questionItem.ChoiceB}}
+          </p>
+        </div>
+      </label>
+      <label for="optionC" class="test__label">
+        <input
+          type="radio"
+          class="test__checkbox"
+          name="test"
+          id="optionC"
+        />
+        <div class="test__option">
+          <div class="option__alphabet">ج</div>
+          <p class="option__text">
+            {{questionItem.ChoiceC}}
+          </p>
+        </div>
+      </label>
+      <label for="optionD" class="test__label">
+        <input
+          type="radio"
+          class="test__checkbox"
+          name="test"
+          id="optionD"
+        />
+        <div class="test__option unchecked__true">
+          <div class="option__alphabet">د</div>
+          <p class="option__text">
+            {{questionItem.ChoiceD}}
+          </p>
+        </div>
+      </label>
+      <div class="form__buttons">
+        <button
+          class="rules__button commonStyle__formButton end__buttons"
+        >
+          قوانین مرتبط
+        </button>
+        <button class="resolve__button commonStyle__formButton end__buttons">
+          پاسخ تشریحی
+        </button>
+        <button (click)="nextQuestion()" class="form__submit commonStyle__formButton">
+          سوال بعدی <span class="button__chevron">&#8250;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-container>
