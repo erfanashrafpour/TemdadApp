@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {QuestionService} from "@app/question/service/question.service";
 import {ActivatedRoute} from "@angular/router";
 import {environment} from "@environments/environment";
@@ -9,6 +9,11 @@ import {environment} from "@environments/environment";
   styleUrls: ['./question-page.component.scss']
 })
 export class QuestionPageComponent implements OnInit{
+
+  @ViewChild('choiceA') choiceAElement : ElementRef;
+  @ViewChild('choiceB') choiceBElement: ElementRef;
+  @ViewChild('choiceC') choiceCElement: ElementRef;
+  @ViewChild('choiceD') choiceDElement: ElementRef;
 
 
   finishQuestion:boolean = false;
@@ -43,8 +48,11 @@ timer;
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
 
+            this.questionItem.ChoiceA = {text:this.questionItem.ChoiceA,isCorrect:true}
+            this.questionItem.ChoiceB = {text:this.questionItem.ChoiceB,isCorrect:false}
+            this.questionItem.ChoiceC = {text:this.questionItem.ChoiceC,isCorrect:false}
+            this.questionItem.ChoiceD = {text:this.questionItem.ChoiceD,isCorrect:false}
 
-            console.log(this.questionItem)
 
             this.startTimer()
 
@@ -123,7 +131,42 @@ timer;
 
   clickChoice(Choice: any) {
 
-    this.questionItem
+    console.log("kir")
+
+this.setAnswer(Choice)
+   // debugger;
+
+
 
   }
+
+
+  setAnswer(clickChoiceText)
+  {
+   const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
+   const choicesItem = [this.questionItem.ChoiceA , this.questionItem.ChoiceB , this.questionItem.ChoiceC , this.questionItem.ChoiceD];
+
+        // const correctItem =  choicesItem.find((item)=>item.isCorrect==true);
+         const correctIndex =  choicesItem.findIndex((item)=>item.isCorrect==true);
+
+
+            choiceElement[correctIndex].nativeElement.children.item(1)
+            .classList.add('unchecked__true');
+
+            this.finishQuestion = true;
+
+
+      //item.children.item(1).classList.add('unchecked__true')
+
+
+
+    if (clickChoiceText == this.questionItem.correctAnswer)
+    {
+
+
+    }
+
+
+  }
+
 }
