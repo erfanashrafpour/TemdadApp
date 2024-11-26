@@ -44,7 +44,7 @@
 
   <div class="test__container ">
 
-    <h2 class="test__heading">{{questionItem.Question}}</h2>
+    <h2 class="test__heading">{{questionItem.Question}}{{questionItem.Id}}</h2>
 
     <div class="test__form">
 
@@ -56,21 +56,22 @@
           name="test"
           id="optionA"
         />
-        <div class="test__option">
-          <div class="option__alphabet" (click)="clickChoice(questionItem.ChoiceA)">الف</div>
+        <div class="test__option checkedOption__false" (click)="clickChoice(questionItem.ChoiceA,choiceAElement)">
+          <div class="option__alphabet checked-alphabet__false">
+            الف</div>
           <p class="option__text">
             {{questionItem.ChoiceA.text}}
           </p>
         </div>
       </label>
-      <label for="optionB"   #choiceB  id="choiceB" class="test__label" (click)="clickChoice(questionItem.ChoiceB)">
+      <label for="optionB"   #choiceB  id="choiceB" class="test__label" >
         <input
           type="radio"
           class="test__checkbox"
           name="test"
           id="optionB"
         />
-        <div class="test__option checkedOption__false">
+        <div class="test__option checkedOption__false" (click)="clickChoice(questionItem.ChoiceB,choiceBElement)">
           <div class="option__alphabet checked-alphabet__false">
             ب
           </div>
@@ -79,21 +80,22 @@
           </p>
         </div>
       </label>
-      <label for="optionC"  #choiceC id="choiceC" class="test__label" (click)="clickChoice(questionItem.ChoiceC)">
+      <label for="optionC"  #choiceC id="choiceC" class="test__label" >
         <input
           type="radio"
           class="test__checkbox"
           name="test"
           id="optionC"
         />
-        <div class="test__option">
-          <div class="option__alphabet">ج</div>
+        <div class="test__option checkedOption__false" (click)="clickChoice(questionItem.ChoiceC,choiceCElement)">
+          <div class="option__alphabet checked-alphabet__false">
+            ج</div>
           <p class="option__text">
             {{questionItem.ChoiceC.text}}
           </p>
         </div>
       </label>
-      <label for="optionD" #choiceD id="choiceD" class="test__label" (click)="clickChoice(questionItem.ChoiceD )">
+      <label for="optionD" #choiceD id="choiceD" class="test__label" >
         <input
           type="radio"
           class="test__checkbox"
@@ -101,8 +103,9 @@
 
           id="optionD"
         />
-        <div class="test__option ">
-          <div class="option__alphabet">د</div>
+        <div class="test__option checkedOption__false" (click)="clickChoice(questionItem.ChoiceD ,choiceDElement)">
+          <div class="option__alphabet checked-alphabet__false">
+            د</div>
           <p class="option__text">
             {{questionItem.ChoiceD.text}}
           </p>
@@ -119,7 +122,7 @@
         >
           پاسخ تشریحی
         </button>
-        <button class="form__submit commonStyle__formButton">
+        <button (click)="nextQuestion()" class="form__submit commonStyle__formButton">
           سوال بعدی <span class="button__chevron">&#8250;</span>
         </button>
       </div>

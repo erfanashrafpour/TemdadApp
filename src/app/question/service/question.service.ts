@@ -5,6 +5,7 @@ import {ResponseModel} from "@app/_core/model/ResponseModel";
 
 
 const  GET_QUESTION_BY_LESSON_CATEGORY_ID = environment.BASE_URL+"Testing/GetTestsForWeb";
+const  SEND_TEST_RESULT = environment.BASE_URL+"Testing/Testing";
 
 
 
@@ -25,6 +26,17 @@ export class QuestionService {
       PageNumber:pageNuber
   }
   return this.httpClient.get<ResponseModel<any>>(GET_QUESTION_BY_LESSON_CATEGORY_ID,{params:param})
+
+  }
+
+
+  sendAnswerResult(questionId , choice)
+  {
+
+
+    const questionResult  = {QuestionID:questionId,Choice:choice}
+
+    return this.httpClient.post<ResponseModel<any>>(SEND_TEST_RESULT,questionResult)
 
   }
 

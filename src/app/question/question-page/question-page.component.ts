@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {QuestionService} from "@app/question/service/question.service";
 import {ActivatedRoute} from "@angular/router";
 import {environment} from "@environments/environment";
@@ -22,7 +22,7 @@ timer;
   questionList =[];
   questionItem:any;
   private interval;
-  constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute) {
+  constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute , private cd :ChangeDetectorRef) {
   }
 
 
@@ -48,13 +48,10 @@ timer;
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
 
-            this.questionItem.ChoiceA = {text:this.questionItem.ChoiceA,isCorrect:true}
-            this.questionItem.ChoiceB = {text:this.questionItem.ChoiceB,isCorrect:false}
-            this.questionItem.ChoiceC = {text:this.questionItem.ChoiceC,isCorrect:false}
-            this.questionItem.ChoiceD = {text:this.questionItem.ChoiceD,isCorrect:false}
 
 
-            this.startTimer()
+
+          this.setQuestion();
 
 
 
@@ -77,7 +74,9 @@ timer;
     {
       return;
     }else {
+
       this.questionItem = this.questionList[this.findIndexList()+1];
+      this.cd.detectChanges()
     }
 
     this.setQuestion();
@@ -87,8 +86,22 @@ timer;
 
   setQuestion()
   {
+    this.questionItem.ChoiceA = {text:this.questionItem.ChoiceA,isCorrect:true,choiceString:'a'}
+    this.questionItem.ChoiceB = {text:this.questionItem.ChoiceB,isCorrect:false,choiceString:'b'}
+    this.questionItem.ChoiceC = {text:this.questionItem.ChoiceC,isCorrect:false,choiceString:'c'}
+    this.questionItem.ChoiceD = {text:this.questionItem.ChoiceD,isCorrect:false,choiceString:'d'}
+   // const t : HTMLInputElement;
+    const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
+choiceElement.forEach(item=>{
+  item.nativeElement.children.item(1).classList.remove(...['checkedOption__true','checkedOption__false','unchecked__true'])
+  item.nativeElement.children.item(0).checked = false
+})
+
+
+    this.finishQuestion = false
     this.changeRandomQuestion();
     this.startTimer();
+    this.cd.detectChanges()
 
 
 
@@ -116,24 +129,29 @@ timer;
 
   startTimer() {
 
-    const userResponce = JSON.parse(localStorage.getItem(environment.USER_PASS));
     this.timer =  20;//userResponce.Timer;
     this.interval = setInterval(() => {
       if(this.timer > 0) {
         this.timer--;
       } else {
-        clearInterval(this.timer)
-
+        clearInterval(this.interval)
+        this.showCorrectAnswer()
        // this.startTimer()
       }
     },1000)
   }
 
-  clickChoice(Choice: any) {
+  stopTimer()
+  {
+    clearInterval(this.interval)
+  }
 
-    console.log("kir")
+  clickChoice(Choice: any, choiceElement: ElementRef) {
 
-this.setAnswer(Choice)
+
+    this.setAnswer(Choice,choiceElement)
+    this.stopTimer()
+    this.sendAnswer(Choice.choiceString)
    // debugger;
 
 
@@ -141,32 +159,68 @@ this.setAnswer(Choice)
   }
 
 
-  setAnswer(clickChoiceText)
+  sendAnswer(choice:'a'|'b'|'c'|'d'|'0')
   {
-   const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
-   const choicesItem = [this.questionItem.ChoiceA , this.questionItem.ChoiceB , this.questionItem.ChoiceC , this.questionItem.ChoiceD];
 
-        // const correctItem =  choicesItem.find((item)=>item.isCorrect==true);
-         const correctIndex =  choicesItem.findIndex((item)=>item.isCorrect==true);
+    this.questionService.sendAnswerResult(this.questionItem.Id,choice).subscribe(res=>{
+
+    })
+  }
 
 
-            choiceElement[correctIndex].nativeElement.children.item(1)
-            .classList.add('unchecked__true');
+  setAnswer(choiceClicked, choiceClickElement: ElementRef)
+  {
+    const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
+    const choicesItem = [this.questionItem.ChoiceA , this.questionItem.ChoiceB , this.questionItem.ChoiceC , this.questionItem.ChoiceD];
+
+    // const correctItem =  choicesItem.find((item)=>item.isCorrect==true);
+    const correctIndex =  choicesItem.findIndex(
+      item=>item.isCorrect==true);
+
+
+
+         //اگر جواب کاربر درست بود
+         if (choiceClicked.isCorrect) {
+           choiceElement[correctIndex].nativeElement.children.item(1)
+             .classList.add('checkedOption__true');
+         }else {
+
+           choiceClickElement.nativeElement.children.item(1)
+             .classList.add('checkedOption__false');
+
+           choiceElement[correctIndex].nativeElement.children.item(1)
+             .classList.add('unchecked__true');
+         }
+
+
 
             this.finishQuestion = true;
-
+            this.cd.detectChanges()
 
       //item.children.item(1).classList.add('unchecked__true')
 
 
 
-    if (clickChoiceText == this.questionItem.correctAnswer)
+ /*   if (clickChoiceText == this.questionItem.correctAnswer)
     {
 
 
     }
-
+*/
 
   }
 
+  private showCorrectAnswer() {
+
+    const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
+    const choicesItem = [this.questionItem.ChoiceA , this.questionItem.ChoiceB , this.questionItem.ChoiceC , this.questionItem.ChoiceD];
+
+    // const correctItem =  choicesItem.find((item)=>item.isCorrect==true);
+    const correctIndex =  choicesItem.findIndex(
+      item=>item.isCorrect==true);
+    choiceElement[correctIndex].nativeElement.children.item(1)
+      .classList.add('unchecked__true');
+    this.finishQuestion = true;
+    this.cd.detectChanges()
+  }
 }
