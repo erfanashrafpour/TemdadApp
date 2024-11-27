@@ -216,8 +216,7 @@ choiceElement.forEach(item=>{
     const choicesItem = [this.questionItem.ChoiceA , this.questionItem.ChoiceB , this.questionItem.ChoiceC , this.questionItem.ChoiceD];
 
     // const correctItem =  choicesItem.find((item)=>item.isCorrect==true);
-    const correctIndex =  choicesItem.findIndex(
-      item=>item.isCorrect==true);
+    const correctIndex =  choicesItem.findIndex(item=>item.isCorrect==true);
     choiceElement[correctIndex].nativeElement.children.item(1)
       .classList.add('unchecked__true');
     this.finishQuestion = true;
