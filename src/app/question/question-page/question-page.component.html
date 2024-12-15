@@ -4,9 +4,9 @@
   <div class="test__topSection">
 
     <div class="test__navigation">
-    <span class="navigation__item">{{questionItem.CategotyTitle}}</span>
+    <span class="navigation__item"> {{questionItem.CategotyTitle}} </span>
     <span class="navigation__separate">&#xbb;</span>
-    <span class="navigation__item">{{questionItem.ProductTitle}}</span>
+    <span class="navigation__item"> {{questionItem.ProductTitle}} </span>
   </div>
   <p class="test__counter">تست <span>{{findIndexList()}}</span> از <span>{{questionList.length}}</span></p>
 </div>
@@ -17,9 +17,15 @@
   <div class="test__tools">
 
     <div class="tools__rightBox">
-      <button>
-        <img
+      <button (click)="setBookMark(questionItem.Id ,!questionItem.Favorite)">
+        <img *ngIf="!questionItem.Favorite"
           src="../../../assets/icon/save.svg"
+          alt="save"
+          class="tools__icon tools__saveIcon"
+        />
+        <img
+          *ngIf="questionItem.Favorite"
+          src="../../../assets/icon/bookmark.svg"
           alt="save"
           class="tools__icon tools__saveIcon"
         />
@@ -111,13 +117,17 @@
           </p>
         </div>
       </label>
-      <div class="form__buttons">
+      <div class="form__buttons" >
         <button
+          [class.lawButtonDisable]="questionItem.laws.length==0"
+          (click)="showLawReleated()"
           class="rules__button commonStyle__formButton end__buttons"
         >
           قوانین مرتبط
         </button>
         <button
+          (click)="showAnswerBottomSheet()"
+
           class="resolve__button commonStyle__formButton end__buttons"
         >
           پاسخ تشریحی

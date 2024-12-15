@@ -1,14 +1,18 @@
-import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {QuestionService} from "@app/question/service/question.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params, Route, Router} from "@angular/router";
 import {environment} from "@environments/environment";
+import {MatDialog} from "@angular/material/dialog";
+import {RuleMatDialogComponent} from "@app/question/rule-mat-dialog/rule-mat-dialog.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {AnswerBottomSheetComponent} from "@app/question/answer-bottom-sheet/answer-bottom-sheet.component";
 
 @Component({
   selector: 'app-question-page',
   templateUrl: './question-page.component.html',
   styleUrls: ['./question-page.component.scss']
 })
-export class QuestionPageComponent implements OnInit{
+export class QuestionPageComponent implements OnInit , AfterViewInit{
 
   @ViewChild('choiceA') choiceAElement : ElementRef;
   @ViewChild('choiceB') choiceBElement: ElementRef;
@@ -22,18 +26,25 @@ timer;
   questionList =[];
   questionItem:any;
   private interval;
-  constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute , private cd :ChangeDetectorRef) {
+  constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute
+              , private cd :ChangeDetectorRef,private matDBottomShit:MatBottomSheet
+              , private route:Router) {
   }
 
 
-  ngOnInit(): void {
 
+  ngAfterViewInit(): void {
     this.activeRoute.params.subscribe(params => {
       this.lessonCategoryId = params['lessonCategoryId'];
 
       this.getData()
 
     });
+  }
+
+  ngOnInit(): void {
+
+
   }
 
 
@@ -86,16 +97,22 @@ timer;
 
   setQuestion()
   {
+
     this.questionItem.ChoiceA = {text:this.questionItem.ChoiceA,isCorrect:true,choiceString:'a'}
     this.questionItem.ChoiceB = {text:this.questionItem.ChoiceB,isCorrect:false,choiceString:'b'}
     this.questionItem.ChoiceC = {text:this.questionItem.ChoiceC,isCorrect:false,choiceString:'c'}
     this.questionItem.ChoiceD = {text:this.questionItem.ChoiceD,isCorrect:false,choiceString:'d'}
    // const t : HTMLInputElement;
     const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
-choiceElement.forEach(item=>{
-  item.nativeElement.children.item(1).classList.remove(...['checkedOption__true','checkedOption__false','unchecked__true'])
+
+    if (this.findIndexList()!=0)
+    choiceElement.forEach(item=>{
+
+
+  item?.nativeElement?.children.item(1).classList.remove(...['checkedOption__true','checkedOption__false','unchecked__true'])
   item.nativeElement.children.item(0).checked = false
-})
+
+});
 
 
     this.finishQuestion = false
@@ -129,12 +146,16 @@ choiceElement.forEach(item=>{
 
   startTimer() {
 
+    this.stopTimer()
     this.timer =  20;//userResponce.Timer;
+
     this.interval = setInterval(() => {
       if(this.timer > 0) {
+
         this.timer--;
       } else {
-        clearInterval(this.interval)
+       // clearInterval(this.interval)
+        this.timer=0
         this.showCorrectAnswer()
        // this.startTimer()
       }
@@ -143,6 +164,7 @@ choiceElement.forEach(item=>{
 
   stopTimer()
   {
+    if (this.interval)
     clearInterval(this.interval)
   }
 
@@ -210,6 +232,17 @@ choiceElement.forEach(item=>{
 
   }
 
+
+  setBookMark(Id: any, Favorite: any)
+  {
+    return this.questionService.SetBookMark(Id,Favorite).subscribe(res=>{
+      if (res.statusCode==200)
+      {
+        this.questionItem.Favorite = Favorite
+      }
+    })
+  }
+
   private showCorrectAnswer() {
 
     const choiceElement = [this.choiceAElement , this.choiceBElement , this.choiceCElement , this.choiceDElement];
@@ -221,5 +254,32 @@ choiceElement.forEach(item=>{
       .classList.add('unchecked__true');
     this.finishQuestion = true;
     this.cd.detectChanges()
+  }
+
+  showLawReleated() {
+      this.matDBottomShit.open(RuleMatDialogComponent,{
+
+      }).instance.Rules=this.questionItem.laws
+
+    const queryParams: Params = { myParam: 'myNewValue' };
+
+    this.route.navigate([],{queryParams:queryParams})
+  }
+
+  showAnswerBottomSheet() {
+
+    const instance = this.matDBottomShit.open(AnswerBottomSheetComponent,);
+    instance.afterDismissed().subscribe(res=>{
+      setTimeout(() => {
+        window.scrollTo(0, document.body.scrollHeight);
+      }, 5);
+    })
+      instance.instance.Answer=this.questionItem.Answer
+
+    const queryParams: Params = { myParam: 'myNewValue' };
+
+    this.route.navigate([],{queryParams:queryParams})
+   // window.scrollTo({top:100000000})
+
   }
 }

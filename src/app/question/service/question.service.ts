@@ -6,7 +6,7 @@ import {ResponseModel} from "@app/_core/model/ResponseModel";
 
 const  GET_QUESTION_BY_LESSON_CATEGORY_ID = environment.BASE_URL+"Testing/GetTestsForWeb";
 const  SEND_TEST_RESULT = environment.BASE_URL+"Testing/Testing";
-
+const SET_BOOKMARK = environment.BASE_URL+"BookMark/SetBookmark"
 
 
 @Injectable({
@@ -40,5 +40,11 @@ export class QuestionService {
 
   }
 
+  SetBookMark(questionId , bookMark)
+  {
+
+    return this.httpClient.post<ResponseModel<any>>(SET_BOOKMARK,{QuestionID:questionId,Bookmark:bookMark})
+
+  }
 
 }

@@ -25,6 +25,11 @@ const routes: Routes = [
       }
       ,
       {
+        path: 'summery',
+        loadChildren: () => import('../summery/summery.module').then(m => m.SummeryModule)
+      }
+      ,
+      {
         path: 'question',
         loadChildren: () => import('../question/question.module').then(m => m.QuestionModule)
       }

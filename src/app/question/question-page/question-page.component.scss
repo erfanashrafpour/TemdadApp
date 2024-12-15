@@ -47,7 +47,7 @@ body {
   width: 40px;
 }
 .tools__saveIcon {
-  filter: grayscale(100%) brightness(80%) contrast(90%);
+  //filter: grayscale(100%) brightness(80%) contrast(90%);
 }
 .tools__stopwatch {
   display: flex;
@@ -238,4 +238,13 @@ body {
   .form__buttons {
     gap: 10px;
   }
+}
+
+
+.lawButtonDisable{
+
+  border:1px solid gray;
+  color: gray;
+  pointer-events: none;
+
 }
