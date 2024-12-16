@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-summary-law-dialog',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./summary-law-dialog.component.scss']
 })
 export class SummaryLawDialogComponent {
+
+
+  @Input()lawTitle;
+  @Input()description;
+
 
 }

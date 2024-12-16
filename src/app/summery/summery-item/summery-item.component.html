@@ -6,7 +6,7 @@
   <div class="items_container">
     <div class="summary_item" *ngFor="let item of summeryList">
       <div class="summary_header">
-        <h2 class="summary_heading">خلاصه طلایی</h2>
+        <h2 class="summary_heading">{{item.Id}}</h2>
         <div>
           <button>
             <img
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="summary_body">
-        <p class="summary_body_text" #paragraphElement (click)="clickLaw($event)" [innerHTML]="item.Summary">
+        <p class="summary_body_text" #paragraphElement (click)="clickLaw($event,item)" [innerHTML]="item.Summary">
        <!--   اجاره‌بهای اموال غیر‌منقول طبق
           <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
           می‌باشد.-->
@@ -100,3 +100,6 @@
 "Summary": "  با توجه به مفهوم
 <a title='هیچکس نمی تواند طرق و شوارع عامه و کوچه هایی را که آخر آنها مسدود نیست تملک نماید.'>
   ماده 24 قانون مدنی</a> کوچه های بن بست جزء اموال عمومی به حساب نمی آیند."
+
+
+

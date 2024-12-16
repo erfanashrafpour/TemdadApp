@@ -27,16 +27,28 @@ export class SummeryItemComponent implements OnInit{
   private getMySummeryNote() {
 this.summeryService.GetMySummeryNote(this.productId).subscribe(res=>{
 
+
+
+
+
+
+
   if (res.statusCode==200)
   {
     this.summeryList = res.data;
-    this.summeryList.map(item=>{
+    this.summeryList.map((item,index)=>{
 
-      item.Summary = this.extractAndMarkSummary(item.Summary).Summary
-      item.titleSummary = this.extractAndMarkSummary(item.Summary).title
+     // if (index==0)
+      {
+      const extra = this.extractAndMarkSummary(item.Summary);
 
+      item.Summary = extra.Summary
+      item.lawText = extra.lawText
+      item.lawTitle = extra.lawTitle
+      }
 
     })
+    console.log(this.summeryList)
   }
 
 
@@ -44,42 +56,55 @@ this.summeryService.GetMySummeryNote(this.productId).subscribe(res=>{
   }
 
 
+  extractAndMarkSummary(input: string ): { Summary: string, lawText: string | null ,  lawTitle: string | null } {
+    const regex1 = /<a\s+title='(.*?)'.*?>(.*?)<\/a>/g;
+    const regex2 = /<a\s+title=["'](.*?)["'].*?>(.*?)<\/a>/g;
+    const regex3= /<a\s+title=['"](.*?)['"].*?>(.*?)<\/a>/g;
+    const regex4 = /<a\s+title=['"](.*?)['"][\s\S]*?>(.*?)<\/a>/g;
+    const regex = /<a\s+title=['"](.*?)['"][\s\S]*?>(.*?)<\/a>/gs;
 
-  extractAndMarkSummary(input: string): { Summary: string, title: string | null } {
-    const regex = /<a\s+title='(.*?)'.*?>(.*?)<\/a>/g;
     let match;
     let Summary = input;
-    let title = null;
+    let lawText = null;
+    let lawTitle = null;
+    console.log(input)
+    //console.log(regex.exec(input))
 
     // پیدا کردن تگ a و استخراج اطلاعات
     while ((match = regex.exec(input)) !== null) {
-      const linkTitle = match[1];  // عنوان داخل تگ a
-      const linkText = match[2];   // متن داخل تگ a
-
+      const linkText = match[1];  // عنوان داخل تگ a
+      const linkTitle = match[2];   // متن داخل تگ a
+      console.log(match)
       // جایگزینی تگ a با تگ mark
       Summary = Summary.replace(match[0],
-        `<mark class="mark-item" style='background: #3066be;color: white;border-radius: 2px;padding: 0 5px;font-weight: 700;'>${linkText}</mark>`);
+        `<mark class="mark-item" style='background: #3066be;color: white;border-radius: 2px;padding: 0 5px;font-weight: 700;'>${linkTitle}</mark>`);
 
 
       // گرفتن اولین عنوان تگ a (در صورت وجود)
-      if (!title) {
-        title = linkTitle;
+      if (!lawText) {
+        lawText = linkText;
+      }
+      if (!lawTitle) {
+        lawTitle = linkTitle;
       }
     }
 
-    return { Summary, title };
+    return { Summary, lawText ,lawTitle};
   }
 
 
-  clickLaw($event , title) {
+  clickLaw($event , item) {
     if ($event.target.tagName == 'MARK')
     {
-      this.openLawDialog(title);
+      this.openLawDialog(item);
     }
 
   }
 
-  private openLawDialog(title: any) {
-    this.matDialog.open(SummaryLawDialogComponent)
+  private openLawDialog(item) {
+    const dialog = this.matDialog.open(SummaryLawDialogComponent);
+    debugger
+    dialog.componentInstance.lawTitle = item.lawTitle;
+    dialog.componentInstance.description = item.lawText
   }
 }
