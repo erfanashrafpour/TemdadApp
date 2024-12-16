@@ -38,17 +38,17 @@ this.summeryService.GetMySummeryNote(this.productId).subscribe(res=>{
     this.summeryList = res.data;
     this.summeryList.map((item,index)=>{
 
-     // if (index==0)
+
       {
       const extra = this.extractAndMarkSummary(item.Summary);
-
+      if (extra.lawTexts.length>2)
+console.log(item.Id)
       item.Summary = extra.Summary
-      item.lawText = extra.lawText
+      item.lawText = extra.lawTexts
       item.lawTitle = extra.lawTitle
       }
 
     })
-    console.log(this.summeryList)
   }
 
 
@@ -56,7 +56,7 @@ this.summeryService.GetMySummeryNote(this.productId).subscribe(res=>{
   }
 
 
-  extractAndMarkSummary(input: string ): { Summary: string, lawText: string | null ,  lawTitle: string | null } {
+  extractAndMarkSummary(input: string ): { Summary: string, lawTexts: any[]  ,  lawTitle: any[]  } {
     const regex1 = /<a\s+title='(.*?)'.*?>(.*?)<\/a>/g;
     const regex2 = /<a\s+title=["'](.*?)["'].*?>(.*?)<\/a>/g;
     const regex3= /<a\s+title=['"](.*?)['"].*?>(.*?)<\/a>/g;
@@ -65,46 +65,50 @@ this.summeryService.GetMySummeryNote(this.productId).subscribe(res=>{
 
     let match;
     let Summary = input;
-    let lawText = null;
-    let lawTitle = null;
-    console.log(input)
+    let lawTexts = [];
+    let lawTitle = [];
     //console.log(regex.exec(input))
-
+let counter = 0;
     // پیدا کردن تگ a و استخراج اطلاعات
     while ((match = regex.exec(input)) !== null) {
       const linkText = match[1];  // عنوان داخل تگ a
       const linkTitle = match[2];   // متن داخل تگ a
-      console.log(match)
       // جایگزینی تگ a با تگ mark
       Summary = Summary.replace(match[0],
-        `<mark class="mark-item" style='background: #3066be;color: white;border-radius: 2px;padding: 0 5px;font-weight: 700;'>${linkTitle}</mark>`);
+        `<mark  class="mark-item ${counter}"  >${linkTitle}</mark>`);
 
+      counter++;
 
       // گرفتن اولین عنوان تگ a (در صورت وجود)
-      if (!lawText) {
-        lawText = linkText;
+      if (linkText) {
+        lawTexts.push(linkText);
       }
-      if (!lawTitle) {
-        lawTitle = linkTitle;
+      if (linkTitle) {
+        lawTitle.push(linkTitle);
       }
     }
 
-    return { Summary, lawText ,lawTitle};
+    return { Summary, lawTexts ,lawTitle};
   }
 
 
   clickLaw($event , item) {
+    debugger
+
+
     if ($event.target.tagName == 'MARK')
     {
-      this.openLawDialog(item);
+
+      const id = Number($event.srcElement.className.replace('mark-item','').trim());
+      this.openLawDialog(item.lawTitle[id],  item.lawText[id]);
     }
 
   }
 
-  private openLawDialog(item) {
+  private openLawDialog(lawTitle ,  lawText) {
     const dialog = this.matDialog.open(SummaryLawDialogComponent);
-    debugger
-    dialog.componentInstance.lawTitle = item.lawTitle;
-    dialog.componentInstance.description = item.lawText
+
+    dialog.componentInstance.lawTitle = lawTitle;
+    dialog.componentInstance.description = lawText
   }
 }
