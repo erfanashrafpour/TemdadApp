@@ -4,25 +4,40 @@
 =  </div>
 
   <div class="items_container">
-    <div class="summary_item">
+    <div class="summary_item" *ngFor="let item of summeryList">
       <div class="summary_header">
         <h2 class="summary_heading">خلاصه طلایی</h2>
         <div>
           <button>
             <img
-              src="assets/icons/delete.svg"
+              class="text_message_icon"
+              src="assets/icon/text_message.svg"
+              alt="text message icon"
+            />
+          </button>
+          <button>
+            <img
+              src="assets/icon/delete-summury.svg"
               class="delete_icon"
               alt="delete icon"
             />
           </button>
+
         </div>
       </div>
       <div class="summary_body">
-        <p class="summary_body_text">
-          اجاره‌بهای اموال غیر‌منقول طبق
+        <p class="summary_body_text" #paragraphElement (click)="clickLaw($event)" [innerHTML]="item.Summary">
+       <!--   اجاره‌بهای اموال غیر‌منقول طبق
           <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
-          می‌باشد.
+          می‌باشد.-->
         </p>
+
+
+  <!--      <p class="summary_body_text" >
+             اجاره‌بهای اموال غیر‌منقول طبق
+             <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
+             می‌باشد.
+        </p>-->
         <div class="summary_note_container">
           <div class="summary_note_body">
             <h3 class="summary_note_heading">یادداشت:</h3>
@@ -34,6 +49,7 @@
       </div>
     </div>
 
+<!--
     <div class="summary_item">
       <div class="summary_header">
         <h2 class="summary_heading">خلاصه طلایی</h2>
@@ -41,13 +57,13 @@
           <button>
             <img
               class="text_message_icon"
-              src="assets/icons/text_message.svg"
+              src="assets/icon/text_message.svg"
               alt="text message icon"
             />
           </button>
           <button>
             <img
-              src="assets/icons/delete.svg"
+              src="assets/icon/delete-summury.svg"
               class="delete_icon"
               alt="delete icon"
             />
@@ -62,41 +78,13 @@
         </p>
       </div>
     </div>
+-->
 
-    <div class="summary_item">
-      <div class="summary_header">
-        <h2 class="summary_heading">خلاصه طلایی</h2>
-        <div>
-          <button>
-            <img
-              src="assets/icons/delete.svg"
-              class="delete_icon"
-              alt="delete icon"
-            />
-          </button>
-        </div>
-      </div>
-      <div class="summary_body">
-        <p class="summary_body_text">
-          اجاره‌بهای اموال غیر‌منقول طبق
-          <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
-          می‌باشد.
-        </p>
-        <div class="summary_note_container">
-          <div class="summary_note_body">
-            <h3 class="summary_note_heading">یادداشت:</h3>
-            <p>
-              مرتبط است با قانون ۴۲ مدنی در رابطه با خصوصی سازی.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
 <!-- modal--active -->
-<div class="backdrop">
+<div *ngIf="false" class="backdrop">
   <div class="modal_container">
     <h2 class="modal_heading">ماده ۱۷ قانون مدنی</h2>
     <p class="modal_text">
@@ -109,3 +97,6 @@
     <button class="modal_button">خوندم!</button>
   </div>
 </div>
+"Summary": "  با توجه به مفهوم
+<a title='هیچکس نمی تواند طرق و شوارع عامه و کوچه هایی را که آخر آنها مسدود نیست تملک نماید.'>
+  ماده 24 قانون مدنی</a> کوچه های بن بست جزء اموال عمومی به حساب نمی آیند."

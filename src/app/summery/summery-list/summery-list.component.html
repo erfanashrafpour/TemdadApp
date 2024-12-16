@@ -41,7 +41,7 @@
       "HasVoice": false-->
     <div class="rulesContainer">
       <!-- item 1 -->
-      <div *ngFor="let product of productList;let i = index"  (click)="goToSummeryItem(i)">
+      <div *ngFor="let product of productList;let i = index"  (click)="goToSummeryItem(product.Id)">
         <div class="rulesBoxHeader">
           <p class="rulesBoxHeader__title" style="font-family: yekanNum">{{product.Name}}</p>
           <div class="rulesBoxHeader__leftBox">

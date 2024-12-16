@@ -4,6 +4,7 @@ import { SummeryListComponent } from './summery-list/summery-list.component';
 import {Router, RouterModule, Routes} from "@angular/router";
 import {LessonCategoryListComponent} from "@app/lesson-category/lesson-category-list/lesson-category-list.component";
 import { SummeryItemComponent } from './summery-item/summery-item.component';
+import { SummaryLawDialogComponent } from './summery-item/summary-law-dialog/summary-law-dialog.component';
 
 
 
@@ -27,7 +28,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     SummeryListComponent,
-    SummeryItemComponent
+    SummeryItemComponent,
+    SummaryLawDialogComponent
   ],
   exports: [
     SummeryListComponent
