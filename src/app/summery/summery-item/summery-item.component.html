@@ -1,21 +1,22 @@
 <div class="container">
   <div class="main_header">
     <h1 class="heading">خلاصه‌های <span>طلایی</span></h1>
-=  </div>
+    =
+  </div>
 
   <div class="items_container">
     <div class="summary_item" *ngFor="let item of summeryList">
       <div class="summary_header">
         <h2 class="summary_heading">{{item.Id}}</h2>
         <div>
-          <button>
-            <img
-              class="text_message_icon"
-              src="assets/icon/text_message.svg"
-              alt="text message icon"
-            />
-          </button>
-          <button>
+          <!--      <button >
+                  <img
+                    class="text_message_icon"
+                    src="assets/icon/text_message.svg"
+                    alt="text message icon"
+                  />
+                </button>-->
+          <button (click)="deleteNote(item)">
             <img
               src="assets/icon/delete-summury.svg"
               class="delete_icon"
@@ -26,59 +27,64 @@
         </div>
       </div>
       <div class="summary_body">
-        <p class="summary_body_text" #paragraphElement (click)="clickLaw($event,item)" [innerHTML]="item.Summary">
-       <!--   اجاره‌بهای اموال غیر‌منقول طبق
-          <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
-          می‌باشد.-->
+        <p class="summary_body_text" (click)="clickLaw($event,item)" [innerHTML]="item.Summary">
+          <!--   اجاره‌بهای اموال غیر‌منقول طبق
+             <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
+             می‌باشد.-->
         </p>
 
 
-  <!--      <p class="summary_body_text" >
-             اجاره‌بهای اموال غیر‌منقول طبق
-             <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
-             می‌باشد.
-        </p>-->
+        <!--      <p class="summary_body_text" >
+                   اجاره‌بهای اموال غیر‌منقول طبق
+                   <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
+                   می‌باشد.
+              </p>-->
         <div class="summary_note_container">
           <div class="summary_note_body">
             <h3 class="summary_note_heading">یادداشت:</h3>
-            <p>
-              مرتبط است با قانون 42 مدنی در رابطه با خصوصی سازی.
+            <p #notePar contenteditable="true" (focus)="saveBtn.style.display='flex'"
+               class="note-content">
+              {{item.Note}}
+
             </p>
+            <div style="display: flex;justify-content: end">
+              <button (click)="item.Note = notePar.textContent; saveNote(item);saveBtn.style.display='none'" class="button-save" #saveBtn>ذخیره</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-<!--
-    <div class="summary_item">
-      <div class="summary_header">
-        <h2 class="summary_heading">خلاصه طلایی</h2>
-        <div>
-          <button>
-            <img
-              class="text_message_icon"
-              src="assets/icon/text_message.svg"
-              alt="text message icon"
-            />
-          </button>
-          <button>
-            <img
-              src="assets/icon/delete-summury.svg"
-              class="delete_icon"
-              alt="delete icon"
-            />
-          </button>
+    <!--
+        <div class="summary_item">
+          <div class="summary_header">
+            <h2 class="summary_heading">خلاصه طلایی</h2>
+            <div>
+              <button>
+                <img
+                  class="text_message_icon"
+                  src="assets/icon/text_message.svg"
+                  alt="text message icon"
+                />
+              </button>
+              <button>
+                <img
+                  src="assets/icon/delete-summury.svg"
+                  class="delete_icon"
+                  alt="delete icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="summary_body">
+            <p class="summary_body_text">
+              اجاره‌بهای اموال غیر‌منقول طبق
+              <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
+              می‌باشد.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="summary_body">
-        <p class="summary_body_text">
-          اجاره‌بهای اموال غیر‌منقول طبق
-          <mark>طبق ماده ۲۰ قانون مدنی</mark> در حکم مال منقول
-          می‌باشد.
-        </p>
-      </div>
-    </div>
--->
+    -->
 
   </div>
 </div>

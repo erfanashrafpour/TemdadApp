@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {SummeryService} from "@app/summery/services/summery.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -12,10 +12,18 @@ import {SummaryLawDialogComponent} from "@app/summery/summery-item/summary-law-d
 export class SummeryItemComponent implements OnInit{
   private productId:number;
   summeryList =[];
-  constructor(private activeRoute:ActivatedRoute , private summeryService:SummeryService , private matDialog:MatDialog) {
+
+  constructor(private activeRoute:ActivatedRoute , private summeryService:SummeryService , private matDialog:MatDialog , private cd :ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
+
+
+    this.summeryService.GetKir().subscribe(res=>{
+
+    })
+
+
     this.activeRoute.params.subscribe(params => {
       this.productId = params['productId'];
 
@@ -93,7 +101,7 @@ let counter = 0;
 
 
   clickLaw($event , item) {
-    debugger
+
 
 
     if ($event.target.tagName == 'MARK')
@@ -110,5 +118,32 @@ let counter = 0;
 
     dialog.componentInstance.lawTitle = lawTitle;
     dialog.componentInstance.description = lawText
+  }
+
+  saveNote(item: any) {
+
+    this.summeryService.SetSummaryNote(item.Id,item.Note).subscribe(res=>{
+      if (res.statusCode==200)
+      {
+
+      }
+    })
+  }
+
+  deleteNote(item)
+  {
+    this.summeryService.SetSummaryNote(item.Id,"",false).subscribe(res=>{
+      if (res.statusCode==200)
+      {
+
+        const index = this.summeryList.findIndex((x) => x.Id === item.Id); // پیدا کردن ایندکس آیتمی که مقدارش 3 است
+
+        if (index !== -1) { // اگر آیتم پیدا شد
+          this.summeryList.splice(index, 1); // حذف آیتم
+          this.cd.detectChanges()
+        }
+
+      }
+    })
   }
 }

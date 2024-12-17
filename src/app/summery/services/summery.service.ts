@@ -6,6 +6,8 @@ import {ResponseModel} from "@app/_core/model/ResponseModel";
 const  GET_PRODUCT_SUMURRY_LIST_API = environment.BASE_URL+"MyTest/GetProducts";
 const GET_SUMMUERY_CATEGORY_LIST_API = environment.BASE_URL+"SummaryNote/GetMyCategoriesSummary";
 const GET_MY_SUMMEERY_NOTE_API = environment.BASE_URL+"SummaryNote/GetMySummaries";
+const SET_SUMMARY_NOTE_API = environment.BASE_URL+"SummaryNote/SetSummaryNote";
+const KIR = environment.BASE_URL+"Shop/GetProductCategory";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,13 @@ const GET_MY_SUMMEERY_NOTE_API = environment.BASE_URL+"SummaryNote/GetMySummarie
 export class SummeryService {
 
   constructor(private httpClient:HttpClient) { }
+
+
+  GetKir()
+  {
+    return this.httpClient.get<ResponseModel<any>>(KIR);
+
+  }
 
 
   GetSummeryCategory()
@@ -45,6 +54,20 @@ export class SummeryService {
 
     }
     return this.httpClient.get<ResponseModel<any>>(GET_MY_SUMMEERY_NOTE_API,{params:queryPArem});
+  }
+
+
+
+
+  SetSummaryNote(id , noteText ,publish=true)
+  {
+  const param = {
+    QuestionID:id,
+    NoteText:noteText,
+    Publish:publish
+  };
+  return this.httpClient.post<ResponseModel<any>>(SET_SUMMARY_NOTE_API,param)
+
   }
 
 }

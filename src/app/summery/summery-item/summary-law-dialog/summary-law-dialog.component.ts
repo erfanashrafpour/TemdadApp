@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-summary-law-dialog',
@@ -7,9 +8,15 @@ import {Component, Input} from '@angular/core';
 })
 export class SummaryLawDialogComponent {
 
+  constructor(private matDialogRef:MatDialogRef<SummaryLawDialogComponent>) {
+  }
 
   @Input()lawTitle;
   @Input()description;
 
 
+  closeDialog() {
+
+    this.matDialogRef.close();
+  }
 }
