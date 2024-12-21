@@ -23,7 +23,7 @@ constructor(private lawService:LawService,private cd:ChangeDetectorRef , private
   }
 
 
-  private deleteLaw(lawId)
+   deleteLaw(lawId)
   {
 
     this.lawService.DeleteLaw(lawId).subscribe(res=>{

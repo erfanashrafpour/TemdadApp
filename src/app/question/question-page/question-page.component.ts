@@ -11,6 +11,7 @@ import {AnswerBottomSheetComponent} from "@app/question/answer-bottom-sheet/answ
 export enum QuestionPageEnum {
   LEITNER ,
   LAW,
+  LEITNER_RANDOM,
 
 
 
@@ -32,7 +33,9 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
   finishQuestion:boolean = false;
   lessonCategoryId;
   questionType:QuestionPageEnum = QuestionPageEnum.LEITNER;
-timer;
+  timer;
+  paging = 0;
+  allCountTest = undefined;
   questionList =[];
   questionItem:any;
   private interval;
@@ -65,18 +68,22 @@ timer;
   {
 
     let selectedService ;
-    debugger
+
     switch(this.questionType)
     {
 
-      case QuestionPageEnum.LEITNER:
-      {selectedService =
-        this.questionService.GetTestByLessonCategoryId(this.lessonCategoryId,0);
-      break;}
-
+      case QuestionPageEnum.LEITNER: {
+        selectedService = this.questionService.GetTestByLessonCategoryId(this.lessonCategoryId,this.paging);
+        break;
+      }
       case QuestionPageEnum.LAW:{
-        selectedService = this.questionService.GetTestByLaw(this.lessonCategoryId,0);
-        break;}
+        selectedService = this.questionService.GetTestByLaw(this.lessonCategoryId,this.paging);
+        break;
+      }
+      case QuestionPageEnum.LEITNER_RANDOM:{
+        selectedService = this.questionService.GetTestRandom(this.lessonCategoryId,this.paging);
+        break;
+      }
 
 
     }
@@ -88,6 +95,7 @@ timer;
         {
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
+            this.allCountTest = res.meta.Count
           this.setQuestion();
         }
 
@@ -105,6 +113,7 @@ timer;
     console.log("x")
     if (this.findIndexList()==this.questionList.length-1)
     {
+
       return;
     }else {
 
@@ -207,6 +216,10 @@ timer;
   {
 
     this.questionService.sendAnswerResult(this.questionItem.Id,choice).subscribe(res=>{
+      if (res.statusCode==200 && choice=='a')
+      {
+        this.allCountTest--;
+      }
 
     })
   }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LessonService} from "@app/Lesson/service/lesson.service";
 import {LessonCategoryService} from "@app/lesson-category/service/lesson-category.service";
 import {Route, Router} from "@angular/router";
+import {QuestionPageEnum} from "@app/question/question-page/question-page.component";
 
 @Component({
   selector: 'app-lesson-list',
@@ -104,6 +105,12 @@ export class LessonListComponent implements OnInit{
 
 
   clickOnLesson(lesson: any) {
-        this.rote.navigateByUrl('main/lessonCategory/list/'+lesson.Id+'/'+lesson.Name)
+    if (!this.isRandom) {
+      this.rote.navigateByUrl('main/lessonCategory/list/' + lesson.Id + '/' + lesson.Name)
+    }
+    else {
+      this.rote.navigateByUrl('main/question/questionPage/'+lesson.Id+'/'+QuestionPageEnum.LEITNER_RANDOM)
+
+    }
   }
 }
