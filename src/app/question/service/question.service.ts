@@ -7,6 +7,7 @@ import {ResponseModel} from "@app/_core/model/ResponseModel";
 const  GET_QUESTION_BY_LESSON_CATEGORY_ID = environment.BASE_URL+"Testing/GetTestsForWeb";
 const  SEND_TEST_RESULT = environment.BASE_URL+"Testing/Testing";
 const SET_BOOKMARK = environment.BASE_URL+"BookMark/SetBookmark"
+const GET_QUESTION_BY_LAW = environment.BASE_URL+"Testing/GetTestsByLaw"
 
 
 @Injectable({
@@ -29,6 +30,18 @@ export class QuestionService {
 
   }
 
+
+  GetTestByLaw(LawTitle , pageNuber)
+  {
+
+
+    const param = {
+      LawTitle:LawTitle,
+      PageNumber:pageNuber
+    }
+    return this.httpClient.get<ResponseModel<any>>(GET_QUESTION_BY_LAW,{params:param})
+
+  }
 
   sendAnswerResult(questionId , choice)
   {

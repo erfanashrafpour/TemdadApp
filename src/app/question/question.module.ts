@@ -16,7 +16,7 @@ const routes: Routes = [
       pathMatch:'full'
 
     },*/
-  {path:'questionPage/:lessonCategoryId',
+  {path:'questionPage/:lessonCategoryId/:questionType',
     component:QuestionPageComponent
   }
 ];

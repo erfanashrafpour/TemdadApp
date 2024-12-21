@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LessonCategoryService} from "@app/lesson-category/service/lesson-category.service";
 import {ActivatedRoute, Route, Router} from "@angular/router";
+import {QuestionPageEnum} from "@app/question/question-page/question-page.component";
 
 @Component({
   selector: 'app-lesson-category-list',
@@ -45,6 +46,6 @@ export class LessonCategoryListComponent implements OnInit{
   }
 
   goToTestingPage(lessonCategory) {
-    this.route.navigateByUrl('main/question/questionPage/'+lessonCategory.Id)
+    this.route.navigateByUrl('main/question/questionPage/'+lessonCategory.Id+'/'+QuestionPageEnum.LEITNER)
   }
 }

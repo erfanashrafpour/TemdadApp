@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="main_header">
+    <h1 class="heading">قوانین من</h1>
+    <div class="select_list_parent">
+      <img
+        src="../../../assets/icon/chevron_bottom.svg"
+        class="select_list_chevron"
+        alt="chevron icon"
+      />
+      <select (change)="changeLesson($event)" class="main_select_list">
+        <option *ngFor="let item of lawCategory" [value]="item">{{item}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="items_container">
+
+    <div *ngFor="let item of lawList">
+      <div class="role_header">
+        <h3 class="role_heading">{{item.Title}}</h3>
+        <button class="role_delete_button" (click)="deleteLaw(item.Id)">
+          <img src="../../../assets/icon/delete-summury.svg" alt="delete icon" />
+        </button>
+      </div>
+      <p class="role_text">
+        {{item.Description}}
+      </p>
+      <button (click)="tasbit(item)" class="role_button">تثبیت در ذهن</button>
+    </div>
+  </div>
+</div>

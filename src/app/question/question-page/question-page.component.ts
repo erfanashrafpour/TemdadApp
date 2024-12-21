@@ -7,6 +7,15 @@ import {RuleMatDialogComponent} from "@app/question/rule-mat-dialog/rule-mat-dia
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {AnswerBottomSheetComponent} from "@app/question/answer-bottom-sheet/answer-bottom-sheet.component";
 
+
+export enum QuestionPageEnum {
+  LEITNER ,
+  LAW,
+
+
+
+}
+
 @Component({
   selector: 'app-question-page',
   templateUrl: './question-page.component.html',
@@ -22,6 +31,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
 
   finishQuestion:boolean = false;
   lessonCategoryId;
+  questionType:QuestionPageEnum = QuestionPageEnum.LEITNER;
 timer;
   questionList =[];
   questionItem:any;
@@ -35,11 +45,14 @@ timer;
 
   ngAfterViewInit(): void {
     this.activeRoute.params.subscribe(params => {
+      console.log(params)
       this.lessonCategoryId = params['lessonCategoryId'];
+      this.questionType = Number(params['questionType']);
 
       this.getData()
 
     });
+
   }
 
   ngOnInit(): void {
@@ -51,22 +64,31 @@ timer;
   getData()
   {
 
-    this.questionService.GetTestByLessonCategoryId(this.lessonCategoryId,0).subscribe(res=>{
+    let selectedService ;
+    debugger
+    switch(this.questionType)
+    {
+
+      case QuestionPageEnum.LEITNER:
+      {selectedService =
+        this.questionService.GetTestByLessonCategoryId(this.lessonCategoryId,0);
+      break;}
+
+      case QuestionPageEnum.LAW:{
+        selectedService = this.questionService.GetTestByLaw(this.lessonCategoryId,0);
+        break;}
+
+
+    }
+
+
+    selectedService.subscribe(res=>{
 
         if (res.statusCode==200)
         {
-
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
-
-
-
-
           this.setQuestion();
-
-
-
-
         }
 
     })

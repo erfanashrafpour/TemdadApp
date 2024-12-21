@@ -136,7 +136,7 @@ let counter = 0;
       if (res.statusCode==200)
       {
 
-        const index = this.summeryList.findIndex((x) => x.Id === item.Id); // پیدا کردن ایندکس آیتمی که مقدارش 3 است
+        const index = this.summeryList.findIndex((x) => x.Id === item.Id);
 
         if (index !== -1) { // اگر آیتم پیدا شد
           this.summeryList.splice(index, 1); // حذف آیتم
