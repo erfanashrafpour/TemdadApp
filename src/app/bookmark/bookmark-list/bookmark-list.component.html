@@ -1,0 +1,123 @@
+
+<div class="container">
+  <div class="main_header">
+    <h1 class="heading"> نشانه گذاری ها</h1>
+  </div>
+
+  <div class="container">
+    <div class="navigation">
+      <a  class="backLink">
+        <img
+          src="../../../assets/icon/back.svg"
+          alt="back-icon"
+          class="backLink__icon"
+        />
+        ثقبشر
+      </a>
+      <div class="select_list_parent">
+        <img
+          src="../../../assets/icon/chevron_bottom.svg"
+          class="select_list_chevron"
+          alt="chevron icon"
+        />
+        <select  (change)="changeCategoryItem($event)" class="main_select_list">
+          <option  *ngFor="let category of categoryList" [value]="category.Id">{{category.Title}}</option>
+        </select>
+      </div>
+
+    </div>
+    <!--  "Id": 391,
+      "IsNew": false,
+      "IsCompleted": false,
+      "Name": "بسته 1",
+      "CategoryName": "حقوق مدنی",
+      "Keyword": "انواع اموال",
+      "Description": "اموال منقول | اموال غیر منقول | اموالی که مالک خاص ندارند | اموال مثلی و قیمی\r\n\r\n - ( مواد 11 تا 28 قانون مدنی)",
+      "TestCount": 47,
+      "AllTestCount": 47,
+      "BookmarkCount": 2,
+      "HasTemcard": false,
+      "TemcardVisitCount": 0,
+      "HasVoice": false-->
+    <div class="rulesContainer">
+      <!-- item 1 -->
+      <div *ngFor="let product of bookmarkList;let i = index"  >
+        <div class="rulesBoxHeader">
+          <p class="rulesBoxHeader__title" style="font-family: yekanNum">{{product.Name}}</p>
+          <div class="rulesBoxHeader__leftBox">
+            <p class="rulesBoxHeader__count" style="font-family: Dirooz">
+              تست‌های آماده:
+              <span class="rulesBoxHeader__number" style="font-family: yekanNum">{{product.AllTestCount}}</span>
+            </p>
+            <button class="rulesBoxHeader__saveBtn">
+              <img
+                src="../../../assets/icon/bookmark.svg"
+                class="rulesBoxHeader__saveBtn__icon"
+                alt="bookmark"
+              />
+              <span class="rulesBoxHeader__saveBtn__number" style="font-family: yekanNum">  {{product.BookmarkCount}}</span>
+            </button>
+          </div>
+        </div>
+        <div class="rulesBoxContent">
+          <div class="rulesBoxContent__list">
+            <span style="font-family: Dirooz">{{product.Description}}</span>
+
+          </div>
+          <!--
+                  <p class="rulesBoxContent__desc">مواد ۱۱ تا ۲۸ قانون مدنی</p>
+          -->
+        </div>
+      </div>
+
+      <!-- item 2 -->
+      <!--<div>
+        <div class="rulesBoxHeader">
+          <p class="rulesBoxHeader__title">بسته ۲</p>
+          <div class="rulesBoxHeader__leftBox">
+            <p class="rulesBoxHeader__count">
+              تست‌های آماده:
+              <span class="rulesBoxHeader__number">۵۴</span>
+            </p>
+            <button class="rulesBoxHeader__saveBtn">
+              <img
+                src="assets/icons/bookmark.svg"
+                class="rulesBoxHeader__saveBtn__icon"
+                alt="bookmark"
+              />
+              <span class="rulesBoxHeader__saveBtn__number">۵</span>
+            </button>
+          </div>
+        </div>
+        <div class="rulesBoxContent">
+          <div class="rulesBoxContent__list">
+            <span>اموال منقول</span>
+            <div class="rulesBoxContent__dote"></div>
+            <span>اموال غیر‌منقول</span>
+            <div class="rulesBoxContent__dote"></div>
+            <span>اموالی که مالک خاص ندارند</span>
+            <div class="rulesBoxContent__dote"></div>
+            <span>اموال مصلی و قیمی</span>
+          </div>
+          <p class="rulesBoxContent__desc">مواد ۱۱ تا ۲۸ قانون مدنی</p>
+        </div>
+      </div>-->
+    </div>
+  </div>
+
+</div>
+
+<!-- modal--active -->
+<div class="backdrop">
+  <div class="modal_container">
+    <h2 class="modal_heading">ماده ۱۷ قانون مدنی</h2>
+    <p class="modal_text">
+      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+      استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+      در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
+      نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+      کتابهای زیادی در شصت و سه درصد گذشته حال و آینده.
+    </p>
+    <button class="modal_button">خوندم!</button>
+  </div>
+</div>

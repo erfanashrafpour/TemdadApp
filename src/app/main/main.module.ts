@@ -38,6 +38,11 @@ const routes: Routes = [
         path: 'law',
         loadChildren: () => import('../law/law.module').then(m => m.LawModule)
       }
+      ,
+      {
+        path: 'bookmark',
+        loadChildren: () => import('../bookmark/bookmark.module').then(m => m.BookmarkModule)
+      }
     ]
   }
 ];

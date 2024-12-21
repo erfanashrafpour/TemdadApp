@@ -3,13 +3,17 @@
 
   <div class="test__topSection">
 
-    <div class="test__navigation">
+    <div class="test__navigation" *ngIf="configForLitner">
     <span class="navigation__item"> {{questionItem.CategotyTitle}} </span>
     <span class="navigation__separate">&#xbb;</span>
     <span class="navigation__item"> {{questionItem.ProductTitle}} </span>
   </div>
+
+    <div class="test__navigation" *ngIf="!configForLitner">
+      <span class="navigation__item"> تست های تثبیتی </span>
+    </div>
   <!--<p class="test__counter">تست <span>{{findIndexList()}}</span> از <span>{{allCountTest}}</span></p>-->
-  <p class="test__counter">باقی مانده<span>{{allCountTest}}</span></p>
+  <p  *ngIf="configForLitner" class="test__counter">باقی مانده<span>{{allCountTest}}</span></p>
 </div>
 
 <!-- end__test -->
@@ -39,7 +43,7 @@
         />
       </button>
     </div>
-    <div class="tools__stopwatch">
+    <div *ngIf="configForLitner" class="tools__stopwatch">
       <span>{{timer}}</span>
       <img
         src="../../../assets/icon/stopwatch.svg"

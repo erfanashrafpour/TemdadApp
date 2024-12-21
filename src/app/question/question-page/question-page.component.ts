@@ -39,6 +39,10 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
   questionList =[];
   questionItem:any;
   private interval;
+
+
+  configForLitner = false;
+
   constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute
               , private cd :ChangeDetectorRef,private matDBottomShit:MatBottomSheet
               , private route:Router) {
@@ -53,6 +57,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
       this.questionType = Number(params['questionType']);
 
       this.getData()
+      this.setConfig()
 
     });
 
@@ -148,6 +153,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
 
     this.finishQuestion = false
     this.changeRandomQuestion();
+    if (this.configForLitner)
     this.startTimer();
     this.cd.detectChanges()
 
@@ -315,6 +321,21 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
 
     this.route.navigate([],{queryParams:queryParams})
    // window.scrollTo({top:100000000})
+
+  }
+
+  private setConfig() {
+
+    switch (this.questionType)
+    {
+      case QuestionPageEnum.LAW:this.configForLitner = false;break;
+      case QuestionPageEnum.LEITNER:this.configForLitner = true;break;
+      case QuestionPageEnum.LEITNER_RANDOM:this.configForLitner = true;break;
+
+
+    }
+
+
 
   }
 }
