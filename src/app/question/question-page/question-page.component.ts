@@ -95,7 +95,10 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
         selectedService = this.questionService.GetTestByBookMarkLessonCategoryId(this.lessonCategoryId,this.paging);
         break;
       }
-
+      case QuestionPageEnum.BOOKMARK_RANDOM:{
+        selectedService = this.questionService.GetTestByBookMarkRandom(this.lessonCategoryId,this.paging);
+        break;
+      }
     }
 
 

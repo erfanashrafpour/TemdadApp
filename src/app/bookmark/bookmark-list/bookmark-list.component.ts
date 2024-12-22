@@ -64,4 +64,8 @@ export class BookmarkListComponent  implements OnInit{
     this.route.navigateByUrl('main/question/questionPage/'+product.Id+'/'+QuestionPageEnum.BOOKMARK)
 
   }
+
+  goToQuestionRandom() {
+    this.route.navigateByUrl('main/question/questionPage/'+this.lessonId+'/'+QuestionPageEnum.BOOKMARK_RANDOM)
+  }
 }

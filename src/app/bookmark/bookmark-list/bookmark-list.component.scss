@@ -41,6 +41,8 @@ button {
 }
 .select_list_parent {
   position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .select_list_chevron {
   width: 28px;
@@ -65,7 +67,12 @@ button {
   background: white;
   color: black;
 }
-
+.random_test{
+  color: #fff;
+  background: #3167bf;
+  padding: 8px;
+  border-radius: 7px;
+}
 
 @media screen and (max-width: 640px) {
   .main_header {
