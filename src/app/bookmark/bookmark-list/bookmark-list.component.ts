@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BookmarkService} from "@app/bookmark/service/bookmark.service";
+import {Route, Router} from "@angular/router";
+import {QuestionPageEnum} from "@app/question/question-page/question-page.component";
 
 @Component({
   selector: 'app-bookmark-list',
@@ -10,7 +12,7 @@ export class BookmarkListComponent  implements OnInit{
   categoryList =[];
   bookmarkList = [];
   private lessonId;
-  constructor(private bookmarkService:BookmarkService) {
+  constructor(private bookmarkService:BookmarkService , private route:Router) {
   }
 
 
@@ -57,4 +59,9 @@ export class BookmarkListComponent  implements OnInit{
   }
 
 
+  goToQuestion(product: any) {
+
+    this.route.navigateByUrl('main/question/questionPage/'+product.Id+'/'+QuestionPageEnum.BOOKMARK)
+
+  }
 }

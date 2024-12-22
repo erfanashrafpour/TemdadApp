@@ -9,6 +9,7 @@ const  SEND_TEST_RESULT = environment.BASE_URL+"Testing/Testing";
 const SET_BOOKMARK = environment.BASE_URL+"BookMark/SetBookmark"
 const GET_QUESTION_BY_LAW = environment.BASE_URL+"Testing/GetTestsByLawForWeb"
 const GET_QUESTION_RANDOM = environment.BASE_URL+"Testing/GetTestsByLessonForWeb"
+const GET_QUESTION_BY_BOOKMARK = environment.BASE_URL+"Testing/GetTestsProductByBookmarkForWeb"
 
 
 @Injectable({
@@ -56,7 +57,17 @@ export class QuestionService {
 
   }
 
+  GetTestByBookMarkLessonCategoryId(lessonCategoryId , pageNumber)
+  {
 
+
+    const param = {
+      ProductId:lessonCategoryId,
+      PageNumber:pageNumber
+    }
+    return this.httpClient.get<ResponseModel<any>>(GET_QUESTION_BY_BOOKMARK,{params:param})
+
+  }
 
   sendAnswerResult(questionId , choice)
   {

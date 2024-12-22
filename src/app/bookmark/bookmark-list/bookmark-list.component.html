@@ -2,6 +2,18 @@
 <div class="container">
   <div class="main_header">
     <h1 class="heading"> نشانه گذاری ها</h1>
+    <div class="select_list_parent">
+
+      <img
+        src="../../../assets/icon/chevron_bottom.svg"
+        class="select_list_chevron"
+        alt="chevron icon"
+      />
+      <select  (change)="changeCategoryItem($event)" class="main_select_list">
+        <option  *ngFor="let category of categoryList" [value]="category.Id">{{category.Title}}</option>
+      </select>
+    </div>
+
   </div>
 
   <div class="container">
@@ -12,18 +24,11 @@
           alt="back-icon"
           class="backLink__icon"
         />
-        ثقبشر
+        برگشت
       </a>
-      <div class="select_list_parent">
-        <img
-          src="../../../assets/icon/chevron_bottom.svg"
-          class="select_list_chevron"
-          alt="chevron icon"
-        />
-        <select  (change)="changeCategoryItem($event)" class="main_select_list">
-          <option  *ngFor="let category of categoryList" [value]="category.Id">{{category.Title}}</option>
-        </select>
-      </div>
+      <button *ngIf="false" style="color: #fff;background: #3167bf;">تست زنی نامرتب</button>
+
+
 
     </div>
     <!--  "Id": 391,
@@ -41,7 +46,7 @@
       "HasVoice": false-->
     <div class="rulesContainer">
       <!-- item 1 -->
-      <div *ngFor="let product of bookmarkList;let i = index"  >
+      <div *ngFor="let product of bookmarkList;let i = index" (click)="goToQuestion(product)" >
         <div class="rulesBoxHeader">
           <p class="rulesBoxHeader__title" style="font-family: yekanNum">{{product.Name}}</p>
           <div class="rulesBoxHeader__leftBox">

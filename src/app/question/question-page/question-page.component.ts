@@ -12,6 +12,8 @@ export enum QuestionPageEnum {
   LEITNER ,
   LAW,
   LEITNER_RANDOM,
+  BOOKMARK,
+  BOOKMARK_RANDOM
 
 
 
@@ -89,7 +91,10 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
         selectedService = this.questionService.GetTestRandom(this.lessonCategoryId,this.paging);
         break;
       }
-
+      case QuestionPageEnum.BOOKMARK:{
+        selectedService = this.questionService.GetTestByBookMarkLessonCategoryId(this.lessonCategoryId,this.paging);
+        break;
+      }
 
     }
 
@@ -101,7 +106,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
             this.allCountTest = res.meta.Count
-          this.setQuestion();
+            this.setQuestion();
         }
 
     })
@@ -115,9 +120,11 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
   }
 
   nextQuestion() {
-    console.log("x")
     if (this.findIndexList()==this.questionList.length-1)
     {
+
+      this.paging++;
+      this.getData()
 
       return;
     }else {
