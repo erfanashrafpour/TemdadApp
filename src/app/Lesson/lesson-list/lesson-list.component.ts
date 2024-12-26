@@ -81,25 +81,8 @@ export class LessonListComponent implements OnInit{
 
   getColorTop(index)
   {
-
-    if (index==0)
-    {
-      return 'purple'
-    }
-
-    if (index%2==0)
-    {
-      return 'green'
-    }
-
-    if (index%2==1)
-    {
-      return 'blue'
-    }
-    if (index%2==3)
-    {
-      return 'purple'
-    }
+const color = ['#6770E5', '#F2A365', '#6BCB77', '#4AA96C', '#FFD460', '#FF6B6B', '#4D96FF', '#8854D0', '#E63946', '#264653', '#F4A261', '#E9C46A', '#2A9D8F', '#A8DADC', '#1D3557', '#F76C6C']
+return color[index]
 
   }
 

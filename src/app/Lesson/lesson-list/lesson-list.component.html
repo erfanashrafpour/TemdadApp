@@ -31,7 +31,11 @@
 
   <div class="container__card-container card-container">
     <div  *ngFor="let lesson of lessonList;let i = index" class="card-container__card card" (click)="clickOnLesson(lesson)">
-      <div class="title-card title-card--{{getColorTop(i)}}" >
+<!--
+      <div class="title-card title-card&#45;&#45;{{getColorTop(i)}}" >
+-->
+      <div class="title-card "style="background-color: {{getColorTop(i)}}" >
+
         <h2 class="title-card__h2">
 
           {{lesson.Name}}
