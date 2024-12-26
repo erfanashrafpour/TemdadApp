@@ -1,0 +1,86 @@
+
+<div class="continer">
+  <div class="main_header">
+    <h1 class="heading">قوانین من</h1>
+    <div class="select_list_parent">
+      <img
+        src="../../../assets/icon/chevron_bottom.svg"
+        class="select_list_chevron"
+        alt="chevron icon"
+      />
+      <select (change)="changeLesson($event)" class="main_select_list">
+        <option *ngFor="let item of categoryList" [value]="item.Id">{{item.Title}}</option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="main">
+    <div *ngFor="let item of subjectList" class="data" style="display:flex;position: relative;align-items: center">
+      <span class="value" style="width: 45%;">{{item.Title}}</span>
+      <span class="numberpersentage" style="width: 5%">%{{item.Percent}}</span>
+      <progress class="persentage" max="100" value="29" style="width: 40%"></progress>
+      <button class="power" style="width: 10%">تقویت</button>
+    </div>
+    <!--
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموال مثلی و قیمی</span>
+          <progress class="persentage" max="100" value="56"></progress><span class="numberpersentage">%56</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموال منقول</span>
+          <progress class="persentage" max="100" value="13"></progress><span class="numberpersentage">%13</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموالی که مالک خاص ندارند</span>
+          <progress class="persentage" max="100" value="100"></progress><span class="numberpersentage">%100</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">حق ارتفاق</span>
+          <progress class="persentage" max="100" value="85"></progress><span class="numberpersentage">%85</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموال غیرمنقول</span>
+          <progress class="persentage" max="100" value="29"></progress><span class="numberpersentage">%29</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموال مثلی و قیمی</span>
+          <progress class="persentage" max="100" value="56"></progress><span class="numberpersentage">%56</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموال منقول</span>
+          <progress class="persentage" max="100" value="13"></progress><span class="numberpersentage">%13</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">اموالی که مالک خاص ندارند</span>
+          <progress class="persentage" max="100" value="100"></progress><span class="numberpersentage">%100</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+        <div class="data">
+          <span class="value">حق ارتفاق</span>
+          <progress class="persentage" max="100" value="85"></progress><span class="numberpersentage">%85</span>
+          <button class="power">تقویت</button>
+        </div>
+        <br><br><br>
+    -->
+
+
+  </div>
+</div>

@@ -43,6 +43,11 @@ const routes: Routes = [
         path: 'bookmark',
         loadChildren: () => import('../bookmark/bookmark.module').then(m => m.BookmarkModule)
       }
+      ,
+      {
+        path: 'subject',
+        loadChildren: () => import('../subject/subject.module').then(m => m.SubjectModule)
+      }
     ]
   }
 ];
