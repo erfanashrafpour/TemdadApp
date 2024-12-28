@@ -1,7 +1,7 @@
 
 <div class="continer">
   <div class="main_header">
-    <h1 class="heading">قوانین من</h1>
+    <h1 class="heading">تحلیل و آنالیز</h1>
     <div class="select_list_parent">
       <img
         src="../../../assets/icon/chevron_bottom.svg"
@@ -20,8 +20,8 @@
     <div *ngFor="let item of subjectList" class="data" style="display:flex;position: relative;align-items: center">
       <span class="value" style="width: 45%;">{{item.Title}}</span>
       <span class="numberpersentage" style="width: 5%">%{{item.Percent}}</span>
-      <progress class="persentage" max="100" value="29" style="width: 40%"></progress>
-      <button class="power" style="width: 10%">تقویت</button>
+      <progress class="persentage"  max="100" value="{{item.Percent}}" style="width: 40%"></progress>
+      <button class="power" style="width: 10%" (click)="routeToQuestionList(item)">تقویت</button>
     </div>
     <!--
         <br><br><br>

@@ -11,7 +11,7 @@ const GET_QUESTION_BY_LAW = environment.BASE_URL+"Testing/GetTestsByLawForWeb"
 const GET_QUESTION_RANDOM = environment.BASE_URL+"Testing/GetTestsByLessonForWeb"
 const GET_QUESTION_BY_BOOKMARK = environment.BASE_URL+"Testing/GetTestsProductByBookmarkForWeb"
 const GET_QUESTION_BY_BOOKMARK_RANDOM = environment.BASE_URL+"Testing/GetTestsLessonByBookmarkForWeb"
-
+const GET_QUESTION_BY_SUBJECT = environment.BASE_URL+"Testing/GetTestsBySubject"
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,17 @@ export class QuestionService {
     }
     return this.httpClient.get<ResponseModel<any>>(GET_QUESTION_BY_LAW,{params:param})
 
+  }
+
+  GetTestBySubjectBySubjectTitle(SubjectTitle , pageNuber)
+  {
+
+
+    const param = {
+      SubjectTitle:SubjectTitle,
+      PageNumber:pageNuber
+    }
+    return this.httpClient.get<ResponseModel<any>>(GET_QUESTION_BY_SUBJECT,{params:param})
   }
 
   GetTestRandom(lessonId , pageNuber)

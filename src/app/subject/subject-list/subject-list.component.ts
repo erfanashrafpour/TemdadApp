@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SubjectService} from "@app/subject/services/subject.service";
+import {QuestionPageEnum} from "@app/question/question-page/question-page.component";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'app-subject-list',
@@ -12,7 +14,7 @@ export class SubjectListComponent  implements OnInit{
    subjectList =[];
 
 
-  constructor(private subjectService:SubjectService) {
+  constructor(private subjectService:SubjectService , private route:Router) {
   }
 
 
@@ -54,4 +56,8 @@ export class SubjectListComponent  implements OnInit{
   }
 
 
+  routeToQuestionList(item: any) {
+    this.route.navigateByUrl('main/question/questionPage/'+item.Title+'/'+QuestionPageEnum.SUBJECT)
+
+  }
 }

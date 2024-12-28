@@ -13,7 +13,8 @@ export enum QuestionPageEnum {
   LAW,
   LEITNER_RANDOM,
   BOOKMARK,
-  BOOKMARK_RANDOM
+  BOOKMARK_RANDOM,
+  SUBJECT
 
 
 
@@ -97,6 +98,10 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
       }
       case QuestionPageEnum.BOOKMARK_RANDOM:{
         selectedService = this.questionService.GetTestByBookMarkRandom(this.lessonCategoryId,this.paging);
+        break;
+      }
+      case QuestionPageEnum.SUBJECT:{
+        selectedService = this.questionService.GetTestBySubjectBySubjectTitle(this.lessonCategoryId,this.paging);
         break;
       }
     }

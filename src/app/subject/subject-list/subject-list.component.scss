@@ -100,10 +100,15 @@ select::-webkit-scrollbar-thumb{
 /*main*/
 .data{
   position: relative;
+  border-bottom: 1px solid #80808033;
+  margin-top: 10px;
+
 }
 .value, .persentage, .power, .numberpersentage{
 //  position: absolute;
   margin: 8px;
+  font-family: (yekanNum)!important;
+
 }
 .value{
   font: 500 19px IRANSans;
@@ -124,6 +129,7 @@ select::-webkit-scrollbar-thumb{
   left: 31pc;
   color: #3D64A5;
   font: 900 20px "IRANSansFaNum Light";
+  font-size: 20px !important;
 }
 progress::-webkit-progress-bar{
   background: transparent;
@@ -191,7 +197,7 @@ progress::-webkit-progress-value{
     left: 29.5pc;
   }
   .continer{
-    width: 100%;
+    width: 95%;
     height: 95vh;
     margin: 22px auto;
   }
