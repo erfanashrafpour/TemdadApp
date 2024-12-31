@@ -4,6 +4,9 @@ export const environment = {
  // BASE_URL:"https://api.falakzade.ir/api/",
   LAW_CATEGORY_LAW_LIST: "lawcategoruinlawlist",
   TOKEN_KEY: "asdklajsdie",
-  PAGE_COUNT:'asdakjdkladkasjdlkasncasnclajdlad'
+  PAGE_COUNT:'asdakjdkladkasjdlkasncasnclajdlad',
 
+  FONT_SIZE:"FORNTSIZE",
+  FONT_BETWWENSPACE:"FONTBETWEENSPACE",
+  TIMER:"TIME"
 };
