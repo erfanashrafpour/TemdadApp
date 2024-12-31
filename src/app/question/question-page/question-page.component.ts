@@ -199,7 +199,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
   startTimer() {
 
     this.stopTimer()
-    this.timer =  20;//userResponce.Timer;
+    this.timer =  Number(localStorage.getItem(environment.TIMER))??20;//userResponce.Timer;
 
     this.interval = setInterval(() => {
       if(this.timer > 0) {

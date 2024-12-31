@@ -5,6 +5,11 @@ export const environment = {
   LAW_CATEGORY_LAW_LIST: "lawcategoruinlawlist",
   TOKEN_KEY: "asdklajsdie",
 
-  USER_PASS:"userewjrpqwir3i4098234897"
+  USER_PASS:"userewjrpqwir3i4098234897",
+
+
+  FONT_SIZE:"FORNTSIZE",
+  FONT_BETWWENSPACE:"FONTBETWEENSPACE",
+  TIMER:"TIME"
 
 };

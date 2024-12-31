@@ -1,0 +1,149 @@
+*{
+  font-family: IRANSans;
+  text-decoration: none;
+}
+body{
+  direction: rtl;
+}
+.continer{
+  width: 100%;
+  height: 90vh;
+//  margin: 1pc auto;
+}
+.support{
+  padding: 7px 23px;
+  color: #3568A8;
+  font: 600 20px IRANSans;
+  background-color: #DCDCDC;
+  border-radius: 18px 18px 0px 0px;
+}
+#pm{
+  padding: 0px 20px;
+  background-color: #fff;
+  font-size: 18px;
+}
+/*heder*/
+.parts2{
+  width: 100%;
+  height: 3.5pc;
+  padding: 40px 0px 0px 0px;
+}
+.box{
+  background-color: #DCDCDC;
+}
+/*listkeshoyi*/
+.select-option{
+  display: inline-block;
+  margin-right: 3%;
+}
+select{
+  padding: 4px;
+  border-radius: 5px;
+  font: 600 13px IRANSans;
+  appearance: none;
+  width: 25pc;
+  direction: ltr;
+  border: none;
+  //outline: 2.5px outset #3568A8;
+  height: 37px;
+}
+svg{
+  position: absolute;
+  float: left;
+  margin: 4px 23pc 0px 0px;
+}
+option{
+  background-color: #fff;
+  color: #000;
+  direction: rtl;
+}
+/*scorullistkeshoyi*/
+select::-webkit-scrollbar{width: 10px;}
+select::-webkit-scrollbar-track{background-color: #DDD9D9;border-radius: 1pc;}
+//select::-webkit-scrollbar-thumb{background-color: #3167BD;border-radius: 1pc;}
+.number{
+  display: inline-block;
+  float: left;
+  margin-left: 5%;
+}
+span{
+  background-color: #fff;
+  margin-right: 10px;
+  padding: 8px 18px;
+}
+
+/*main*/
+textarea{
+  width: 94%;
+  height: 30pc;
+  margin: 0px 2% 7% 0px;
+  text-indent: 17px;
+  text-align: justify;
+  font-size: 18px;
+  border: 3px solid #A6A6A6;
+}
+textarea:focus{
+  border: 1px solid #3668C1;
+  outline: 2px solid #3668C1;
+  font-size: 20px;
+}
+/*scorultextarea*/
+textarea::-webkit-scrollbar{width: 10px;}
+textarea::-webkit-scrollbar-track{background-color: #DDD9D9;border-radius: 1pc;}
+textarea::-webkit-scrollbar-thumb{background-color: #3167BD;border-radius: 1pc;}
+.baste, .test{
+  box-shadow: 7px 7px 10px -2px #B3B3B3;
+  border: 1px solid #A6A6A6;
+}
+/*button*/
+.submit{
+  float: left;
+  margin: -52px 0px 0px 37px;
+  color: #fff;
+  background-color: #3668C1;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  box-shadow: 7px 7px 10px -2px #B3B3B3;
+}
+.submit:hover{cursor: pointer;}
+
+/*responsive-heder*/
+@media only screen  and (max-width: 800px){
+  .continer{height: 100vh;}
+  .parts2{
+    width: 100%;
+    height: 3.5pc;
+    background-color: #DCDCDC;
+  }
+  .number{display: block;}
+  .number, .baste, .test{
+    margin-bottom: 5px;
+    float: right;
+    margin-left: 0px;
+  }
+  .baste{width: 5pc;}
+  .test{width: 12pc;}
+  .select-option{
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+  select{
+    padding: 7px 17px;
+    border-radius: 3px;
+    font: 600 13px IRANSans;
+    margin-bottom: 3px;
+    width: 355px;
+    direction: ltr;
+    border: none;
+  }
+  svg{
+    margin: 7px 20pc 0px 0px;
+  }
+  textarea{margin: 0px 2% 12% 0px;}
+  .submit{
+    margin: -44px 0px 0px 20px;
+    padding: 5px 10px;
+  }
+}

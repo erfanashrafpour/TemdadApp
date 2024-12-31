@@ -1,0 +1,90 @@
+
+<div class="container">
+  <h1 class="page_heading border_bottom">تنظیمات</h1>
+
+  <section class="response_time_section border_bottom">
+    <p class="response_time_title">زمان پاسخگویی</p>
+    <p class="response_time_description">
+      زمان پاسخگویی به هر تست را مشخص کنید.
+    </p>
+    <div class="response_time_input_box">
+      <input type="number" [(ngModel)]="timer" (input)="changeTimer($event)" (change)="changeTimer($event)" class="response_time_input" />
+      <span class="response_time_label">ثانیه</span>
+    </div>
+  </section>
+
+  <section class="display_setting_section border_bottom">
+    <h2 class="section_heading">تنظیمات نمایشی</h2>
+
+    <div class="display_setting_field">
+      <div class="range_input_parent" style="flex-flow: wrap;gap:10px">
+        <p class="range_input_label">سایز متن</p>
+        <input type="range"  #fontSizeInput (input)="changeFontSize($event)" (change)="changeFontSize($event)" dir="ltr" class="range_input" />
+      </div>
+      <p class="text_example">متن نمونه:</p>
+      <div class="container_example">
+        <p class="title_example" style="font-size: {{fontSize}}px" >
+          اصل قانون اساسی جمهوری اسلامی ایران
+        </p>
+        <p style="font-size: {{fontSize}}px">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+          و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
+          روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+          شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
+          بهبود ابزارهای کاربردی می باشد.
+        </p>
+      </div>
+    </div>
+
+    <div class="display_setting_field">
+      <div class="range_input_parent" style="flex-flow: wrap;gap: 10px">
+        <p class="range_input_label">فاصله بین خطوط</p>
+        <input type="range"  #fontLineSpaceInput (input)=" changeLineSpace($event)" (change)="changeLineSpace($event)" dir="ltr" class="range_input" />
+      </div>
+      <p class="text_example">متن نمونه:</p>
+      <div class="container_example">
+        <p class="title_example" style="line-height: {{fontBetweenSpace}}">
+          اصل قانون اساسی جمهوری اسلامی ایران
+        </p>
+        <p style="line-height: {{fontBetweenSpace}}">
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+          و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
+          روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
+          شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
+          بهبود ابزارهای کاربردی می باشد.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="user_info_section">
+    <h2 class="section_heading">اطلاعات کاربر</h2>
+
+    <div class="fields_parent">
+      <div class="input_field_parent">
+        <label for="" class="user_info_label">کد ملی</label>
+        <input type="number" class="user_info_input" dir="ltr" />
+      </div>
+
+      <div class="input_field_parent">
+        <label for="" class="user_info_label">پست الکترونیک</label>
+        <input type="number" class="user_info_input" />
+      </div>
+
+      <div class="input_field_parent">
+        <label for="" class="user_info_label">رمز عبور</label>
+        <input type="text" class="user_info_input" />
+      </div>
+
+      <div class="input_field_parent">
+        <label for="" class="user_info_label">تکرار رمز عبور</label>
+        <input type="text" class="user_info_input" />
+      </div>
+
+      <div class="input_field_parent">
+        <label for="" class="user_info_label">شماره کارت بانکی</label>
+        <input type="number" dir="ltr" class="user_info_input" />
+      </div>
+    </div>
+  </section>
+</div>
