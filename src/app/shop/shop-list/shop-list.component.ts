@@ -10,7 +10,7 @@ export class ShopListComponent implements OnInit{
 
 
   shopList = [];
-
+  currentId = 0;
   constructor(private shopService:ShopService) {
   }
 
@@ -23,10 +23,7 @@ this.getData()
   private getData()
   {
 
-
-    const currentId = 0;
-
-    this.shopService.GetProductCategory(currentId).subscribe(res=>{
+    this.shopService.GetProductCategory(this.currentId).subscribe(res=>{
 
       if (res.statusCode==200)
       {
@@ -38,6 +35,16 @@ this.getData()
 
 
   }
+
+
+  setCurrentId(currentId)
+  {
+
+   this.currentId = currentId;
+   this.getData();
+
+  }
+
 
 
 }

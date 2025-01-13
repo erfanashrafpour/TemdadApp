@@ -72,6 +72,7 @@ button {
   grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
   justify-content: center;
   gap: 45px;
+  margin-bottom: 65px;
 }
 .card {
   background: hsl(265.71deg 46.67% 97.06%);
@@ -99,7 +100,7 @@ button {
 .card_price {
   display: flex;
   justify-content: space-between;
-  font-size: 23px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -109,6 +110,17 @@ button {
 .card_price .price {
   color: hsl(221.79deg 48.28% 45.49%);
 }
+.discount{
+  background-color: red;
+  color: white;
+  padding: 3px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+}
+
 .card_buttons {
   display: block;
   height: 37px;
@@ -125,6 +137,7 @@ button {
 .card_secondary_button {
   background: hsl(0deg 0% 90.2%);
   color: hsl(0deg 0% 30.59%);
+  margin-bottom: 8px;
 }
 
 /* media query */

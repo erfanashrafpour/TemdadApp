@@ -29,15 +29,35 @@
         </p>
       </div>
       <div>
-        <div class="card_price">
-                     <span class="price">۸۶۰۰۰</span
-                     ><span class="unit">تومان</span>
+        <div *ngIf="item.SumPrice != 0" class="card_price" style="position: relative" >
+                     <span class="price">{{item.SumPrice}}</span>
+                      <span class="unit">تومان</span>
+                      <ng-container *ngIf="item.DiscountPercent !=  0">
+
+                        <span class="discount">{{item.DiscountPercent}} %</span>
+                        <span class="price ">{{item.SumPriceLastDiscount | number}}</span>
+                        <div style="
+    position: absolute;
+    top: 44%;
+    left: 34px;
+    width: 28%;
+    height: 2px;
+    background-color: red;
+    transform: rotate(-15deg);"></div>
+
+
+                        <span class="unit">تومان</span>
+                      </ng-container>
         </div>
-        <button class="card_buttons card_primary_button">
+
+        <button *ngIf="item.ButtonPublishBacket" class="card_buttons card_primary_button">
           افزودن به سبد خرید
         </button>
-        <button class="card_buttons card_secondary_button">
-          خرید تک درس
+        <button *ngIf="item.ButtonPublish1" (click)="setCurrentId(item.ButtonId1)" class="card_buttons card_secondary_button">
+          {{item.ButtonTitle1}}
+        </button>
+        <button *ngIf="item.ButtonPublish2" (click)="setCurrentId(item.ButtonId2)" class="card_buttons card_secondary_button">
+          {{item.ButtonTitle2}}
         </button>
       </div>
     </div>
