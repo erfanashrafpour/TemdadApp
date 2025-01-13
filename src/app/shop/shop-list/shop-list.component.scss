@@ -1,0 +1,135 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+body {
+  min-height: 100vh;
+  font-family: 'dirooz';
+  background: #f4f5f7;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1344px;
+  padding: 32px;
+  margin: 0 auto;
+}
+
+/* heading */
+.main_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #00000029;
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+}
+.heading {
+  color: #3066be;
+  font-size: 30px;
+}
+.heading span {
+  color: #c9b12f;
+}
+.select_list_parent {
+  position: relative;
+}
+.select_list_chevron {
+  width: 28px;
+  pointer-events: none;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.main_select_list {
+  background: #3066be;
+  color: white;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 20px;
+  appearance: none;
+  border-radius: 5px;
+  min-width: 300px;
+}
+.main_select_list option {
+  background: white;
+  color: black;
+}
+
+/* card shop */
+.card_parent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  justify-content: center;
+  gap: 45px;
+}
+.card {
+  background: hsl(265.71deg 46.67% 97.06%);
+  box-shadow: 2px 2px 5px #00000047;
+  border-radius: 10px;
+  padding: 10px 35px 40px;
+  min-height: 355px;
+  margin-bottom: 15px;
+}
+.card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.card h3 {
+  text-align: center;
+  font-weight: 700;
+  color: hsl(217.18deg 59.17% 47.06%);
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 13px;
+  text-align: justify;
+  line-height: 1.4;
+}
+.card_price {
+  display: flex;
+  justify-content: space-between;
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.card_price .unit {
+  color: hsl(0deg 0% 54.12%);
+}
+.card_price .price {
+  color: hsl(221.79deg 48.28% 45.49%);
+}
+.card_buttons {
+  display: block;
+  height: 37px;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 700;
+}
+.card_primary_button {
+  background: #3066be;
+  color: white;
+  margin-bottom: 10px;
+}
+.card_secondary_button {
+  background: hsl(0deg 0% 90.2%);
+  color: hsl(0deg 0% 30.59%);
+}
+
+/* media query */
+@media screen and (max-width: 640px) {
+  .container {
+    padding: 32px 20px 32px;
+  }
+}
