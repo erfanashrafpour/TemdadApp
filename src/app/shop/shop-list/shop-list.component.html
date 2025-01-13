@@ -8,7 +8,7 @@
         class="select_list_chevron"
         alt="chevron icon"
       />
-      <select class="main_select_list">
+      <select  *ngIf="false" class="main_select_list">
         <option value="">همه محصولات</option>
         <option value="">دروس اصلی</option>
         <option value="">تم‌کارت</option>
@@ -20,13 +20,12 @@
   </div>
 
   <div class="card_parent">
-    <div class="card_container">
+    <div *ngFor="let item of shopList" class="card_container">
       <div class="card">
-        <img src="assets/images/card_image.png" alt="shop image" />
-        <h3>پک قوانین خاص</h3>
+        <img [src]="item.ImageURL" alt="shop image" />
+        <h3>{{item.Title}}</h3>
         <p>
-          شامل 1390 تا تست احتمالی از قوانین خاص اعلام شده از سوی
-          اسکودا و وکلای مرکز قوه قضاییه
+          {{item.Description}}
         </p>
       </div>
       <div>
@@ -43,97 +42,6 @@
       </div>
     </div>
 
-    <div class="card_container">
-      <div class="card">
-        <img src="assets/images/card_image.png" alt="shop image" />
-        <h3>پک قوانین خاص</h3>
-        <p>
-          شامل 1390 تا تست احتمالی از قوانین خاص اعلام شده از سوی
-          اسکودا و وکلای مرکز قوه قضاییه
-        </p>
-      </div>
-      <div>
-        <div class="card_price">
-                     <span class="price">۸۶۰۰۰</span
-                     ><span class="unit">تومان</span>
-        </div>
-        <button class="card_buttons card_primary_button">
-          افزودن به سبد خرید
-        </button>
-        <button class="card_buttons card_secondary_button">
-          خرید تک درس
-        </button>
-      </div>
-    </div>
-
-    <div class="card_container">
-      <div class="card">
-        <img src="assets/images/card_image.png" alt="shop image" />
-        <h3>پک قوانین خاص</h3>
-        <p>
-          شامل 1390 تا تست احتمالی از قوانین خاص اعلام شده از سوی
-          اسکودا و وکلای مرکز قوه قضاییه
-        </p>
-      </div>
-      <div>
-        <div class="card_price">
-                     <span class="price">۸۶۰۰۰</span
-                     ><span class="unit">تومان</span>
-        </div>
-        <button class="card_buttons card_primary_button">
-          افزودن به سبد خرید
-        </button>
-        <button class="card_buttons card_secondary_button">
-          خرید تک درس
-        </button>
-      </div>
-    </div>
-
-    <div class="card_container">
-      <div class="card">
-        <img src="assets/images/card_image.png" alt="shop image" />
-        <h3>پک قوانین خاص</h3>
-        <p>
-          شامل 1390 تا تست احتمالی از قوانین خاص اعلام شده از سوی
-          اسکودا و وکلای مرکز قوه قضاییه
-        </p>
-      </div>
-      <div>
-        <div class="card_price">
-                     <span class="price">۸۶۰۰۰</span
-                     ><span class="unit">تومان</span>
-        </div>
-        <button class="card_buttons card_primary_button">
-          افزودن به سبد خرید
-        </button>
-        <button class="card_buttons card_secondary_button">
-          خرید تک درس
-        </button>
-      </div>
-    </div>
-
-    <div class="card_container">
-      <div class="card">
-        <img src="assets/images/card_image.png" alt="shop image" />
-        <h3>پک قوانین خاص</h3>
-        <p>
-          شامل 1390 تا تست احتمالی از قوانین خاص اعلام شده از سوی
-          اسکودا و وکلای مرکز قوه قضاییه
-        </p>
-      </div>
-      <div>
-        <div class="card_price">
-                     <span class="price">۸۶۰۰۰</span
-                     ><span class="unit">تومان</span>
-        </div>
-        <button class="card_buttons card_primary_button">
-          افزودن به سبد خرید
-        </button>
-        <button class="card_buttons card_secondary_button">
-          خرید تک درس
-        </button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -142,13 +50,13 @@
 <!-- basket buy -->
 
 
-<div>
+<div style="position: fixed;bottom: 40px;left: 40px;">
 
-  <div style="background: #e3ecf4;border:1px solid #2970b0;width: 100px;height: 50px;border-radius: 10px;position: relative;display: flex;align-items: center">
+  <div style="background: #e3ecf4;padding-right:12px;border:1px solid #2970b0;width: 135px;height: 50px;border-radius: 10px;position: relative;display: flex;align-items: center">
 
     <p>سبد خرید({{0}})</p>
 
-    <div style="position: absolute;right:70px;justify-content: center;background-color: #458ccc;border:1px solid #2970b0;border-radius: 50%;width: 50px;height: 50px;display: flex;align-items: center;">
+    <div style="position: absolute;left:-15px;justify-content: center;background-color: #458ccc;border:1px solid #2970b0;border-radius: 50%;width: 50px;height: 50px;display: flex;align-items: center;">
 
       <img src="assets/icon/shopping-basket.png" height="35px" width="35px">
 

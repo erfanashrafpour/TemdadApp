@@ -1,15 +1,19 @@
 <div class="continer">
   <div class="heder">
     <div class="parts1">
-      <a class="support">پشتیبانی</a>
-      <a  class="support" id="pm">پیام ها</a>
+      <a class="support" [class.active-support]="!IsTicketListType()"    (click)="setTicketList()">پشتیبانی</a>
+      <a  class="support" [class.active-support]="!IsSendTicketType()"  id="pm" (click)="setSendTicket()">پیام ها</a>
     </div>
     <div class="box">
 
-      <ng-container>
-<app-send-ticket></app-send-ticket>
+      <ng-container *ngIf="IsSendTicketType()">
+          <app-send-ticket></app-send-ticket>
       </ng-container>
 
+
+      <ng-container *ngIf="IsTicketListType()">
+          <app-ticket-list></app-ticket-list>
+      </ng-container>
     </div>
   </div>
 </div>

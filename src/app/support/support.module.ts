@@ -10,6 +10,12 @@ import { SupportTabComponent } from './support-tab/support-tab.component';
 const routes: Routes = [
   {
     path:'',
+    component:SupportTabComponent,
+   // pathMatch:'full'
+
+  },
+  /*{
+    path:'',
     redirectTo:'TicketList',
     pathMatch:'full'
 
@@ -19,7 +25,7 @@ const routes: Routes = [
   },
   {path:'TicketList',
     component:SupportTabComponent
-  }
+  }*/
 ];
 
 @NgModule({

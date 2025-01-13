@@ -16,7 +16,7 @@ export class ShopListComponent implements OnInit{
 
 
   ngOnInit() {
-
+this.getData()
   }
 
 
