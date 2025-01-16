@@ -1,0 +1,54 @@
+.main{
+
+  padding: 5px;
+  display: flex
+;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card{
+
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  margin: 10px;
+.image-class{
+
+  background-color: transparent;
+  img{
+    width: 180px;
+    height: 180px;
+    border-radius: 20px;
+  }
+}
+
+  .detail{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    width: 57%;
+  }
+
+.remove-basket
+{
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+ // width: 100%;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 18px;
+  padding: 5px;
+  border: 0;
+}
+}
+::-webkit-scrollbar {
+  width: 1px;
+}

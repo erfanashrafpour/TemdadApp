@@ -1,0 +1,22 @@
+<div class="main">
+
+
+  <div class="card" *ngFor="let item of basketList">
+    <div class="image-class">
+      <img src="{{item.ImageURL}}">
+    </div>
+
+    <div class="detail">
+      <p style="text-align: center">{{item.Title}}</p>
+      <p style="text-align: center">{{item.SumPrice | number}} تومان </p>
+
+
+      <button class="remove-basket"> حذف از سبد خرید</button>
+    </div>
+
+
+  </div>
+
+
+
+</div>

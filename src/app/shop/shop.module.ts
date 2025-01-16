@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShopListComponent } from './shop-list/shop-list.component';
 import {RouterModule, Routes} from "@angular/router";
+import { BasketListBottomSheetComponent } from './basket-list-bottom-sheet/basket-list-bottom-sheet.component';
 
 
 const routes:Routes =[
@@ -22,7 +23,8 @@ const routes:Routes =[
 
 @NgModule({
   declarations: [
-    ShopListComponent
+    ShopListComponent,
+    BasketListBottomSheetComponent
   ],
   imports: [
     CommonModule,

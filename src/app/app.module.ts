@@ -8,6 +8,7 @@ import {InterceptorService} from "@app/_core/service/interceptor.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SummeryModule} from "@app/summery/summery.module";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     HttpClientModule,
     BrowserAnimationsModule,
     SummeryModule,
-MatDialogModule
+MatDialogModule,
+    MatBottomSheetModule
   ],
   //m
   providers: [

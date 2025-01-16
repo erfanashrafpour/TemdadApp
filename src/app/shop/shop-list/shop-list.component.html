@@ -22,7 +22,7 @@
   <div class="card_parent">
     <div *ngFor="let item of shopList" class="card_container">
       <div class="card">
-        <img [src]="item.ImageURL" alt="shop image" />
+        <img [src]="item.ImageURL" (error)="$event.target.src = '../../../assets/icon/logo.png'" alt="shop image" />
         <h3>{{item.Title}}</h3>
         <p>
           {{item.Description}}
@@ -50,9 +50,26 @@
                       </ng-container>
         </div>
 
-        <button *ngIf="item.ButtonPublishBacket" class="card_buttons card_primary_button">
-          افزودن به سبد خرید
-        </button>
+        <ng-container *ngIf="item.ButtonPublishBacket && item.ButtonActiveBacket"  >
+          <button (click)="addToBasket(item)" *ngIf="!item.AddedToBasket" class="card_buttons card_primary_button">
+            افزودن به سبد خرید
+
+          </button>
+          <button  (click)="addToBasket(item)" *ngIf="item.AddedToBasket" class="card_buttons card_primary_button">
+            حذف از سبد خرید
+
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="item.ButtonPublishBacket && !item.ButtonActiveBacket"  class="card_buttons card_primary_button">
+          <button class="card_buttons card_primary_button">
+            قبلا خریداری شده
+
+          </button>
+        </ng-container>
+
+
+
         <button *ngIf="item.ButtonPublish1" (click)="setCurrentId(item.ButtonId1)" class="card_buttons card_secondary_button">
           {{item.ButtonTitle1}}
         </button>
@@ -70,7 +87,7 @@
 <!-- basket buy -->
 
 
-<div style="position: fixed;bottom: 40px;left: 40px;">
+<div (click)="openBasket()" style="position: fixed;bottom: 40px;left: 40px;">
 
   <div style="background: #e3ecf4;padding-right:12px;border:1px solid #2970b0;width: 135px;height: 50px;border-radius: 10px;position: relative;display: flex;align-items: center">
 
@@ -84,3 +101,6 @@
   </div>
 
 </div>
+
+
+<app-basket-list-bottom-sheet></app-basket-list-bottom-sheet>
