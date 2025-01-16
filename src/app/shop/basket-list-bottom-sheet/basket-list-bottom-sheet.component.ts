@@ -1,10 +1,11 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "@app/shop/service/shop.service";
 
 @Component({
   selector: 'app-basket-list-bottom-sheet',
   templateUrl: './basket-list-bottom-sheet.component.html',
-  styleUrls: ['./basket-list-bottom-sheet.component.scss']
+  styleUrls: ['./basket-list-bottom-sheet.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class BasketListBottomSheetComponent  implements OnInit{
   basketList = [];
