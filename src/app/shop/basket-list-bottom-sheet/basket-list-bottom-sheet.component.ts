@@ -9,6 +9,7 @@ import {ShopService} from "@app/shop/service/shop.service";
 })
 export class BasketListBottomSheetComponent  implements OnInit{
   basketList = [];
+  meta = undefined;
 
 
   constructor(private shopService:ShopService , private cd:ChangeDetectorRef) {
@@ -29,6 +30,7 @@ export class BasketListBottomSheetComponent  implements OnInit{
       if (res.statusCode==200)
       {
         this.basketList = res.data;
+        this.meta = res.meta
       }
 
 

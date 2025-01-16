@@ -17,6 +17,7 @@
   background-color: #f1f1f1;
   border-radius: 20px;
   margin: 10px;
+  justify-content: space-between;
 .image-class{
 
   background-color: transparent;
@@ -49,6 +50,38 @@
   border: 0;
 }
 }
+
+
+
+.done-buy{
+display: flex;
+  flex-flow: column;
+  width: 100%;
+
+.sumPrice{
+font-size: 20px;
+  position: relative;
+  direction: ltr;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+}
+.order-button{
+
+  background-color: #3A62C3;
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  font-size: 19px;
+  padding: 17px;
+
+}
+
 /*::ng-deep ::-webkit-scrollbar {
   width: 4px;
   overflow-y: scroll;

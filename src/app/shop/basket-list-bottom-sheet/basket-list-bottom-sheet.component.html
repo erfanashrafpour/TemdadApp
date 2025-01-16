@@ -9,14 +9,36 @@
     <div class="detail">
       <p style="text-align: center">{{item.Title}}</p>
       <p style="text-align: center">{{item.SumPrice | number}} تومان </p>
-
-
       <button class="remove-basket"> حذف از سبد خرید</button>
     </div>
-
-
   </div>
 
 
+<div class="done-buy" *ngIf="meta">
+  <div class="sumPrice">
 
+
+    <span class="price">{{meta.SumPrice| number}} تومان </span>
+    <ng-container *ngIf="meta.SumPrice != meta.SumPriceLastDiscount ">
+
+
+      <span class="price ">{{meta.SumPriceLastDiscount | number}} تومان </span>
+      <div style="
+    position: absolute;
+    top: 44%;
+    right: 34px;
+    width: 28%;
+    height: 2px;
+    background-color: red;
+    transform: rotate(-15deg);"></div>
+
+
+    </ng-container>
+
+
+  </div>
+  <button class="order-button">
+    تکمیل خرید
+  </button>
+</div>
 </div>

@@ -13,12 +13,15 @@ export class ShopListComponent implements OnInit{
 
   shopList = [];
   currentId = 0;
+
+  basketSize = 0;
   constructor(private shopService:ShopService , private cd :ChangeDetectorRef , private bottomSheet:MatBottomSheet) {
   }
 
 
   ngOnInit() {
 this.getData()
+    this.getBasket()
   }
 
 
@@ -66,6 +69,8 @@ this.getData()
 
       if (res.statusCode==200)
       {
+
+        this.basketSize = res.data.length;
 
       }
 
