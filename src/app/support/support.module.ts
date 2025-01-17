@@ -5,6 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {LessonListComponent} from "@app/Lesson/lesson-list/lesson-list.component";
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { SupportTabComponent } from './support-tab/support-tab.component';
+import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   declarations: [
     SendTicketComponent,
     TicketListComponent,
-    SupportTabComponent
+    SupportTabComponent,
+    QuestionDialogComponent
   ],
   imports: [
     CommonModule,

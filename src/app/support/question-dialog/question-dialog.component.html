@@ -1,0 +1,147 @@
+
+<ng-container *ngIf="questionItem" >
+
+  <div class="test__topSection">
+
+    <div class="test__navigation" >
+      <span class="navigation__item"> {{questionItem.ProductTitle}} </span>
+      <!--<span class="navigation__separate">&#xbb;</span>
+      <span class="navigation__item"> tejarat </span>-->
+    </div>
+
+    <p class="test__counter" (click)="close()">
+      <img width="40px" src="../../../assets/icon/back.svg">
+    </p>
+  </div>
+
+  <!-- end__test -->
+  <div class="container" [class.end__test]="true">
+
+    <div class="test__tools">
+<!--
+      <div class="tools__rightBox">
+        <button (click)="setBookMark(questionItem.Id ,!questionItem.Favorite)">
+          <img *ngIf="!questionItem.Favorite"
+               src="../../../assets/icon/save.svg"
+               alt="save"
+               class="tools__icon tools__saveIcon"
+          />
+          <img
+            *ngIf="questionItem.Favorite"
+            src="../../../assets/icon/bookmark.svg"
+            alt="save"
+            class="tools__icon tools__saveIcon"
+          />
+        </button>
+        <button>
+          <img
+            src="../../../assets/icon/Rules.png"
+            alt="rules"
+            class="tools__icon"
+          />
+        </button>
+      </div>
+      <div *ngIf="configForLitner" class="tools__stopwatch">
+        <span>{{timer}}</span>
+        <img
+          src="../../../assets/icon/stopwatch.svg"
+          alt="stopwatch"
+          class="tools__icon&#45;&#45;stopwatch"
+        />
+      </div>-->
+    </div>
+
+    <div class="test__container ">
+
+      <h2 class="test__heading">{{questionItem.Question}}</h2>
+
+      <div class="test__form">
+
+        <label for="optionA" #choiceA id="choiceA" class="test__label" >
+
+          <input
+            type="radio"
+            class="test__checkbox"
+            name="test"
+            id="optionA"
+          />
+          <div class="test__option  checkedOption__true unchecked__true " >
+            <div class="option__alphabet checked-alphabet__false">
+              الف</div>
+            <p class="option__text">
+
+              {{questionItem.ChoiceA}}
+            </p>
+          </div>
+        </label>
+        <label for="optionB"   #choiceB  id="choiceB" class="test__label" >
+          <input
+            type="radio"
+            class="test__checkbox"
+            name="test"
+            id="optionB"
+          />
+          <div class="test__option checkedOption__false" >
+            <div class="option__alphabet checked-alphabet__false">
+              ب
+            </div>
+            <p class="option__text">
+              {{questionItem.ChoiceB}}
+
+              </p>
+          </div>
+        </label>
+        <label for="optionC"  #choiceC id="choiceC" class="test__label" >
+          <input
+            type="radio"
+            class="test__checkbox"
+            name="test"
+            id="optionC"
+          />
+          <div class="test__option checkedOption__false" >
+            <div class="option__alphabet checked-alphabet__false">
+              ج</div>
+            <p class="option__text">
+              {{questionItem.ChoiceC}}
+
+            </p>
+          </div>
+        </label>
+        <label for="optionD" #choiceD id="choiceD" class="test__label" >
+          <input
+            type="radio"
+            class="test__checkbox"
+            name="test"
+
+            id="optionD"
+          />
+          <div class="test__option checkedOption__false" >
+            <div class="option__alphabet checked-alphabet__false">
+              د</div>
+            <p class="option__text">
+              {{questionItem.ChoiceD}}
+
+            </p>
+          </div>
+        </label>
+        <div class="form__buttons" >
+          <button
+            [class.lawButtonDisable]="questionItem.laws.length==0"
+            (click)="showLawReleated()"
+            class="rules__button commonStyle__formButton end__buttons"
+          >
+            قوانین مرتبط
+          </button>
+          <button
+            (click)="showAnswerBottomSheet()"
+
+            class="resolve__button commonStyle__formButton end__buttons"
+          >
+            پاسخ تشریحی
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

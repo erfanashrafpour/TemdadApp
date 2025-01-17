@@ -5,23 +5,46 @@
       <a href="support.html" class="support" id="support">پشتیبانی</a>
       <a class="support">پاسخ ها</a>
     </div>
+    <!--question:undefined,
+    answer:undefined,
+    time:undefined,
+    id:undefined,
+    questionId:undefined,
+    isVisited:undefined,
+    //////////
+    packageNumber :undefined,
+    packageTitle:undefined,
+    testNumber:undefined-->
     <div class="box">
-      <div class="main" *ngFor="let item of [1,2,3,4,5,6]">
+      <div class="main" *ngFor="let item of ticketList">
         <div class="information">
-          <span class="content">حقوق مدنی</span>
-          <span class="baste">بسته 31</span>
-          <span class="test">تست 4762</span>
+          <span class="content">{{item.packageTitle}}</span>
+          <span class="baste"> بسته {{item.packageNumber}}  </span>
+          <span class="test"> تست {{item.testNumber}}</span>
           <span class="displaydate">1403/06/18</span>
         </div>
         <div class="viewdaate">
-          <span class="date">1403/06/18</span>
-          <button class="viewtest">مشاهده تست</button>
+          <span class="date">{{item.time}}</span>
+          <button class="viewtest" (click)="showQuestion(item.questionId)">مشاهده تست</button>
         </div>
-        <div class="questionanswer" #itemQuestionAnswer>
-          <div class="question"><p class="questiontext">نباید در انتهای پاسخ «به اتفاق همه شرکاء»باشه؟ چون طبق ماده 6 اگر اتفاق توافقی نباشه ملاک با اکثریت هست و تنها در این صورت صحیح میشه.</p>
-            <svg width="30px" (click)="closeOpenAnswer(itemQuestionAnswer)" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 5L15.5 12L8.5 19" stroke="#3568A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        <div class="questionanswer close"style="position: relative" #itemQuestionAnswer >
+          <div class="question" [style]=" (!item.isVisited && item.hasAnswer)?'border: 2px solid green':''">
+            <p class="questiontext">{{item.question}}</p>
+            <svg *ngIf="item.hasAnswer" width="30px" (click)="closeOpenAnswer(itemQuestionAnswer)" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 5L15.5 12L8.5 19" stroke="#3568A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <p *ngIf="false" style="
+margin-top: -31px;
+    background-color: yellow;
+    padding: 6px;
+    border-radius: 9px;
+    width: 50px;
+    text-align: center;
+    color: black;
+    position: absolute;
+    top: 12px;
+    left: 0px;"
+            >بررسی</p>
           </div>
-          <div class="answer"><p class="answertext">سلام و احترام .<br>حق با شماست پاسخ صحیح اصلاح شد. با تشکر از پیام شما.</p></div>
+          <div class="answer"><p class="answertext">{{item.answer}}</p></div>
         </div>
       </div>
 

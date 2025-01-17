@@ -1,4 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {SupportService} from "@app/support/service/support.service";
 
 
 enum SupportTabType {
@@ -18,13 +19,19 @@ enum SupportTabType {
 export class SupportTabComponent implements OnInit{
 
 
-  constructor(private cd:ChangeDetectorRef) {
+  constructor(private cd:ChangeDetectorRef , private support:SupportService) {
   }
 
   TabType :SupportTabType ;
   ngOnInit(): void {
 
-    this.TabType = SupportTabType.SEND_TICKET;
+    this.TabType = SupportTabType.TICKET_LIST;
+
+    this.support.GetTicketApi().subscribe(res=>{
+
+
+    })
+
 
   }
 
