@@ -2,6 +2,17 @@
 <div class="container">
   <div class="main_header">
     <h1 class="heading">خلاصه‌های <span>طلایی</span></h1>
+    <div class="select_list_parent">
+      <img
+        src="../../../assets/icon/chevron_bottom.svg"
+        class="select_list_chevron"
+        alt="chevron icon"
+      />
+      <select  (change)="changeCategoryItem($event)" class="main_select_list">
+        <option  *ngFor="let category of categoryList" [value]="category.Id">{{category.Title}}</option>
+      </select>
+    </div>
+
   </div>
 
   <div class="container">
@@ -14,16 +25,6 @@
         />
 ثقبشر
       </a>
-      <div class="select_list_parent">
-        <img
-          src="../../../assets/icon/chevron_bottom.svg"
-          class="select_list_chevron"
-          alt="chevron icon"
-        />
-        <select  (change)="changeCategoryItem($event)" class="main_select_list">
-          <option  *ngFor="let category of categoryList" [value]="category.Id">{{category.Title}}</option>
-        </select>
-      </div>
 
     </div>
     <!--  "Id": 391,

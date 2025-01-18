@@ -6,6 +6,7 @@ import {MainComponent} from './main/main.component';
 import {RightSideBarComponent} from './right-side-bar/right-side-bar.component';
 import {LeftSideBarComponent} from './left-side-bar/left-side-bar.component';
 import {NgClickOutsideDirective} from "ng-click-outside2";
+import {TopUserModule} from "@app/top-user/top-user.module";
 
 const routes: Routes = [
 
@@ -75,6 +76,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     NgClickOutsideDirective,
+    TopUserModule,
     RouterModule.forChild(routes),
   ]
 })

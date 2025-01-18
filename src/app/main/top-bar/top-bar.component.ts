@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "@app/auth-module/service/auth.service";
 import {environment} from "@environments/environment";
 import {TopBarService} from "@app/main/service/top-bar.service";
+import {MatDialog} from "@angular/material/dialog";
+import {TopUserListDialogComponent} from "@app/top-user/top-user-list-dialog/top-user-list-dialog.component";
 
 @Component({
   selector: 'app-top-bar',
@@ -15,7 +17,7 @@ export class TopBarComponent implements OnInit{
   showLeftSideBar = false;
    countMessage = undefined;
 
-  constructor(private authService:AuthService , private topBarService : TopBarService) {
+  constructor(private authService:AuthService , private topBarService : TopBarService , private matDialog :MatDialog) {
   }
 
 
@@ -55,5 +57,13 @@ export class TopBarComponent implements OnInit{
   openLeftSideBar($event: MouseEvent) {
     this.showLeftSideBar = true;
     $event.stopPropagation();
+  }
+
+  async  openTopUserDialog() {
+
+    //const { TopUserListDialogComponent } = await import('../../top-user/top-user.module');
+
+    this.matDialog.open(TopUserListDialogComponent)
+
   }
 }

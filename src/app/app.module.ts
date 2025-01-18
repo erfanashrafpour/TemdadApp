@@ -20,7 +20,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     HttpClientModule,
     BrowserAnimationsModule,
     SummeryModule,
-MatDialogModule,
+    MatDialogModule,
     MatBottomSheetModule
   ],
   //m

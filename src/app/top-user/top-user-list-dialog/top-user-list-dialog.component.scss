@@ -1,0 +1,44 @@
+
+.main
+{
+  width: 100vh;
+  border: 1px solid blue;
+}
+
+.table{
+background-color: #e3ecf4;
+  padding: 5px;
+}
+
+
+.header{
+
+  display: flex;
+  flex-flow: row;
+
+}
+
+.item-header{
+  width: 25%;
+  text-align: center;
+  color: #1a6eb8;
+}
+
+.body{
+
+  display: flex;
+  flex-flow: column;
+
+}
+.row-body{
+  display: flex;
+  flex-flow: row;
+}
+.item-body{
+
+  width: 25%;
+  text-align: center;
+  color: #1a6eb8;
+
+}
+
