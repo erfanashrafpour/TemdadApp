@@ -12,7 +12,8 @@ import {BrowserModule} from "@angular/platform-browser";
 })
 export class TopUserListDialogComponent implements OnInit{
 
-  topUserList = [];
+   topUserList = [];
+   testCount = undefined;
 
 
   constructor(private topUserService:TopUserService) {
@@ -44,6 +45,13 @@ export class TopUserListDialogComponent implements OnInit{
   getTodayRank()
   {
     this.topUserService.GetTodayRank().subscribe(res=>{
+
+      if (res.statusCode==200)
+      {
+
+        this.testCount = res.data.TestCount
+
+      }
 
     })
   }

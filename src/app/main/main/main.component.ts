@@ -10,9 +10,10 @@ import {UserRepository} from "@app/_core/Helper/UserRepository";
 export class MainComponent {
   showRightSideBar = false;
 
-  constructor() {
+  constructor(private authService : AuthService) {
 
-    const userModel = new UserRepository();
+    debugger
+    const userModel = new UserRepository(authService);
 
 
 

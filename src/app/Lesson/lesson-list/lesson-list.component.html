@@ -8,6 +8,8 @@
                           (change)="changePlanActive($event)"
                           type="checkbox"
                           id="plane"
+                          [checked]="isPlanActive"
+
                           class="items__checkbox"
                         />
                         <label for="plane" class="items__label"
@@ -17,7 +19,7 @@
       <span class="filter__items items">
                         <input
                           (change)="changeRandom($event)"
-
+                          [checked]="isRandom"
                           type="checkbox"
                           id="testing"
                           class="items__checkbox"

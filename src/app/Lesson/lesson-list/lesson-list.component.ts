@@ -3,6 +3,7 @@ import {LessonService} from "@app/Lesson/service/lesson.service";
 import {LessonCategoryService} from "@app/lesson-category/service/lesson-category.service";
 import {Route, Router} from "@angular/router";
 import {QuestionPageEnum} from "@app/question/question-page/question-page.component";
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 @Component({
   selector: 'app-lesson-list',
@@ -11,8 +12,8 @@ import {QuestionPageEnum} from "@app/question/question-page/question-page.compon
 })
 export class LessonListComponent implements OnInit{
    lessonList = [];
-    private isRandom = false;
-    private isPlanActive = false;
+     isRandom = UserRepository.GetRandomActive();
+     isPlanActive = UserRepository.GetPlanActive();
   constructor(private lessonService:LessonService,private lc:LessonCategoryService,private rote:Router) {
   }
 
@@ -46,6 +47,8 @@ export class LessonListComponent implements OnInit{
           if (res.statusCode==200)
           {
             this.getLessonList()
+            UserRepository.GetNewUserModel();
+
           }
 
     });
@@ -62,7 +65,6 @@ export class LessonListComponent implements OnInit{
   changePlanActive($event) {
     this.isPlanActive = $event.target.checked;
     this.setPlan(this.isPlanActive);
-
   }
 
   private setPlan(isPlanActive) {
@@ -72,6 +74,8 @@ export class LessonListComponent implements OnInit{
       if (res.statusCode==200)
       {
         this.getLessonList()
+        UserRepository.GetNewUserModel();
+
       }
 
     });
@@ -96,4 +100,17 @@ return color[index]
 
     }
   }
+
+  getPlanActive() {
+
+    UserRepository.GetPlanActive();
+
+
+  }
+
+  getRandomActive()
+  {
+    UserRepository.GetRandomActive();
+  }
+
 }

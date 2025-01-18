@@ -59,7 +59,7 @@ export class TopBarComponent implements OnInit{
 
     //const { TopUserListDialogComponent } = await import('../../top-user/top-user.module');
 
-    this.matDialog.open(TopUserListDialogComponent)
+    this.matDialog.open(TopUserListDialogComponent,{maxWidth:'97vw'})
 
   }
 }
