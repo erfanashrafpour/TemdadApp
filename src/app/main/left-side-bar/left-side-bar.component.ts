@@ -16,5 +16,6 @@ export class LeftSideBarComponent {
 
   getFullName() {
     return UserRepository.GetFullName()
+
   }
 }
