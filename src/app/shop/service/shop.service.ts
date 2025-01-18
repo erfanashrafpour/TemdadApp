@@ -17,7 +17,9 @@ export class ShopService {
 
 
 
-  constructor(private httpClient : HttpClient) {}
+  constructor(private httpClient : HttpClient) {
+
+  }
 
 
   GetProductCategory(parentId)
