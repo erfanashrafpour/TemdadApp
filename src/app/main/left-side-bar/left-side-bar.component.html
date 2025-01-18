@@ -1,6 +1,6 @@
 <div class="backdrop " [class.backdrop__moreSidebar--active]="showSideBar" (clickOutside)="changeShowSideBar()">
   <div class="sidebar moreSidebar" (clickOutside)="changeShowSideBar()">
-    <p class="moreSidebar__heading">محمد‌مهدی مصطفایی</p>
+    <p class="moreSidebar__heading">{{getFullName()}}</p>
 
     <ul class="sidebarList">
       <li class="sidebarList__li moreSidebar__item">

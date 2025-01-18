@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AuthService} from "@app/auth-module/service/auth.service";
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 @Component({
   selector: 'app-main',
@@ -11,6 +12,7 @@ export class MainComponent {
 
   constructor() {
 
+    const userModel = new UserRepository();
 
 
 

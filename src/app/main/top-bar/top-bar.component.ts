@@ -4,6 +4,7 @@ import {environment} from "@environments/environment";
 import {TopBarService} from "@app/main/service/top-bar.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TopUserListDialogComponent} from "@app/top-user/top-user-list-dialog/top-user-list-dialog.component";
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 @Component({
   selector: 'app-top-bar',
@@ -15,7 +16,7 @@ export class TopBarComponent implements OnInit{
   fullUserName ='';
   showRightSideBar = false;
   showLeftSideBar = false;
-   countMessage = undefined;
+  countMessage = undefined;
 
   constructor(private authService:AuthService , private topBarService : TopBarService , private matDialog :MatDialog) {
   }
@@ -23,16 +24,11 @@ export class TopBarComponent implements OnInit{
 
   ngOnInit(): void {
 
+    this.fullUserName = UserRepository.GetFullName();
 
-    this.getCountMessageNotView()
+    this.getCountMessageNotView();
 
-    let userJson = localStorage.getItem(environment.USER_PASS);
 
-      if (userJson?.length>0) {
-
-        const  userModel = JSON.parse(userJson);
-        this.fullUserName = userModel.FirstName+' '+userModel.LastName
-      }
 
 
   }

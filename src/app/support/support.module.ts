@@ -11,7 +11,7 @@ import { QuestionDialogComponent } from './question-dialog/question-dialog.compo
 const routes: Routes = [
   {
     path:'',
-    component:SupportTabComponent,
+    component:TicketListComponent,
    // pathMatch:'full'
 
   },

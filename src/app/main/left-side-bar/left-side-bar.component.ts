@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 @Component({
   selector: 'app-left-side-bar',
@@ -11,5 +12,9 @@ export class LeftSideBarComponent {
   changeShowSideBar() {
     this.showSideBar = false
     this.showSideBarChange.emit(this.showSideBar);
+  }
+
+  getFullName() {
+    return UserRepository.GetFullName()
   }
 }

@@ -32,6 +32,10 @@ export class TopUserListDialogComponent implements OnInit{
         if (res.statusCode==200)
         {
           this.topUserList =res.data;
+          this.topUserList.forEach(item=>{
+            item.fullName = item.FirstName+" "+item.LastName
+            item.ActivePlan = item.ActivePlan? 'فعال' :'غیر فعال'
+          });
         }
 
     })
