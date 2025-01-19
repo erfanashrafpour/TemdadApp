@@ -12,7 +12,7 @@ export class MainComponent {
 
   constructor(private authService : AuthService) {
 
-    debugger
+  //  debugger
     const userModel = new UserRepository(authService);
 
 

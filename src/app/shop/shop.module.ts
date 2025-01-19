@@ -13,9 +13,14 @@ const routes:Routes =[
 
   },
   {
+    path:'list/:name',
+    component:ShopListComponent
+  },
+  {
     path:'list',
     component:ShopListComponent
   }
+,
 
 
 ]

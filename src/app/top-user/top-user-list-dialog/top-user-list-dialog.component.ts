@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TopUserService} from "@app/top-user/service/top-user.service";
 import {CommonModule, NgFor} from "@angular/common";
 import {BrowserModule} from "@angular/platform-browser";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-top-user-list-dialog',
@@ -16,7 +17,7 @@ export class TopUserListDialogComponent implements OnInit{
    testCount = undefined;
 
 
-  constructor(private topUserService:TopUserService) {
+  constructor(private topUserService:TopUserService , private matref:MatDialogRef<TopUserListDialogComponent>) {
   }
 
   ngOnInit() {
@@ -57,11 +58,7 @@ export class TopUserListDialogComponent implements OnInit{
   }
 
 
-
-
-
-
-
-
-
+  close() {
+    this.matref.close()
+  }
 }

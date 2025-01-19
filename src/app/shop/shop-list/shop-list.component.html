@@ -4,7 +4,7 @@
     <h1 class="heading">فروشگاه</h1>
     <div class="select_list_parent">
       <img
-        src="assets/icons/chevron_bottom.svg"
+        src="assets/icon/back.svg"
         class="select_list_chevron"
         alt="chevron icon"
       />
@@ -30,7 +30,7 @@
       </div>
       <div>
         <div *ngIf="item.SumPrice != 0" class="card_price" style="position: relative" >
-                     <span class="price">{{item.SumPrice}}</span>
+                     <span class="price">{{item.SumPrice | number}}</span>
                       <span class="unit">تومان</span>
                       <ng-container *ngIf="item.DiscountPercent !=  0">
 
