@@ -13,6 +13,8 @@ const GET_QUESTION_BY_BOOKMARK = environment.BASE_URL+"Testing/GetTestsProductBy
 const GET_QUESTION_BY_BOOKMARK_RANDOM = environment.BASE_URL+"Testing/GetTestsLessonByBookmarkForWeb"
 const GET_QUESTION_BY_SUBJECT = environment.BASE_URL+"Testing/GetTestsBySubject"
 
+const SEND_MEESAGE_TO_SUPPOURT = environment.BASE_URL+'Message/SendMessage'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -108,5 +110,18 @@ export class QuestionService {
     return this.httpClient.post<ResponseModel<any>>(SET_BOOKMARK,{QuestionID:questionId,Bookmark:bookMark})
 
   }
+
+  SendMessage(title,body)
+  {
+    const param ={
+      Title:title,
+      Body:body,
+      Category :4
+    }
+
+    return this.httpClient.post<ResponseModel<any>>(SEND_MEESAGE_TO_SUPPOURT,param)
+
+  }
+
 
 }

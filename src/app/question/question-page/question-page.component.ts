@@ -356,6 +356,9 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
   }
 
   openSendTicket() {
-    this.matDBottomShit.open(SendTicketBottomSheetComponent)
+    const instance = this.matDBottomShit.open(SendTicketBottomSheetComponent);
+    instance.instance.CategoryTitle = this.questionItem.CategotyTitle;
+    instance.instance.productTitle = this.questionItem.productTitle;
+    instance.instance.testNumber = this.questionItem.Id;
   }
 }

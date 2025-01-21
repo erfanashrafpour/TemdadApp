@@ -1,19 +1,67 @@
 .main{
 
-
+display: flex;
+  flex-flow: column;
+  min-width: 60vw;
 }
 
 .header{
   display: flex;
+  direction: ltr;
   flex-flow: row;
   justify-content: space-between;
+  padding: 10px;
+  align-items: center;
 }
 
 .title-header{
-
   color: #3A62C3;
-  font-size: 12px;
+  font-size: 18px;
   font-family: yekanNum;
 
+
+}
+.iconPocket{
+  width: 30%;
+  width: 43px;
+}
+.textArea{
+  height: 30vh;
+  border-radius: 8px;
+  margin-top: 22px;
+  border-color: #3A62C3;
+font-size: 18px;
+  font-family: 'yekanNum';
+  padding: 10px;
+}
+.textArea::placeholder{
+  //border-color: red;
+  font-size: 18px;
+}
+
+
+.line-header{
+  width: 50%;
+  height: 1px ;
+  background: #3A62C3;
+}
+
+.btn-save{
+
+  background-color: #3A62C3;
+  color: white;
+  padding: 8px 18px;
+  font-size: 18px;
+  border-radius: 7px;
+  font-family: 'yekanNum';
+
+}
+
+
+@media screen and (max-width: 1080px) {
+
+.title-header{
+ // width: 40%;
+}
 
 }

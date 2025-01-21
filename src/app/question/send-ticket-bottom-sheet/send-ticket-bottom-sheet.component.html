@@ -5,10 +5,10 @@
     <div class="iconPocket">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        fill="none"
+        fill="#3167bf"
         viewBox="0 0 24 24"
         stroke-width="1.5"
-        stroke="currentColor"
+        stroke="white"
         class="w-6 h-6 navbar-link__icon"
       >
         <path
@@ -18,12 +18,12 @@
         />
       </svg>
     </div>
+    <div *ngIf="false" class="line-header"></div>
 
 
     <div class="title-header">
-      ارسال پیام به پشتیبانی
+        ارتباط با گروه علمی
     </div>
-
 
 
 
@@ -31,6 +31,10 @@
   </div>
 
 
+<textarea placeholder="سوال خود را بفرمایید..." class="textArea" #textAreaElement></textarea>
 
+  <div style="display: flex;justify-content: end;margin-top: 8px">
+  <button class="btn-save" (click)="sendTicket(textAreaElement.value)">ذخیره</button>
+  </div>
 </div>
 
