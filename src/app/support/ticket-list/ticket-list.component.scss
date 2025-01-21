@@ -38,11 +38,11 @@ body{
 }
 .content{
   color: #3568A8;
-  font: 600 17px IRANSans;
+  font: 600 17px yekanNum;
   text-shadow: 2px 1px 4px #B3B3B3;
 }
 .baste, .test{
-  font: 500 17px IRANSansFaNum;
+  font: 500 17px yekanNum;
   border-right: 1.9px solid #000;
   text-shadow: 2px 1px 4px #B3B3B3;
   margin-right: 5px;
@@ -52,6 +52,7 @@ body{
   margin-left: 5px;
   text-shadow: 2px 1px 4px #B3B3B3;
   animation: bordercolor infinite 6s;
+  font-family: yekanNum;
 }
 @keyframes bordercolor{
   from {border-bottom: none; border-bottom: 1px solid #140EE4}
@@ -62,6 +63,7 @@ body{
   margin-left: 20px;
   display: none;
   animation: bordercolor infinite 6s;
+  font-family: yekanNum;
 }
 .viewdaate{
   display: inline-block;
@@ -116,10 +118,11 @@ body{
 }
 .questiontext{
   padding: 0px 10px 0px 63px;
-  font: 400 15px IRANSansFaNum;
+  font: 400 15px yekanNum;
   text-align: justify;
   text-shadow: 2px 1px 10px #B3B3B3;
-  line-break: anywhere;
+  //line-break: anywhere;
+  word-break: break-word;
 }
 svg{
   float: left;
@@ -133,9 +136,10 @@ svg{
 }
 .answertext{
   margin: 22px 20px 3px 22px;
-  font: 600 14px IRANSans;
+  font: 600 14px yekanNum;
   text-align: justify;
-  line-break: anywhere;
+  //line-break: anywhere;
+  word-break: break-word;
 }
 .indicator{
   display: inline-block;
@@ -162,6 +166,7 @@ svg{
   .viewtest{
     width: 98%;
     height: 35px;
+    font-family: yekanNum;
   }
   .displaydate{
     display: inline-block;
@@ -169,5 +174,5 @@ svg{
   }
   .date{display: none;}
   .content{font-size: 17px; margin-right: -8px;}
-  .baste, .test{font-size: 12px;}
+  .baste, .test{font-size: 14px;}
 }

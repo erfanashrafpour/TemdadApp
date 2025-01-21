@@ -3,7 +3,7 @@
 <!-- backdrop--active -->
 <div class="backdrop " [class.backdrop--active]="showSideBar" >
   <div class="sidebar" (clickOutside)="changeShowSideBar()">
-    <a href="#" class="sidebar__logo"
+    <a rouerLink="" class="sidebar__logo" style="text-align: center"
     ><img
       src="assets/icon/logo.png"
       class="sidebar__logo__img"
@@ -21,7 +21,7 @@
         >
       </li>
       <li class="sidebarList__li">
-        <a routerLink="summery" class="sidebarList__link"
+        <a routerLink="summery" (click)="changeShowSideBar()" class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/checklist.svg"
