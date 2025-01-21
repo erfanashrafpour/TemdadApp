@@ -193,6 +193,15 @@ body {
 
 /* media queries */
 @media screen and (max-width: 780px) {
+
+  .support__icon
+  {
+    svg{
+      width: 28px;
+      height: 28px;
+    }
+  }
+
   .test__topSection {
     font-size: 15px;
   }

@@ -7,6 +7,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { RuleMatDialogComponent } from './rule-mat-dialog/rule-mat-dialog.component';
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import { AnswerBottomSheetComponent } from './answer-bottom-sheet/answer-bottom-sheet.component';
+import { SendTicketBottomSheetComponent } from './send-ticket-bottom-sheet/send-ticket-bottom-sheet.component';
+import {SupportModule} from "@app/support/support.module";
 
 
 const routes: Routes = [
@@ -24,12 +26,13 @@ const routes: Routes = [
   declarations: [
     QuestionPageComponent,
     RuleMatDialogComponent,
-    AnswerBottomSheetComponent
+    AnswerBottomSheetComponent,
+    SendTicketBottomSheetComponent
   ],
-  imports: [
-    CommonModule,
-    MatBottomSheetModule,
-    RouterModule.forChild(routes)
-  ]
+    imports: [
+        CommonModule,
+        MatBottomSheetModule,
+        RouterModule.forChild(routes),
+    ]
 })
 export class QuestionModule { }

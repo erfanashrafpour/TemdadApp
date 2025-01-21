@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {RuleMatDialogComponent} from "@app/question/rule-mat-dialog/rule-mat-dialog.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {AnswerBottomSheetComponent} from "@app/question/answer-bottom-sheet/answer-bottom-sheet.component";
+import {SendTicketBottomSheetComponent} from "@app/question/send-ticket-bottom-sheet/send-ticket-bottom-sheet.component";
 
 
 export enum QuestionPageEnum {
@@ -200,7 +201,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
 
     this.stopTimer()
     this.timer =  Number(localStorage.getItem(environment.TIMER)??20);//userResponce.Timer;
-debugger
+//debugger
     this.interval = setInterval(() => {
       if(this.timer > 0) {
 
@@ -352,5 +353,9 @@ debugger
 
 
 
+  }
+
+  openSendTicket() {
+    this.matDBottomShit.open(SendTicketBottomSheetComponent)
   }
 }

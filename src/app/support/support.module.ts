@@ -36,6 +36,9 @@ const routes: Routes = [
     SupportTabComponent,
     QuestionDialogComponent
   ],
+  exports: [
+    SendTicketComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
