@@ -61,8 +61,8 @@
 
     <nav class="toolbar__navbar navbar">
       <ul class="navbar__ul navbar-list">
-        <li class="navbar-list__li">
-          <a href="main/support" class="navbar-link">
+        <li *ngIf="false" class="navbar-list__li">
+          <a routerLink="support" class="navbar-link">
             <svg xmlns="http://www.w3.org/2000/svg"
                  height="27px"
                  viewBox="0 -960 960 960"
@@ -100,7 +100,7 @@
         </li>
 
         <li class="navbar-list__li navbar-list__li--shopping">
-          <a href="main/shop" class="navbar-link">
+          <a routerLink="shop" class="navbar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -136,7 +136,7 @@ background-color: red;
 ">
             {{countMessage}}
           </div>
-          <a href="main/support"  class="navbar-link">
+          <a routerLink="support"  class="navbar-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
