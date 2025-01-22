@@ -27,3 +27,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: #3167bf;
   border-radius: 10px;
 }
+
+.custom-container .mat-dialog-container {
+  border-radius: 20px !important;
+}

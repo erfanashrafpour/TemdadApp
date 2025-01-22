@@ -33,6 +33,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         MatBottomSheetModule,
+
         RouterModule.forChild(routes),
     ]
 })

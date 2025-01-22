@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {QuestionService} from "@app/question/service/question.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TicketListComponent} from "@app/support/ticket-list/ticket-list.component";
+import {TicketListDialogComponent} from "@app/question/ticket-list-dialog/ticket-list-dialog.component";
+import {Location} from "@angular/common";
+import {MatBottomSheetRef} from "@angular/material/bottom-sheet";
 
 @Component({
   selector: 'app-send-ticket-bottom-sheet',
@@ -14,10 +17,11 @@ export class SendTicketBottomSheetComponent implements OnInit{
   @Input()productTitle;
   @Input()CategoryTitle;
 
-  constructor(private questionService:QuestionService , private matDialog:MatDialog) {
+  constructor(private questionService:QuestionService , private matDialog:MatDialog , private location:Location , private bottomShhet:MatBottomSheetRef<SendTicketBottomSheetComponent>) {
   }
 
   ngOnInit(): void {
+
 
 
 
@@ -47,6 +51,6 @@ export class SendTicketBottomSheetComponent implements OnInit{
   }
 
   openTicketingList() {
-    this.matDialog.open(TicketListComponent)
+    this.matDialog.open(TicketListDialogComponent,{maxWidth:'97vw',height:'90vh',panelClass:'custom-container'})
   }
 }

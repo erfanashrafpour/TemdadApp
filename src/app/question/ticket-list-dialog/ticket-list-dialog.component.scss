@@ -1,6 +1,10 @@
+
+::ng-deep.mat-dialog-container {
+  border-radius: 50px;
+}
 *{
-  font-family: IRANSans;
-  font-family: IRANSansFaNum;
+  font-family: yekanNum;
+  font-family: yekan;
   text-decoration: none;
 }
 body{
@@ -175,4 +179,13 @@ svg{
   .date{display: none;}
   .content{font-size: 17px; margin-right: -8px;}
   .baste, .test{font-size: 14px;}
+}
+.title-header{
+
+  display: flex;
+  justify-content: space-between;
+  padding-right: 14px;
+  padding-left: 14px;
+  background-color: #3167bf;
+
 }
