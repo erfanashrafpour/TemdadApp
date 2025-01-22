@@ -12,13 +12,12 @@
 
     <ul class="sidebarList">
       <li class="sidebarList__li">
-        <a routerLink="" class="sidebarList__link"
+        <a routerLink="" (click)="changeShowSideBar()"  class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/checked-checkbox.png"
         />
-          <span class="sidebarList__text">تست‌های من</span></a
-        >
+          <span class="sidebarList__text">تست‌های من</span></a>
       </li>
       <li class="sidebarList__li">
         <a routerLink="summery" (click)="changeShowSideBar()" class="sidebarList__link"
@@ -30,7 +29,7 @@
         >
       </li>
       <li class="sidebarList__li">
-        <a routerLink="law" class="sidebarList__link"
+        <a routerLink="law" (click)="changeShowSideBar()"  class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/Rules.png"
@@ -39,7 +38,7 @@
         >
       </li>
       <li class="sidebarList__li">
-        <a routerLink="bookmark" class="sidebarList__link"
+        <a routerLink="bookmark" (click)="changeShowSideBar()"  class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/save.png"
@@ -48,7 +47,7 @@
         >
       </li>
       <li class="sidebarList__li">
-        <a routerLink="subject" class="sidebarList__link"
+        <a routerLink="subject" (click)="changeShowSideBar()"  class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/analyse.svg"
@@ -79,13 +78,12 @@
         >
       </li>
       <li class="sidebarList__li">
-        <a href="main/setting" class="sidebarList__link"
+        <a routerLink="setting" (click)="changeShowSideBar()"  class="sidebarList__link"
         ><img
           class="sidebarList__icon"
           src="../../../assets/icon/settings.png"
         />
-          <span class="sidebarList__text">تنظیمات</span></a
-        >
+          <span class="sidebarList__text">تنظیمات</span></a>
       </li>
     </ul>
   </div>
