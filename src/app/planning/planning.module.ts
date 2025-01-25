@@ -5,6 +5,7 @@ import {NgbCalendar, NgbCalendarPersian, NgbDatepickerI18n, NgbModule} from "@ng
 import {RouterModule, Routes} from "@angular/router";
 import {QuestionPageComponent} from "@app/question/question-page/question-page.component";
 import {NgbDatepickerI18nPersian} from "@app/_core/_config/persian-datepicker.config";
+import {FormsModule} from "@angular/forms";
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     NgbModule,
     RouterModule.forChild(routes)
 

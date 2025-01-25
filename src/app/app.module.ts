@@ -11,6 +11,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {NgbCalendar, NgbCalendarPersian, NgbDatepickerI18n, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgbDatepickerI18nPersian} from "@app/_core/_config/persian-datepicker.config";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {NgbDatepickerI18nPersian} from "@app/_core/_config/persian-datepicker.co
     SummeryModule,
     MatDialogModule,
     MatBottomSheetModule,
+
   ],
   //m
   providers: [

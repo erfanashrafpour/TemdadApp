@@ -2,7 +2,8 @@
 
 
 ::ng-deep :root {
-  --color-purple-primary: #4c0083;
+ // --color-purple-primary: #4c0083;
+  --color-purple-primary: #3167bf;
   --color-white: #fff;
   --color-gray-dark: #e0e0e0;
   --color-gray-light: #f1f1f1;
@@ -18,11 +19,12 @@
 }
 
 .planning-container {
-  height: 61vh;
-  overflow-y: scroll;
-  padding: 15px 15px 50px;
-  margin: 0 auto;
-  width: 90%;
+  //height: 61vh;
+ // overflow-y: scroll;
+  //padding: 15px 15px 50px;
+  //margin: 0 auto;
+ // width: 90%;
+  margin: 20px;
   //box-shadow: 0 0 10px var(--color-gray-dark);
 }
 
@@ -30,7 +32,8 @@
   border: 1px solid var(--color-purple-primary);
   position: relative;
   border-radius: 5px;
-  font-size: 13px;
+  //font-size: 13px;
+  font-size: 18px;
   color: var(--color-purple-primary);
   padding: 15px;
 }
@@ -197,7 +200,7 @@
 
 .planning-container__section--3 li.li-check .title input:checked,
 .planning-container__section--3 li.li-minus .title input:checked {
-  background: #4c0083;
+  background: #3167bf;
 }
 
 .planning-container__section--3 li.li-minus .title input:checked::after {
@@ -290,7 +293,7 @@
 
 @media screen and (min-width: 600px) {
   .planning-container {
-    max-width: 600px;
+   // max-width: 600px;
   }
 }
 .textarea-container__btn {
@@ -301,7 +304,7 @@
   font-size: 13px;
 }
 .textarea-container__btn--purple {
-  background: (#4c0083);
+  background: (#3167bf);
   color: (#fff);
 }
 ::-webkit-scrollbar {

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CalenderHelper} from "@app/_core/_config/CalenderHelper";
 import {MatDialog} from "@angular/material/dialog";
 import {UserRepository} from "@app/_core/Helper/UserRepository";
+import {PlanService} from "@app/planning/services/plan.service";
 
 
 interface IRequestPlan {
@@ -70,7 +71,7 @@ export class PlanComponent  implements OnInit {
   user;
   private calendarhelper = new CalenderHelper();
   @Input()data:{userId:number}
-  constructor( private matDialog:MatDialog) {
+  constructor( private matDialog:MatDialog , private planService:PlanService) {
     this.seUserPlan()
 
   }
@@ -128,7 +129,13 @@ export class PlanComponent  implements OnInit {
   ngOnInit(): void {
 
 
-
+    this.planService.GetTreePlan().subscribe(res=>{
+      if (res.statusCode==200)
+      {
+        this.heads = res.data;//.filter(item=>item.Id=6)
+        this.heads.forEach(item=>item.hide=true)
+      }
+    })
 
 
    /* this.AdminUserService.getAccountUser(this.data.userId).subscribe(res=>{
@@ -213,8 +220,8 @@ export class PlanComponent  implements OnInit {
     Plan_Wednesday : UserRepository.GetPlanWednesday(),
     Plan_Saturday : UserRepository.GetPlanSaturday(),
     Plan_Friday : UserRepository.GetPlanFriday(),
-    startDate : UserRepository.GetPlanFrom(),
-    endDate : UserRepository.GetPlanTo(),
+      Plan_From : UserRepository.GetPlanFrom(),
+      Plan_To : UserRepository.GetPlanTo(),
     };
 
     this.startDate = this.calendarhelper.DateToNgb(this.user.Plan_From)
