@@ -67,17 +67,19 @@ interface IRequestPlan {
   styleUrls: ['./plan.component.scss']
 })
 export class PlanComponent  implements OnInit {
-  user :IRequestPlan=undefined;
+  user;
   private calendarhelper = new CalenderHelper();
   @Input()data:{userId:number}
   constructor( private matDialog:MatDialog) {
+    this.seUserPlan()
+
   }
   litnerList = [1,2,3,4,5]
   heads =[]
 
   startDate;
   endDate ;
-  litnerCount=5;
+  litnerCount;
 
   isSomeItemNotCheck(children:any[]) {
 
@@ -125,7 +127,6 @@ export class PlanComponent  implements OnInit {
 
   ngOnInit(): void {
 
-  this.seUserPlan()
 
 
 
@@ -203,8 +204,23 @@ export class PlanComponent  implements OnInit {
 
   private seUserPlan() {
 
-    this.user.Plan_Sunday = UserRepository.GetPla
+    this.user = {
 
+      Plan_Sunday : UserRepository.GetPlanSunday(),
+    Plan_Monday : UserRepository.GetPlanMonday(),
+    Plan_Tuesday : UserRepository.GetPlanTuesday(),
+    Plan_Thursday : UserRepository.GetPlanThursday(),
+    Plan_Wednesday : UserRepository.GetPlanWednesday(),
+    Plan_Saturday : UserRepository.GetPlanSaturday(),
+    Plan_Friday : UserRepository.GetPlanFriday(),
+    startDate : UserRepository.GetPlanFrom(),
+    endDate : UserRepository.GetPlanTo(),
+    };
+
+    this.startDate = this.calendarhelper.DateToNgb(this.user.Plan_From)
+    this.endDate = this.calendarhelper.DateToNgb(this.user.Plan_To)
+    this.litnerCount = UserRepository.GetLeitnerCounter()
+    debugger
 
   }
 }

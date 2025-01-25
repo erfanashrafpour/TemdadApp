@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SummeryModule} from "@app/summery/summery.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {NgbCalendar, NgbCalendarPersian, NgbDatepickerI18n, NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbDatepickerI18nPersian} from "@app/_core/_config/persian-datepicker.config";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     BrowserAnimationsModule,
     SummeryModule,
     MatDialogModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
   ],
   //m
   providers: [
@@ -31,6 +33,9 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
       multi: true
 
     },
+
+
+
   ],
   bootstrap: [AppComponent]
 })

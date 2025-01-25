@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
 @font-face {
   font-family: iranRegular;
   src: url('/assets/font/Webfonts/Woff/IRANYekanX-Regular.woff');
@@ -31,3 +33,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .custom-container .mat-dialog-container {
   border-radius: 20px !important;
 }
+
+
+ngb-datepicker-navigation-select
+{
+  font-family: "YekanBakh num";
+
+}
+ngb-datepicker{
+  direction: ltr;
+  font-family: "YekanBakh num";
+}
+ngb-datepicker-month
+{
+  direction: rtl;
+}
+.ngb-dp-arrow-btn
+{
+  color: #4c0083;
+}
+.ng-star-inserted{
+  font-family: "YekanBakh num";
+
+}
+.ngb-dp-weekday{
+  color: #4c0083 !important;
+
+}
+.ngb-dp-day{
+  .active{
+    background-color: #4a0985!important;
+  }}
+.no-padding-dialog{
+  .mat-dialog-container{
+    padding: 0px !important;
+  }
+}
+
+
