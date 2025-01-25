@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CalenderHelper} from "@app/_core/_config/CalenderHelper";
 import {MatDialog} from "@angular/material/dialog";
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 
 interface IRequestPlan {
@@ -66,7 +67,7 @@ interface IRequestPlan {
   styleUrls: ['./plan.component.scss']
 })
 export class PlanComponent  implements OnInit {
-  user =undefined;
+  user :IRequestPlan=undefined;
   private calendarhelper = new CalenderHelper();
   @Input()data:{userId:number}
   constructor( private matDialog:MatDialog) {
@@ -121,7 +122,13 @@ export class PlanComponent  implements OnInit {
 
   }
 
+
   ngOnInit(): void {
+
+  this.seUserPlan()
+
+
+
 
    /* this.AdminUserService.getAccountUser(this.data.userId).subscribe(res=>{
 
@@ -192,5 +199,12 @@ export class PlanComponent  implements OnInit {
       }
     )
 */
+  }
+
+  private seUserPlan() {
+
+    this.user.Plan_Sunday = UserRepository.GetPla
+
+
   }
 }
