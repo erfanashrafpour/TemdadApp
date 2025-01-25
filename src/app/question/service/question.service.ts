@@ -11,7 +11,7 @@ const GET_QUESTION_BY_LAW = environment.BASE_URL+"Testing/GetTestsByLawForWeb"
 const GET_QUESTION_RANDOM = environment.BASE_URL+"Testing/GetTestsByLessonForWeb"
 const GET_QUESTION_BY_BOOKMARK = environment.BASE_URL+"Testing/GetTestsProductByBookmarkForWeb"
 const GET_QUESTION_BY_BOOKMARK_RANDOM = environment.BASE_URL+"Testing/GetTestsLessonByBookmarkForWeb"
-const GET_QUESTION_BY_SUBJECT = environment.BASE_URL+"Testing/GetTestsBySubject"
+const GET_QUESTION_BY_SUBJECT = environment.BASE_URL+"Testing/GetTestsBySubjectForWeb"
 
 const SEND_MEESAGE_TO_SUPPOURT = environment.BASE_URL+'Message/SendMessage'
 

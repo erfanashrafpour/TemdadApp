@@ -1,0 +1,558 @@
+<!--
+<div>
+
+<div>
+  <label>
+  1. زمان شروع و پایان برنامه ریزی خود را انتخاب کنید.
+  </label>
+
+  <div class="row m-0" style="border: 1px solid #4c0083">
+    <div class="col-6">
+<label>تاریخ شروع</label>
+      <input ngbDatepicker
+             [firstDayOfWeek]="6"
+             #datePickerFrom="ngbDatepicker" [(ngModel)]="startDate" placeholder="تاریخ ایجاد" (click)="datePickerFrom.toggle()"
+            />
+    </div>
+    <div class="col-6">
+      <label>تاریخ شروع</label>
+      <input ngbDatepicker
+             [firstDayOfWeek]="6"
+             #datePickerTo="ngbDatepicker" [(ngModel)]="endDate"  placeholder="تاریخ ایجاد" (click)="datePickerTo.toggle()"
+             />
+    </div>
+
+  </div>
+
+
+  <div *ngIf="user">
+    <label>2. روزهای تست زنی را تیک بزنید و مابقی روزها را برای جبران و استراحت خالی بگذارید</label>
+
+    <div class="row m-0">
+      <div class="col-3">
+        <mat-checkbox [(ngModel)]="user.Plan_Saturday" class="example-margin">شنبه</mat-checkbox>
+      </div>
+      <div class="col-3">
+        <mat-checkbox [(ngModel)]="user.Plan_Sunday" class="example-margin">یکشنبه</mat-checkbox>
+      </div>
+      <div class="col-3">
+        <mat-checkbox  [(ngModel)]="user.Plan_Monday" class="example-margin">دوشنبه</mat-checkbox>
+      </div>
+      <div class="col-3">
+        <mat-checkbox   [(ngModel)]="user.Plan_Tuesday"class="example-margin">سه شنبه</mat-checkbox>
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-3">
+        <mat-checkbox  [(ngModel)]="user.Plan_Wednesday" class="example-margin">چهارشنبه</mat-checkbox>
+      </div>
+      <div class="col-3">
+        <mat-checkbox [(ngModel)]="user.Plan_Thursday" class="example-margin">پنجشنبه</mat-checkbox>
+      </div>
+      <div class="col-3">
+        <mat-checkbox  [(ngModel)]="user.Plan_Friday" class="example-margin">جمعه</mat-checkbox>
+      </div>
+
+    </div>
+
+  </div>
+
+    <div>
+      <label>3. درس ها یا بسته های مورد نظر خود برای برنامه ریزی را انتخاب کنید</label>
+
+        <div *ngFor="let head of heads">
+          <mat-checkbox class="checklist-leaf-node"
+                        [checked]="isAllItemCheck(head.Children)"
+                        (change)="onToggleHead($event , head.Id)"
+                        [indeterminate]="isSomeItemNotCheck(head.Children)">{{head.Name}}</mat-checkbox>
+
+          <div style="background-color: #6F6F6F;padding-right: 25px" *ngFor="let item of head.Children" >
+            <mat-checkbox class="checklist-leaf-node"
+                          [(ngModel)]="item.IsCheck"
+                        >{{item.Name}}</mat-checkbox>
+
+          </div>
+
+
+
+        </div>
+
+
+    </div>
+
+  <div>
+
+    <label id="example-radio-group-label">4. تعداد تکرار لایتنر را انتخاب کنید</label>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="litnerCount">
+
+      <mat-radio-button  *ngFor="let item of litnerList" class="example-radio-button" [value]="item">{{item}}</mat-radio-button>
+
+    </mat-radio-group>
+
+  </div>
+
+
+</div>
+</div>
+
+&lt;!&ndash;
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;
+    <button mat-icon-button disabled></button>
+    <mat-checkbox class="checklist-leaf-node"
+    >{{node.name}}</mat-checkbox>
+
+  </mat-tree-node>
+  &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name">
+
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    <mat-checkbox class="checklist-leaf-node"
+    >{{node.name}}
+    </mat-checkbox>
+
+  </mat-tree-node>
+</mat-tree>&ndash;&gt;
+-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="planning-container" *ngIf="litnerCount">
+  <section
+    class="planning-container__section planning-container__section--1"
+  >
+    <p class="p-heading">
+      زمان شروع و پایان برنامه‌ریزی خود را انتخاب کنید.
+    </p>
+
+    <div class="input-box">
+      <div class="item">
+        <label for="startTime">زمان شروع:</label>
+        <input ngbDatepicker
+               style="font-family: 'YekanBakh num'"
+               id="startTime"
+               [firstDayOfWeek]="6"
+               #datePickerFrom="ngbDatepicker" [(ngModel)]="startDate" placeholder="تاریخ ایجاد" (click)="datePickerFrom.toggle()"
+        />      </div>
+
+      <div class="item">
+        <label for="endTime">زمان پایان:</label>
+        <input ngbDatepicker
+               style="font-family: 'YekanBakh num'"
+               id="endTime"
+               [firstDayOfWeek]="6"
+               #datePickerTo="ngbDatepicker" [(ngModel)]="endDate"  placeholder="تاریخ ایجاد" (click)="datePickerTo.toggle()"
+        />      </div>
+    </div>
+  </section>
+
+  <section
+    class="planning-container__section planning-container__section--2"
+  >
+    <p>
+      روزهای تست‌زنی را تیک بزنید و مابقی روزها را برای جبران و
+      استراحت خالی بگذارید.
+    </p>
+    <div class="days-iteme--container">
+                    <span>
+                        <input
+                          [(ngModel)]="user.Plan_Saturday"
+                          type="checkbox"
+                          name="checkbox"
+                          id="day1"
+                        /><label for="day1">شنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Sunday"
+                          type="checkbox"
+                          name="checkbox"
+                          id="day2"
+                        /><label for="day2">یکشنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Monday"
+                          type="checkbox"
+                          name="checkbox"
+                          id="day3"
+                        /><label for="day3">دوشنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Tuesday"
+                          type="checkbox"
+                          name="checkbox"
+                          id="day4"
+                        /><label for="day4">سه‌شنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Wednesday"
+                          type="checkbox"
+                          name="checkbox"
+                          id="day5"
+                        /><label for="day5">چهارشنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Thursday"
+
+                          type="checkbox"
+                          name="checkbox"
+                          id="day6"
+                        /><label for="day6">پنجشنبه</label>
+                    </span>
+      <span>
+                        <input
+                          [(ngModel)]="user.Plan_Friday"
+
+                          type="checkbox"
+                          name="checkbox"
+                          id="day7"
+                        /><label for="day7">جمعه</label>
+                    </span>
+    </div>
+  </section>
+
+  <section
+    class="planning-container__section planning-container__section--3"
+  >
+    <p class="p-heading">
+      درس‌ها با بسته‌های مورد نظر خود را برای برنامه‌ریزی انتخاب
+      کنید.
+    </p>
+
+    <p class="pargraph">
+      به‌طور پیش‌فرض تمامی بسته‌های خریداری شده شما، در
+      برنامه‌ریزی شرکت خواهند داشت. اما اگر خواستید درس یا بسته
+      خاصی را به بعد موکول کرده و یا از تست‌زنی آن فعلا صرف نظر
+      کنید. تیک درس یا بسته مورد نظر را بردارید.
+    </p>
+    <!--   <mat-checkbox class="checklist-leaf-node"
+                     [checked]="isAllItemCheck(head.Children)"
+                     (change)="onToggleHead($event , head.Id)"
+                     [indeterminate]="isSomeItemNotCheck(head.Children)">{{head.Name}}</mat-checkbox>-->
+    <ul>
+      <li  class="li-check" [ngClass]="{'li-minus':isSomeItemNotCheck(head.Children)}" *ngFor="let head of heads;let i = index">
+
+
+
+        <div class="title" style="font-family: 'YekanBakh num'">
+          <i (click)="head.hide = !head.hide"  class="fa  "   [ngClass]="{'fa-angle-left':head.hide==true,'fa-angle-down':head.hide==false }" aria-hidden="true"></i>
+
+          <input
+            [checked]="isAllItemCheck(head.Children) || isSomeItemNotCheck(head.Children)"
+            (change)="onToggleHead($event , head.Id)"
+            type="checkbox"
+            name="checkbox{{i}}"
+            id="checkbox-dropdown1{{i}}"
+            class="checkMark"
+          />
+          <label (click)="head.hide = !head.hide" for="checkbox-dropdown1{{i}}" style="font-family: 'YekanBakh num'">{{head.Name}}</label>
+        </div>
+        <ul *ngIf="!head.hide" >
+          <li  class="li-check" *ngFor="let item of head.Children;let ichild = index" >
+            <input
+              type="checkbox"
+              name="checkbox"
+              [(ngModel)]="item.IsCheck"
+              [checked]="item.IsCheck"
+              id="checkbox-dropdown4{{ichild}}"
+              class="checkMark"
+            />
+            <label for="checkbox-dropdown4{{ichild}}" style="font-family: 'YekanBakh num'">{{item.Name2}}</label>
+          </li>
+
+        </ul>
+      </li>
+      <!--
+            <li class="li-minus">
+              <div class="title">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  id="checkbox-dropdown2"
+                  class="checkMark"
+                />
+                <label for="checkbox-dropdown2"
+                >آئین دادرسی مدنی</label
+                >
+              </div>
+              <ul>
+                <li class="li-check">
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    id="checkbox-dropdown4"
+                    class="checkMark"
+                  />
+                  <label for="checkbox-dropdown4"
+                  >حقوق جزای عمومی</label
+                  >
+                </li>
+                <li class="li-check">
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    id="checkbox-dropdown4"
+                    class="checkMark"
+                  />
+                  <label for="checkbox-dropdown4"
+                  >حقوق جزای عمومی</label
+                  >
+                </li>
+              </ul>
+            </li>
+      -->
+    </ul>
+  </section>
+  <section
+    class="planning-container__section planning-container__section--4"
+  >
+    <p class="heading">
+      بعد از چند‌بار، تست از فرایند یادگیری کاربر حذف شود؟
+    </p>
+
+    <div class="select-box">
+      <select [(ngModel)]="litnerCount" name="repeat" class="select-tag">
+        <option value="1">1 بار تکرار</option>
+        <option value="2">۲ بار تکرار</option>
+        <option value="3">۳ بار تکرار</option>
+        <option value="4">۴ بار تکرار</option>
+        <option value="5">۵ بار تکرار</option>
+      </select>
+      <span class="select-icon">&#10094;</span>
+    </div>
+  </section>
+
+  <div style="text-align: end">
+    <button (click)="showPlanTable()"
+            class="textarea-container__btn textarea-container__btn--purple m-2"
+    >
+      نمایش جدول برنامه ریزی
+    </button>
+    <button (click)="save()"
+            class="textarea-container__btn textarea-container__btn--purple m-2"
+    >
+      تایید
+    </button>
+
+
+  </div>
+</div>
+
+
+
+<!--
+
+<li class="li-plus">
+  <div class="title">
+    <input
+      type="checkbox"
+      name="checkbox"
+      id="checkbox-dropdown2"
+      class="checkMark"
+    />
+    <label for="checkbox-dropdown2"
+    >آئین دادرسی مدنی</label
+    >
+  </div>
+  <ul>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+  </ul>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown3"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown3">حقوق تجارت</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown4"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown4">حقوق جزای عمومی</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown5"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown5"
+  >حقوق جزای اختصاصی</label
+  >
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown6"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown6"
+  >آئین دادرسی کیفری</label
+  >
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown7"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown7">اصول فقه</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown8"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown8">حقوق اساسی دو</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown9"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown9">قوانین خاصی</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown10"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown10">حقوق ثبت</label>
+</li>
+<li class="li-check">
+  <input
+    type="checkbox"
+    name="checkbox"
+    id="checkbox-dropdown11"
+    class="checkMark"
+  />
+  <label for="checkbox-dropdown11"
+  >متون فقه - تحریر امام خمینی(ره)</label
+  >
+</li>
+<li class="li-plus">
+  <div class="title">
+    <input
+      type="checkbox"
+      name="checkbox"
+      id="checkbox-dropdown2"
+      class="checkMark"
+    />
+    <label for="checkbox-dropdown2"
+    >آئین دادرسی مدنی</label
+    >
+  </div>
+  <ul>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+  </ul>
+</li>
+<li class="li-minus">
+  <div class="title">
+    <input
+      type="checkbox"
+      name="checkbox"
+      id="checkbox-dropdown2"
+      class="checkMark"
+    />
+    <label for="checkbox-dropdown2"
+    >آئین دادرسی مدنی</label
+    >
+  </div>
+  <ul>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+    <li class="plus-items">
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="checkbox-dropdown4"
+        class="checkMark"
+      />
+      <label for="checkbox-dropdown4"
+      >حقوق جزای عمومی</label
+      >
+    </li>
+  </ul>
+</li>
+-->

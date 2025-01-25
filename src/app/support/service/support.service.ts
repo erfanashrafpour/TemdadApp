@@ -4,7 +4,7 @@ import {environment} from "@environments/environment";
 import {HttpClient} from "@angular/common/http";
 
 const GET_TICKET_API = environment.BASE_URL+"Ticketing/GetTicketConversationQuestionForUser";
-const GET_TEST_BY_ID = environment.BASE_URL + 'Testing/GetTestsById';
+const GET_TEST_BY_ID = environment.BASE_URL + 'Testing/GetTestsByIdForWeb';
 //Ticketing/GetTicketConversationQuestionForUser
 @Injectable({
   providedIn: 'root'
