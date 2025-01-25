@@ -62,6 +62,49 @@ static GetMobile()
 
 
 
+  static GetPlanFrom() {
+    return this.userModel.Plan_From;
+  }
+
+  static GetPlanTo() {
+    return this.userModel.Plan_To;
+  }
+
+  static GetPlanSaturday() {
+    return this.userModel.Plan_Saturday;
+  }
+
+  static GetPlanSunday() {
+    return this.userModel.Plan_Sunday;
+  }
+
+  static GetPlanMonday() {
+    return this.userModel.Plan_Monday;
+  }
+
+  static GetPlanTuesday() {
+    return this.userModel.Plan_Tuesday;
+  }
+
+  static GetPlanWednesday() {
+    return this.userModel.Plan_Wednesday;
+  }
+
+  static GetPlanThursday() {
+    return this.userModel.Plan_Thursday;
+  }
+
+  static GetPlanFriday() {
+    return this.userModel.Plan_Friday;
+  }
+
+
+  static GetLeitnerCounter() {
+    return this.userModel.LeitnerCounter;
+  }
+
+
+
 
   static  GetNewUserModel()
   {
