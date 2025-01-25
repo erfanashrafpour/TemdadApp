@@ -250,7 +250,7 @@
 
 
 
-        <div class="title" style="font-family: 'YekanBakh num'">
+        <div class="title" style="font-family: 'yekanNum'">
           <i (click)="head.hide = !head.hide"  class="fa  "   [ngClass]="{'fa-angle-left':head.hide==true,'fa-angle-down':head.hide==false }" aria-hidden="true"></i>
 
           <input
@@ -261,7 +261,7 @@
             id="checkbox-dropdown1{{i}}"
             class="checkMark"
           />
-          <label (click)="head.hide = !head.hide" for="checkbox-dropdown1{{i}}" style="font-family: 'YekanBakh num'">{{head.Name}}</label>
+          <label (click)="head.hide = !head.hide" for="checkbox-dropdown1{{i}}" style="font-family: 'yekanNum'">{{head.Name}}</label>
         </div>
         <ul *ngIf="!head.hide" >
           <li  class="li-check" *ngFor="let item of head.Children;let ichild = index" >
@@ -273,7 +273,7 @@
               id="checkbox-dropdown4{{ichild}}"
               class="checkMark"
             />
-            <label for="checkbox-dropdown4{{ichild}}" style="font-family: 'YekanBakh num'">{{item.Name2}}</label>
+            <label for="checkbox-dropdown4{{ichild}}" style="font-family: 'yekanNum'">{{item.Name2}}</label>
           </li>
 
         </ul>
