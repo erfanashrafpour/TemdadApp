@@ -113,12 +113,13 @@ static GetMobile()
       if (res.statusCode==200)
       {
 
-        localStorage.setItem(environment.USER_PASS,JSON.stringify(res.data))
-        localStorage.setItem(environment.TOKEN_KEY,res.data.Token)
+        localStorage.setItem(environment.USER_PASS,JSON.stringify(res.data));
+        localStorage.setItem(environment.TOKEN_KEY,res.data.Token);
+        this.SetUserModel();
       }
 
 
-    })
+    });
 
 
   }

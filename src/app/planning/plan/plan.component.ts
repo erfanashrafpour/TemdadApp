@@ -5,7 +5,7 @@ import {UserRepository} from "@app/_core/Helper/UserRepository";
 import {PlanService} from "@app/planning/services/plan.service";
 
 
-interface IRequestPlan {
+ export  interface IRequestPlan {
   /// <summary>
   /// تاریخ شروع برنامه ریزی
   /// </summary>
@@ -191,9 +191,15 @@ export class PlanComponent  implements OnInit {
     }
 
 
- /*   this.AdminUserService.planEdit(this.user.UserId,req).subscribe(res=>{
+    this.planService.SetEditPlan(req).subscribe(res=>{
+      if (res.statusCode==200)
+      {
 
-    })*/
+        UserRepository.GetNewUserModel();
+
+      }
+
+    })
 
 
   }
