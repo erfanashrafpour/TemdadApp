@@ -103,6 +103,25 @@ static GetMobile()
     return this.userModel.LeitnerCounter;
   }
 
+  static GetLeitnerTimer() {
+    return this.userModel.LeitnerTimer;
+  }
+
+  static GetCartNumber() {
+    return this.userModel.CartNumber;
+  }
+
+   static GetNationalCode() {
+    return this.userModel.NationalCode;
+  }
+  static GetMail() {
+    return this.userModel.Mail;
+  }
+  static GetTimer() {
+    return this.userModel.Timer;
+  }
+
+
 
 
 

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SettingComponent } from './setting/setting.component';
 import {RouterModule, Routes} from "@angular/router";
 import {MyLawListComponent} from "@app/law/my-law-list/my-law-list.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -27,6 +27,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })

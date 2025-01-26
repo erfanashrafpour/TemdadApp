@@ -170,3 +170,44 @@ input[type='number'] {
 .user_info_input[type='number'] {
   text-align: left;
 }
+.textarea-container__btn {
+
+  border: 0;
+  border-radius: 2px;
+  height: 48px;
+  padding: 13px 45px;
+  font-size: 13px;
+}
+.textarea-container__btn--purple {
+  background: (#3167bf);
+  color: (#fff);
+}
+.editUser-box__select {
+  appearance: none;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  padding:0 3px 0px 25px;
+  background: transparent;
+  border-radius: 3px;
+  color: #757575;
+  border: none;
+  font-family: 'yekanNum';
+  font-size: 14px;
+  background: rgba(187, 187, 187, 0.5); }
+.editUser-box__select:focus {
+  outline-color: (#666); }
+/*.editUser-box__select-icon {
+  position: absolute;
+  cursor: pointer;
+  left: 15px;
+  top: 35px;
+  transform: rotate(90deg);
+  color: #757575; }*/
+.editUser-box__select-icon {
+  position: absolute;
+  cursor: pointer;
+  left: 9px;
+  top: 46px;
+  transform: rotate(90deg);
+  color: #757575; }

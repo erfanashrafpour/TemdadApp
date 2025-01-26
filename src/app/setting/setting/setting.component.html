@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" [formGroup]="formGroup"  *ngIf="formGroup">
   <h1 class="page_heading border_bottom">تنظیمات</h1>
 
   <section class="response_time_section border_bottom">
@@ -8,12 +8,12 @@
       زمان پاسخگویی به هر تست را مشخص کنید.
     </p>
     <div class="response_time_input_box">
-      <input type="number" [(ngModel)]="timer" (input)="changeTimer($event)" (change)="changeTimer($event)" class="response_time_input" />
+      <input type="number" formControlName="Timer"   class="response_time_input" />
       <span class="response_time_label">ثانیه</span>
     </div>
   </section>
 
-  <section class="display_setting_section border_bottom">
+  <section class="display_setting_section border_bottom" *ngIf="false">
     <h2 class="section_heading">تنظیمات نمایشی</h2>
 
     <div class="display_setting_field">
@@ -63,7 +63,7 @@
     <div class="fields_parent">
       <div class="input_field_parent">
         <label for="" class="user_info_label">کد ملی</label>
-        <input type="number" class="user_info_input" dir="ltr" />
+        <input formControlName="CartNumber" type="number" class="user_info_input" dir="ltr" />
       </div>
 
       <div class="input_field_parent">
@@ -73,18 +73,55 @@
 
       <div class="input_field_parent">
         <label for="" class="user_info_label">رمز عبور</label>
-        <input type="text" class="user_info_input" />
+        <input formControlName="NewPassword"  type="text" class="user_info_input" />
       </div>
 
-      <div class="input_field_parent">
-        <label for="" class="user_info_label">تکرار رمز عبور</label>
-        <input type="text" class="user_info_input" />
-      </div>
 
       <div class="input_field_parent">
         <label for="" class="user_info_label">شماره کارت بانکی</label>
         <input type="number" dir="ltr" class="user_info_input" />
       </div>
+
+      <div class="input_field_parent" style="position: relative">
+        <label for="post" class="editUser-box__label">تکرار لایتنر</label>
+        <select formControlName="LeitnerCounter"  name="post" id="post" class="editUser-box__select" >
+          <option value="1">بعد از 1 بار تکرار تست از فرایند یادگیری من حذف شود</option>
+          <option value="2">بعد از 2 بار تکرار تست از فرایند یادگیری من حذف شود</option>
+          <option value="3">بعد از 3 بار تکرار تست از فرایند یادگیری من حذف شود</option>
+          <option value="4">بعد از 4 بار تکرار تست از فرایند یادگیری من حذف شود</option>
+          <option value="5">بعد از 5 بار تکرار تست از فرایند یادگیری من حذف شود</option>
+        </select>
+        <span class="editUser-box__select-icon">&#10094;</span>
+      </div>
+
+
+      <div   class="input_field_parent" style="position: relative">
+        <label for="post" class="editUser-box__label">زمان لایتنر</label>
+        <select formControlName="LeitnerTimer"  name="post" id="post" class="editUser-box__select">
+          <option value=""></option>
+          <option value="24" class="optionbox"> پس از 24 ساعت تستهای صحیح من را تکرار کن</option>
+          <option value="12" class="optionbox"> پس از 12 ساعت تستهای صحیح من را تکرار کن</option>
+          <option value="8" class="optionbox"> پس از 8 ساعت تستهای صحیح من را تکرار کن</option>
+          <option value="1" class="optionbox"> پس از 1 ساعت تستهای صحیح من را تکرار کن</option>
+          <option value="0" class="optionbox">
+            بر اساس شیوه اصلی لایتنر
+
+          </option>
+        </select>
+        <span class="editUser-box__select-icon">&#10094;</span>
+      </div>
+
     </div>
   </section>
+  <div style="text-align: end">
+
+    <button (click)="save()"
+            class="textarea-container__btn textarea-container__btn--purple m-2"
+    >
+      تایید
+    </button>
+
+
+  </div>
+
 </div>
