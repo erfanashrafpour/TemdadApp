@@ -18,6 +18,45 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.red-snackbar{
+  background: #bb1e1e;
+
+  .mdc-snackbar__surface{
+    font-family: yekanNum !important;;
+    background-color: #bb1e1e !important;
+  }
+  .mat-mdc-snack-bar-label{
+    font-family: yekanNum !important;
+  }
+
+  .mat-button-wrapper{
+    color: white;
+  }
+
+  .mdc-button__label{
+    color: white !important;
+  }
+}
+.green-snackbar{
+  background: #3f993f;
+  .mdc-snackbar__surface{
+    font-family: yekanNum !important;
+    background-color: #3f993f !important;
+  }
+
+  .mat-mdc-snack-bar-label{
+    font-family: yekanNum !important;
+  }
+  .mdc-button__label{
+    color: white !important;
+  }
+  .mat-button-wrapper{
+    color: white;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 4px;
   overflow-y: scroll;

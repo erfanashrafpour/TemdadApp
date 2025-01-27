@@ -12,6 +12,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {NgbCalendar, NgbCalendarPersian, NgbDatepickerI18n, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgbDatepickerI18nPersian} from "@app/_core/_config/persian-datepicker.config";
 import {FormsModule} from "@angular/forms";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {FormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     SummeryModule,
     MatDialogModule,
+    MatSnackBarModule,
     MatBottomSheetModule,
 
   ],

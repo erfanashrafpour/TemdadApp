@@ -118,11 +118,19 @@ export class TicketListComponent implements OnInit{
   }
 
 
+  closeOpenAnswer(itemQuestionAnswer: HTMLDivElement, item: any) {
 
 
-  closeOpenAnswer(itemQuestionAnswer: HTMLDivElement) {
+    console.log(item)
+    if (item.isVisited==false)
+    {
+      this.supportService.SetVisibility(item.id).subscribe(res=>{
+        if (res.statusCode==200)
+        {
 
-
+        }
+      })
+    }
 
     itemQuestionAnswer.classList.toggle('close')
 

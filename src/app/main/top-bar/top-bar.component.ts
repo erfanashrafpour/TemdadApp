@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {AuthService} from "@app/auth-module/service/auth.service";
 import {environment} from "@environments/environment";
 import {TopBarService} from "@app/main/service/top-bar.service";
@@ -18,7 +18,7 @@ export class TopBarComponent implements OnInit{
   showLeftSideBar = false;
   countMessage = undefined;
 
-  constructor(private authService:AuthService , private topBarService : TopBarService , private matDialog :MatDialog) {
+  constructor(private authService:AuthService , private topBarService : TopBarService , private matDialog :MatDialog , private cd:ChangeDetectorRef) {
   }
 
 
@@ -39,7 +39,26 @@ export class TopBarComponent implements OnInit{
 
                 if (res.statusCode == 200)
                 {
-                  this.countMessage = res.data
+                  let count =0;
+                  res.data.forEach((item,i)=>{
+                    if (item.ConversationQuestionAndAnswer.length==2 && !item.IsVisitedBuUserTicket)
+                    {
+                      count++;
+                    }
+
+                  })
+
+                  this.countMessage = count;
+                  this.cd.detectChanges();
+/*
+
+                  for (int o = 0; o < list.size(); o++) {
+                  if (list.get(o).getConversationQuestionAndAnswer().size() == 2 &&
+                    !list.get(o).isVisitedBuUserTicket()) {
+                    count++;//.add(list.get(o));
+                  }
+                }*/
+
                 }
 
 

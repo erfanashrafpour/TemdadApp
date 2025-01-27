@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 
 
 const GET_MESSAGE_NOT_VIEW_COUNT = environment.BASE_URL + 'Message/GetCountMessageNotView';
+const GET_MESSAGE_OF_USER = environment.BASE_URL + 'Ticketing/GetTicketConversationQuestionForUser';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class TopBarService {
   GetMessageNotViewCount()
   {
 
-    return this.httpClient.get<ResponseModel<any>>(GET_MESSAGE_NOT_VIEW_COUNT);
+    return this.httpClient.get<ResponseModel<any>>(GET_MESSAGE_OF_USER);
 
   }
 

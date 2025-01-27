@@ -7,6 +7,7 @@ import {RuleMatDialogComponent} from "@app/question/rule-mat-dialog/rule-mat-dia
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {AnswerBottomSheetComponent} from "@app/question/answer-bottom-sheet/answer-bottom-sheet.component";
 import {SendTicketBottomSheetComponent} from "@app/question/send-ticket-bottom-sheet/send-ticket-bottom-sheet.component";
+import {ToasterService} from "@app/_core/service/toaster.service";
 
 
 export enum QuestionPageEnum {
@@ -49,7 +50,7 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
 
   constructor(private questionService:QuestionService , private activeRoute:ActivatedRoute
               , private cd :ChangeDetectorRef,private matDBottomShit:MatBottomSheet
-              , private route:Router) {
+              , private route:Router,private taoster:ToasterService) {
   }
 
 
@@ -115,6 +116,12 @@ export class QuestionPageComponent implements OnInit , AfterViewInit{
             this.questionList = res.data;
             this.questionItem = this.questionList[0];
             this.allCountTest = res.meta.Count
+            if (this.questionList.length==0)
+            {
+              this.taoster.error('تست های شما به پایان رسید')
+              //this.route.navigateByUrl('main/lessonCategory/list/'+id)
+              window.history.back()
+            }
             this.setQuestion();
         }
 

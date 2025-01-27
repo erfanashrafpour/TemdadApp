@@ -38,6 +38,7 @@ export class SubjectListComponent  implements OnInit{
       if (res.statusCode==200)
       {
         this.categoryList = res.data
+        this.getSubjectListByCategoryId(this.categoryList[0].Id)
       }
 
     })

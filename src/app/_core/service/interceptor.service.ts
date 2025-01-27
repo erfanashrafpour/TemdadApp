@@ -10,15 +10,17 @@ import {
 import {Router} from "@angular/router";
 import {Observable, tap, throwError} from "rxjs";
 import {environment} from "@environments/environment";
+import {LoaderService} from "@app/_core/service/loader.service";
+import {ToasterService} from "@app/_core/service/toaster.service";
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor{
 
-  constructor(  private  router : Router ) { }
+  constructor(  private  router : Router , private loader:LoaderService,private tosat:ToasterService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
- //   this.loader.showLoading()
+    this.loader.showLoading()
 
 
     const tokenString = window.localStorage.getItem(environment.TOKEN_KEY)??''
@@ -47,7 +49,7 @@ export class InterceptorService implements HttpInterceptor{
 
 
 
-        //  this.loader.hideLoading()
+          this.loader.hideLoading()
 
           if (event?.status==401)
           {
@@ -61,14 +63,14 @@ export class InterceptorService implements HttpInterceptor{
             {
               this.router.navigateByUrl("/login")
             }
-           // this.tosat.error(event.body.message)
+            this.tosat.error(event.body.message)
           }
         }
 
       },
       (error) => {
 
-        //this.loader.hideLoading()
+        this.loader.hideLoading()
         if (error instanceof HttpErrorResponse)
         {
           if (error.status==401)
