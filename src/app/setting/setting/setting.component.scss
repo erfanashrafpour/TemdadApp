@@ -4,6 +4,7 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
+  font-family: yekanNum;
 }
 body {
   min-height: 100vh;
@@ -173,10 +174,10 @@ input[type='number'] {
 .textarea-container__btn {
 
   border: 0;
-  border-radius: 2px;
+  border-radius: 5px;
   height: 48px;
   padding: 13px 45px;
-  font-size: 13px;
+  font-size: 17px;
 }
 .textarea-container__btn--purple {
   background: (#3167bf);

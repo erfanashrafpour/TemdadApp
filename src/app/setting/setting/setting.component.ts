@@ -154,6 +154,9 @@ export class SettingComponent implements OnInit , AfterViewInit{
       if (res.statusCode==200)
       {
 
+            UserRepository.GetNewUserModel();
+
+
       }
 
     })
@@ -177,7 +180,6 @@ export class SettingComponent implements OnInit , AfterViewInit{
       password: this.fb.control(''),
       Timer: this.fb.control(Number(UserRepository.GetTimer()),Validators.required),
       Mob: this.fb.control((UserRepository.GetMobile()),Validators.required)
-
     })
 
 
