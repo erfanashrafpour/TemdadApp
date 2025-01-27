@@ -141,11 +141,12 @@ export class SettingComponent implements OnInit , AfterViewInit{
   save() {
 
     const value = this.formGroup.value;
-    if (this.formGroup.controls.password.value.length>0 && value.password!=value.NewPassword)
+    //if (this.formGroup.controls.password.value.length>0 && value.password!=value.NewPassword)
     {
         console.log('ridi')
     }
 
+    this.s
     //this.
 
   }
