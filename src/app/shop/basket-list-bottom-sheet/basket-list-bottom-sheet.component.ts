@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "@app/shop/service/shop.service";
+import {UserRepository} from "@app/_core/Helper/UserRepository";
 
 @Component({
   selector: 'app-basket-list-bottom-sheet',
@@ -42,6 +43,14 @@ export class BasketListBottomSheetComponent  implements OnInit{
   {
 
     this.shopService.OrderBasket().subscribe(res=>{
+
+      if (res.statusCode==200)
+      {
+        const numberic = res.data
+      const x =   String(UserRepository.GetPayUrl()).replace('$orderid$',numberic);
+      // const url =  `https://pay2.temdad.com?token=7916fcfb-3fb7-4f4b-a2d6-2d440a93a02a&pID=${x}&type=mobile`
+        window.open(x)
+      }
 
     })
 

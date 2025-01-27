@@ -120,6 +120,9 @@ static GetMobile()
   static GetTimer() {
     return this.userModel.Timer;
   }
+  static GetPayUrl() {
+    return this.userModel.PayUrl;
+  }
 
 
 

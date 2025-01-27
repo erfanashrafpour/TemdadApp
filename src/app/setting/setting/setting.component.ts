@@ -2,6 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChi
 import {environment} from "@environments/environment";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserRepository} from "@app/_core/Helper/UserRepository";
+import {SettingService} from "@app/setting/setting/services/setting.service";
 
 export interface SettingRequest {
   /// پست الکترونیک
@@ -88,7 +89,7 @@ export class SettingComponent implements OnInit , AfterViewInit{
 
   @ViewChild('fontSizeInput') fontSizeInput: ElementRef;
   @ViewChild('fontLineSpaceInput') fontLineSpaceInput: ElementRef;
-  constructor(private cd:ChangeDetectorRef , private fb:FormBuilder) {
+  constructor(private cd:ChangeDetectorRef , private fb:FormBuilder,private settingService:SettingService) {
   }
 
 
@@ -141,12 +142,23 @@ export class SettingComponent implements OnInit , AfterViewInit{
   save() {
 
     const value = this.formGroup.value;
-    //if (this.formGroup.controls.password.value.length>0 && value.password!=value.NewPassword)
+    /*if (this.formGroup.controls.password.value.length>0 && value.password!=value.NewPassword)
     {
         console.log('ridi')
-    }
+    }*/
 
-    this.s
+
+
+    this.settingService.EditUser(value as SettingRequest).subscribe(res=>{
+
+      if (res.statusCode==200)
+      {
+
+      }
+
+    })
+
+
     //this.
 
   }
