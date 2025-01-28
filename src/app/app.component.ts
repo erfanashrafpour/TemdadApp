@@ -9,12 +9,15 @@ import {LoaderService} from "@app/_core/service/loader.service";
 export class AppComponent  implements OnInit , AfterViewInit{
   title = 'TemdadApp';
   showLoading =false;
+  isLoading =false;
 
   constructor(private  loaderService : LoaderService , private cd:ChangeDetectorRef) {
   }
 
   ngOnInit() {
-
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 0);
   }
 
 
