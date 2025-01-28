@@ -481,7 +481,7 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div *ngIf="showLoading">
+<div *ngIf="showLoading ">
   <div style="    text-align: center;
     position: fixed;
      height: 100%;
@@ -490,15 +490,20 @@
     background: #00000045;
     top: 0;
     flex-flow: column;
+
     bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;">
     <div class="loader">
-<!--
-      <img src="assets/icon/logo.png">
--->
+
+
     </div>
+    <img style="width: 73px;
+    position: fixed;
+    /* top: 5px; */
+    bottom: 52%;" src="assets/icon/blue-logo.png">
+
     <label style="    color: rgb(48, 102, 190);
     padding: 35px;
     font-size: 25px;

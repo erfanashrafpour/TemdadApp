@@ -23,10 +23,14 @@ export class InterceptorService implements HttpInterceptor{
     this.loader.showLoading()
 
 
+const isInRegister = request.url.includes('Register');
+
+
     const tokenString = window.localStorage.getItem(environment.TOKEN_KEY)??''
-    if (tokenString.length==0)
+    if (tokenString.length==0 && !isInRegister)
     {
-      this.router.navigateByUrl("/login")
+
+      this.router.navigateByUrl("/Auth")
 
     }
     let headers: { token: any };
@@ -53,7 +57,7 @@ export class InterceptorService implements HttpInterceptor{
 
           if (event?.status==401)
           {
-            this.router.navigateByUrl("/login")
+            this.router.navigateByUrl("/Auth")
 
           }
 
@@ -61,7 +65,7 @@ export class InterceptorService implements HttpInterceptor{
           {
             if (event?.body?.statusCode==401)
             {
-              this.router.navigateByUrl("/login")
+              this.router.navigateByUrl("/Auth")
             }
             this.tosat.error(event.body.message)
           }
@@ -74,7 +78,7 @@ export class InterceptorService implements HttpInterceptor{
         if (error instanceof HttpErrorResponse)
         {
           if (error.status==401)
-            this.router.navigateByUrl("/login")
+            this.router.navigateByUrl("/Auth")
 
         }
         return throwError(error);

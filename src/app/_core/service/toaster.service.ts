@@ -16,7 +16,7 @@ option={
   {
 
     this.snackBar.open(message, 'X', {
-      duration: 500000,
+      duration: 5000,
       verticalPosition:"top",
       horizontalPosition:"start",
       panelClass: ['red-snackbar']

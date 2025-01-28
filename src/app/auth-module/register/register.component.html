@@ -1,1 +1,26 @@
-<p>register works!</p>
+
+
+<div class="container" style="min-width: 100%;padding-bottom: 75px;">
+  <form class="sign-up" [formGroup]="formGroup" (submit)="register()">
+    <div class="logo">
+      <img *ngIf="false" alt="Tikdad">
+    </div>
+    <input  formControlName="FirstName" type="text" placeholder="نام">
+    <input  formControlName="LastName" type="text" placeholder="نام خانوداگی">
+    <input  formControlName="Mobile" type="phone" placeholder="شماره موبایل">
+    <input  formControlName="Password" type="password" placeholder="رمز عبور">
+    <input  formControlName="RepeatPassword" type="password" placeholder="تکرار رمز عبور">
+    <!--    <div class="remember">
+          <input type="checkbox" id="remember">
+    &lt;!&ndash;
+          <label for="remember">مرا به‌خاطر بسپار</label>
+    &ndash;&gt;
+        </div>-->
+    <button class="submit-btn">ثبت نام</button>
+    <div class="question" *ngIf="false">
+      <span>حساب کاربری دارید؟</span>
+      <br>
+      <a routerLink="../register">وارد شوید.</a>
+    </div>
+  </form>
+</div>

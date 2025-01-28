@@ -6,6 +6,7 @@ import {ResponseModel} from "@app/_core/model/ResponseModel";
 
 
 const  LOGIN_API = environment.BASE_URL+"Account/Login";
+const  REGISTER_API = environment.BASE_URL+"Account/Register";
 
 
 @Injectable({
@@ -34,4 +35,20 @@ export class AuthService {
 
 
 
+
+  Register(firstName , lastName , Mobile , password) {
+
+
+    const model =
+      {
+        FirstName:firstName,
+        LastName:lastName,
+        Mobile:Mobile,
+        Password:password,
+      }
+
+    return this.httpClient.post<ResponseModel<any>>(REGISTER_API,model)
+
+
+  }
 }

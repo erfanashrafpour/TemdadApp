@@ -4,10 +4,11 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
+  font-family: yekanNum;
 }
 body {
   min-height: 100vh;
-  font-family: 'dirooz';
+
 }
 
 /* container */
@@ -214,7 +215,7 @@ body {
     text-align: right;
   }
   .test__option {
-    font-size: 14px;
+    font-size: 12px;
   }
   .test__form {
     gap: 10px;

@@ -29,7 +29,7 @@
           <span class="test"> تست {{item.testNumber}}</span>
           <span class="displaydate">1403/06/18</span>
         </div>
-        <div class="viewdaate">
+        <div class="viewdaate"(click)="showQuestion(item.questionId)">
           <span class="date">{{item.time}}</span>
           <button class="viewtest" (click)="showQuestion(item.questionId)">مشاهده تست</button>
         </div>

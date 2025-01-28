@@ -1,9 +1,11 @@
 
 
 <div class="container" style="min-width: 100%;padding-bottom: 75px;">
+
   <form class="sign-up" [formGroup]="formGroup" (submit)="login()">
+
     <div class="logo">
-      <img *ngIf="false" alt="Tikdad">
+      <img src="assets/icon/blue-logo.png">
     </div>
     <input  formControlName="username" type="text" placeholder="ایمیل ، شماره موبایل">
     <input  formControlName="password" type="password" placeholder="رمز عبور">
@@ -16,7 +18,8 @@
     <button class="submit-btn">ورود</button>
      <div class="question">
        <span>حساب کاربری ندارید؟</span>
-       <a href="#">ثبت‌نام کنید.</a>
+       <br>
+       <a routerLink="../register">ثبت‌نام کنید.</a>
      </div>
   </form>
 </div>

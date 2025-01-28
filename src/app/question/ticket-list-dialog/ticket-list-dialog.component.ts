@@ -131,8 +131,9 @@ export class TicketListDialogComponent  implements OnInit{
   }
 
   showQuestion(questionId: any) {
+    console.log("kir")
     // item.questionId
-    const matDialog = this.matDialog.open(QuestionDialogComponent,{width:'99vw',maxWidth:'99vw',closeOnNavigation:true})
+    const matDialog = this.matDialog.open(QuestionDialogComponent,{width:'99vw',maxWidth:'99vw'})
     matDialog.componentInstance.questionId = questionId;
   }
 }
