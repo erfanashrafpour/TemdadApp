@@ -15,9 +15,11 @@ export class AppComponent  implements OnInit , AfterViewInit{
   }
 
   ngOnInit() {
+    //debugger
     setTimeout(() => {
       this.isLoading = false;
-    }, 0);
+
+    }, 100);
   }
 
 

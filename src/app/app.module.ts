@@ -57,12 +57,12 @@ export function initializeApp(initService: InitService): () => Promise<void> {
       multi: true
 
     },
-    {
+/*    {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [InitService], // وابستگی به سرویس InitService
       multi: true, // اجازه می‌دهد چند APP_INITIALIZER وجود داشته باشد
-    },
+    },*/
 
     {provide: LocationStrategy, useClass: HashLocationStrategy}
 
